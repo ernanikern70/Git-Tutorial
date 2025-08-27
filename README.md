@@ -19,9 +19,16 @@ mkdir projeto1
 cd projeto1
 ```
 
-Inicializa o diretório como um repositório git (cria o subdiretório .git):  
+Inicializar o diretório como um repositório git (cria o subdiretório .git):  
 ```bash
 git init
+```
+
+Criar e adicionar o primeiro arquivo do projeto (geralmente README.md);  
+```
+git add README.md
+git commit -m 'primeiro commit'
+git push origin main
 ```
 
 ---
