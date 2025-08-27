@@ -64,6 +64,7 @@ git push origin main
 ** O 'commit' mais recente recebe a marcação 'HEAD' **
 
 ---
+---
 <!--
 " }}}
 -->
@@ -235,6 +236,11 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 - Alterar commit atual com autor correto (se esqueceu de configurar nome/email antes):
   ```bash
   git commit --amend --reset-author
+  ```
+
+- Altera o editor padrão do Git (que abre com alguns comandos):
+  ```
+  git config --global core.editor "vim"
   ```
 
 ---
