@@ -207,10 +207,11 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   * Adiciona o arquivo _staged_ ao commit, sem alterar o comentário
   * O --amend altera o _hash_ do commit, excluindo-o do histórico
 
-- Restaurar arquivos modificados: 
+- Restaurar arquivos modificados (_tracked_ ou _staged_): 
   ```
   git restore [--staged] file # usar --staged se já foi adicionado
   ```
+  * O _restore_ precisa de um _commit_ já executado para poder voltar
 
 - Ver histórico:
   ```bash
@@ -228,15 +229,21 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git checkout main   # retorna ao main, ou branch selecionado
   ```
 
-- Reverter um arquivo para sua última versão conhecida do Git (portanto não pode ser _untracked_): 
+- Reverter um arquivo para sua última versão conhecida do Git - _checkout_ ou _modified_ (portanto não pode ser _untracked_): 
   ```
   git checkout file
+  ```
+
+- Remover arquivos _untracked_:
+  ```
+  git clean
   ```
 
 - Ver branches:
   ```bash
   git branch -a
   ```
+
 - Verificar atualizações no repositório remoto sem aplicar localmente:
   ```bash
   git fetch origin
@@ -250,6 +257,11 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 - Alterar commit atual com autor correto (se esqueceu de configurar nome/email antes):
   ```bash
   git commit --amend --reset-author
+  ```
+
+- Ignorar tudo desde o último _commit_ (só não atinge _untracked_):  
+  ```
+  git reset --hard
   ```
 
 - Altera o editor padrão do Git (que abre com alguns comandos):
