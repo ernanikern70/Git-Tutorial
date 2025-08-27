@@ -203,7 +203,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```bash
   git log [--oneline] [--graph] [--stat] [-n] [--all]
   ```
-  ** n = número de commits
+  ** n = número de commits  
   ** stats mostra arquivos alterados
 
 - Ver branches:
