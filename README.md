@@ -1,11 +1,41 @@
-
+<!--
+" Introdução --------------------- {{{
+-->
 # Guia Rápido: Projeto com Git e GitHub
 
 Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub — ideal para projetos Ansible ou qualquer outro.
 
 ---
+<!--
+" }}}
+-->
+<!--
+" Definições --------------------- {{{
+-->
+## Definições
 
-## Criando projeto Git e comandos iniciais
+##### Estados de um arquivo no Git:   
+
+- Untracked: não rastreado (logo após ser criado ou modificado)
+
+- Staged: após ser adicionado ao Git (git add file)
+
+- Unmodified: após o commit, se não foi mais alterado (git commit -m 'xx')
+
+- Modified: arquivo editado após o commit (se as edições forem desfeitas (git restore file), volta ao 'unmodified'; se forem mantidas e usar 'git add file', volta a 'staged')
+
+O arquivo também pode retornar à 'untracked caso rode 'git rm --cached file'.
+
+Um arquivo pode estar em __mais de um estado ao mesmo tempo__. 
+
+---
+<!--
+" }}}
+-->
+<!--
+" Criação de Projeto --------------------- {{{
+-->
+## Criação de um projeto
 
 Configurar de forma global (em todos os projetos) o autor e email dos projetos:  
 ```
@@ -26,13 +56,19 @@ git init
 
 Criar e adicionar o primeiro arquivo do projeto (geralmente README.md);  
 ```
-git add README.md
-git commit -m 'primeiro commit'
+git add README.md (caso seja um ou poucos arquivos)
+git add . (para muitos arquivos)
+git commit -m 'versão 1'
 git push origin main
 ```
 
 ---
-
+<!--
+" }}}
+-->
+<!--
+" Rascunho --------------------- {{{
+-->
 
 ## 4. Criar ou copiar arquivos do projeto
 
@@ -130,12 +166,27 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 ```
 
 ---
-
+<!--
+" }}}
+-->
+<!--
+" Comandos úteis --------------------- {{{
+-->
 ## 14. Comandos úteis
 
 - Ver status:
   ```bash
   git status
+  ```
+- Remover arquivo (apenas do rastreamento do git):  
+  ```
+  git rm --cached file
+  git rm --cached -r .  # remove todos recursivamente
+  ```
+
+- Restaurar arquivos modificados: 
+  ```
+  git restore [--staged] file # usar --staged se já foi adicionado
   ```
 
 - Ver histórico:
@@ -163,3 +214,6 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
 
 ---
+<!--
+" }}}
+-->
