@@ -61,6 +61,7 @@ git add . (para muitos arquivos)
 git commit -m 'versão 1'
 git push origin main
 ```
+** O 'commit' mais recente recebe a marcação 'HEAD' **
 
 ---
 <!--
@@ -200,7 +201,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 
 - Ver histórico:
   ```bash
-  git log --oneline --graph --all
+  git log [--oneline] [--graph] [--all]
   ```
 
 - Ver branches:
