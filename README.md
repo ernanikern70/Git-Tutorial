@@ -197,15 +197,15 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 
 - Altera o comentário de um commit: 
   ```
-  git commit --ammend -m "comentário novo"
+  git commit --amend -m "comentário novo"
   ```
 
 - Adiciona um arquivo _modified_ a um commit: 
   ```
-  git commit --ammend --no-edit
+  git commit --amend --no-edit
   ```
   * Adiciona o arquivo _staged_ ao commit, sem alterar o comentário
-  * O --ammend altera o _hash_ do commit, excluindo-o do histórico
+  * O --amend altera o _hash_ do commit, excluindo-o do histórico
 
 - Restaurar arquivos modificados: 
   ```
