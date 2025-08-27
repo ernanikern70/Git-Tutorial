@@ -194,6 +194,18 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git diff --cached|--staged
   ```
 
+- Altera o comentário de um commit: 
+  ```
+  git commit --ammend -m "comentário novo"
+  ```
+
+- Adiciona um arquivo _modified_ a um commit: 
+  ```
+  git commit --ammend --no-edit
+  ```
+  * Adiciona o arquivo _staged_ ao commit, sem alterar o comentário
+  * O --ammend altera o _hash_ do commit, excluindo-o do histórico
+
 - Restaurar arquivos modificados: 
   ```
   git restore [--staged] file # usar --staged se já foi adicionado
