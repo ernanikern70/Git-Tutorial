@@ -184,6 +184,15 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git rm --cached -r .  # remove todos recursivamente
   ```
 
+- Ver diferenças realizadas (em arquivos _modified_): 
+  ```
+  git diff 
+  ```
+  Para arquivos _staged_:  
+  ```
+  git diff --cached|--staged
+  ```
+
 - Restaurar arquivos modificados: 
   ```
   git restore [--staged] file # usar --staged se já foi adicionado
