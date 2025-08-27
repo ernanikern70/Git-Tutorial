@@ -1,41 +1,31 @@
 
-# 🧰 Guia Rápido: Iniciar Projeto com Git e GitHub
+# Guia Rápido: Projeto com Git e GitHub
 
 Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub — ideal para projetos Ansible ou qualquer outro.
 
 ---
 
-## 1. Criar o diretório do projeto
+## Criando projeto Git e comandos iniciais
 
-```bash
-mkdir meu-projeto
-cd meu-projeto
+Configurar de forma global (em todos os projetos) o autor e email dos projetos:  
+```
+git config --global user.name "Fulano de Tal"
+git config --global user.email "fulano.tal@email.com"
 ```
 
----
+Criar o primeiro projeto, localmente:  
+```bash
+mkdir projeto1
+cd projeto1
+```
 
-## 2. Inicializar o repositório Git
-
+Inicializa o diretório como um repositório git (cria o subdiretório .git):  
 ```bash
 git init
 ```
 
 ---
 
-## 3. Configurar o nome e e-mail do autor (antes do primeiro commit)
-
-```bash
-git config user.name ""  # Pode ser usuário do github ou nome completo
-git config user.email "seu-email@example.com"
-```
-
-> Use `--global` se quiser que essa configuração valha para todos os repositórios na máquina:
-> ```bash
-> git config --global user.name "Ernani Kern"
-> git config --global user.email "seu-email@example.com"
-> ```
-
----
 
 ## 4. Criar ou copiar arquivos do projeto
 
