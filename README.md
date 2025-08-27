@@ -219,6 +219,20 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ** n = número de commits  
   ** stats mostra arquivos alterados
 
+- Retornar a um commit anterior:  
+  ```
+  git checkout <hash_commit>  # obtido via _git log_
+  ```
+  * Retorna ao commit selecionado, coloca o projeto num 'detached HEAD'
+  ```
+  git checkout main   # retorna ao main, ou branch selecionado
+  ```
+
+- Reverter um arquivo para sua última versão conhecida do Git (portanto não pode ser _untracked_): 
+  ```
+  git checkout file
+  ```
+
 - Ver branches:
   ```bash
   git branch -a
