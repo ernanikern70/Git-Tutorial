@@ -77,13 +77,18 @@ A plataforma permite autenticação via usuário e senha, ou via SSH, esta últi
 - No Github - code - SSH - 'add a new public key', _ou_
     - Ícone do usuário - settings - SSH and GPG keys
 
-- No PC, criar a chave: 
+- No PC, criar as chaves pública e privada: 
     ```
     ssh-keygen
     ```
     O comando irá pedir nome e localização do arquivo, pode-se deixar o default, e passphrase, pode-se deixar em branco. 
 
 - Copiar todo o conteúdo da chave .pub e colar no Github, incluindo um título qualquer
+
+- Adicionar a chave privada ao SSH no PC:
+  ```
+  ssh-add ~/.ssh/<chave>
+  ```
 
 Após fazer essa alteração, a _url_ do repositório deve ser alterada para:  
 
