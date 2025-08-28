@@ -34,6 +34,8 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 
 São ramificações de projetos que permitem a aplicação de alterações ao mesmo tempo em que uma ramificação principal é mantida. 
 
+Por exemplo, em um projeto surge a necessidade de desenvolver uma funcionalidade de cadastro de usuários; pode-se então criar a _branch_ _cad-users_ a partir da branch _main_. Caso seja necessária outra funcionalidade independente dessa última, cria-se outro _branch_ _func-extra_ também a partir do _main_. 
+
 ##### Estados de um arquivo no Git:   
 
 - Untracked: não rastreado (logo após ser criado ou modificado)
