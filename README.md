@@ -1,15 +1,15 @@
 <!--
--  " Badges ------------------ {{{
-|  -->
-|   
-|  <!-- Estes badges só funcionarão quando o repositório do github for público -| ->
-|  [![Repo size](https://img.shie| lds.io/github/repo-size/ernanikern70/Qemu-GNS3-Tutorial?label=Repo%20size&styl| e=flat-round) ![GitHub branch status](https://img.shields.io/github/checks-sta| tus/ernanikern70/Qemu-GNS3-Tutorial/main) ![GitHub stars](https://img.shields.| io/github/stars/ernanikern70/Qemu-GNS3-Tutorial?label=Stars&style=flat-round&c| olor=yellow) ![Last commit](https://img.shields.io/github/last-commit/ernanike| rn70/Qemu-GNS3-Tutorial?label=Last%20commit&style=flat-round&color=green) ![Op| en Issues](https://img.shields.io/github/issues/ernanikern70/Qemu-GNS3-Tutoria| l?style=flat-round&color=red) ![Open PRs](https://img.shields.io/github/issues| -pr/ernanikern70/Qemu-GNS3-Tutorial?style=flat-round&color=orange) ![Latest Re| lease](https://img.shields.io/github/v/release/ernanikern70/Qemu-GNS3-Tutorial| ?style=flat-round&color=brightgreen) <!-- ![Topics](https://img.shields.io/git| hub/topics/ernanikern70/Qemu-GNS3-Tutorial?style=flat-round&color=purple&cache| Seconds=30) -->                                                               
-|   
-| ---
-| <!--
-| " }}}
-  -->
-
+" Badges ------------------ {{{
+-->
+   
+<!-- Estes badges só funcionarão quando o repositório do github for público -| ->
+[![Repo size](https://img.shie| lds.io/github/repo-size/ernanikern70/Qemu-GNS3-Tutorial?label=Repo%20size&styl| e=flat-round) ![GitHub branch status](https://img.shields.io/github/checks-sta| tus/ernanikern70/Qemu-GNS3-Tutorial/main) ![GitHub stars](https://img.shields.| io/github/stars/ernanikern70/Qemu-GNS3-Tutorial?label=Stars&style=flat-round&c| olor=yellow) ![Last commit](https://img.shields.io/github/last-commit/ernanike| rn70/Qemu-GNS3-Tutorial?label=Last%20commit&style=flat-round&color=green) ![Op| en Issues](https://img.shields.io/github/issues/ernanikern70/Qemu-GNS3-Tutoria| l?style=flat-round&color=red) ![Open PRs](https://img.shields.io/github/issues| -pr/ernanikern70/Qemu-GNS3-Tutorial?style=flat-round&color=orange) ![Latest Re| lease](https://img.shields.io/github/v/release/ernanikern70/Qemu-GNS3-Tutorial| ?style=flat-round&color=brightgreen) <!-- ![Topics](https://img.shields.io/git| hub/topics/ernanikern70/Qemu-GNS3-Tutorial?style=flat-round&color=purple&cache| Seconds=30) -->                                                               
+<!--
+" }}}
+-->
+<!--
+" }}}
+-->
 
 <!--
 " Introdução --------------------- {{{
