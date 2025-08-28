@@ -6,7 +6,7 @@
 ![GitHub branch status](https://img.shields.io/github/checks-status/ernanikern70/Git-Tutorial/main) 
 ![Last commit](https://img.shields.io/github/last-commit/ernanikern70/Git-Tutorial?label=Last%20commit&style=flat-round&color=green) 
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ernanikern70/Git-Tutorial)
-![GitHub stars](https://img.shields.io/github/stars/ernanikern70/Git-Tutorial?label=Stars&style=flat-round&color=yellow) 
+![GitHub stars](https://img.shields.io/github/stars/ernanikern70/Git-Tutorial?label=Stars&style=flat-round&color=yellow?logo=star) 
 ![GitHub followers](https://img.shields.io/github/followers/ernanikern70) 
 <!--
 " }}}
@@ -51,6 +51,8 @@ O Github, além de servir como repositório de projetos e controle de versioname
 Após fazer o __fork__ de um projeto, ele ainda pode ser atualizado conforme o projeto original, através de _git pull_ ou via Github. 
 
 O Github permite a abertura de _Issues_ (problemas), onde os colaboradores podem informar questões a serem corrigidas. 
+
+Nas _Issues_ criadas o dono do repositório pode adicionar _labels_ e _milestones_, semelhantemente ao _GitLab_.
 
 ##### Pull Request (PR):
 
