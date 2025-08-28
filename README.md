@@ -1,9 +1,22 @@
 <!--
+-  " Badges ------------------ {{{
+|  -->
+|   
+|  <!-- Estes badges só funcionarão quando o repositório do github for público -| ->
+|  [![Repo size](https://img.shie| lds.io/github/repo-size/ernanikern70/Qemu-GNS3-Tutorial?label=Repo%20size&styl| e=flat-round) ![GitHub branch status](https://img.shields.io/github/checks-sta| tus/ernanikern70/Qemu-GNS3-Tutorial/main) ![GitHub stars](https://img.shields.| io/github/stars/ernanikern70/Qemu-GNS3-Tutorial?label=Stars&style=flat-round&c| olor=yellow) ![Last commit](https://img.shields.io/github/last-commit/ernanike| rn70/Qemu-GNS3-Tutorial?label=Last%20commit&style=flat-round&color=green) ![Op| en Issues](https://img.shields.io/github/issues/ernanikern70/Qemu-GNS3-Tutoria| l?style=flat-round&color=red) ![Open PRs](https://img.shields.io/github/issues| -pr/ernanikern70/Qemu-GNS3-Tutorial?style=flat-round&color=orange) ![Latest Re| lease](https://img.shields.io/github/v/release/ernanikern70/Qemu-GNS3-Tutorial| ?style=flat-round&color=brightgreen) <!-- ![Topics](https://img.shields.io/git| hub/topics/ernanikern70/Qemu-GNS3-Tutorial?style=flat-round&color=purple&cache| Seconds=30) -->                                                               
+|   
+| ---
+| <!--
+| " }}}
+  -->
+
+
+<!--
 " Introdução --------------------- {{{
 -->
 # Guia Rápido: Projeto com Git e GitHub
 
-Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub — ideal para projetos Ansible ou qualquer outro.
+Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub — ideal para projetos Ansible ou qualquer outro. Nesse caso, são enviados _n_ _commits_ no _pull request_. 
 
 ---
 <!--
@@ -30,8 +43,15 @@ Um arquivo pode estar em __mais de um estado ao mesmo tempo__.
 
 ##### Características do Github: 
 
-O Github, além de servir como repositório de projetos e controle de versionamento, tem um funcionamento semelhante a uma rede social, é possível seguir projetos (_star_), ou criar cópias de projetos (_fork_) para poder fazer alterações sem mudar o projeto principal.  
+O Github, além de servir como repositório de projetos e controle de versionamento, tem um funcionamento semelhante a uma rede social, é possível seguir projetos (__star__), ou criar cópias de projetos (__fork__) para poder fazer alterações sem mudar o projeto principal.  
 
+Após fazer o __fork__ de um projeto, ele ainda pode ser atualizado conforme o projeto original, através de _git pull_ ou via Github. 
+
+##### Pull Request (PR):
+
+O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original.  
+
+Caso aceita, o responsável pelo projeto original executa um _merge pull request_ via Github. 
 
 ---
 <!--
