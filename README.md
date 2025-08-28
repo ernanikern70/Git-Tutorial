@@ -54,6 +54,17 @@ Inicializar o diretório como um repositório git (cria o subdiretório .git):
 git init
 ```
 
+Adicionar o endereço remoto do projeto no servidor (Github ou outro):
+```
+git remote add origin <url>
+```
+O termo _origin_ serve como alias para a <url>, e pode ser alterado.  
+
+Alterar a url do projeto: 
+```
+git remote set-url _origin_ <url>
+```
+
 Criar e adicionar o primeiro arquivo do projeto (geralmente README.md);  
 ```
 git add README.md (caso seja um ou poucos arquivos)
@@ -180,6 +191,17 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```bash
   git status
   ```
+
+- Ver os endereços do servidor remoto: 
+  ```
+  git remote -v
+  ```
+
+- Adicionar o endereço remoto: 
+ ```
+ git remote add origin <https|ssh:@@@@@@@@@@.git>
+ ```
+
 - Remover arquivo (apenas do rastreamento do git):  
   ```
   git rm --cached file
