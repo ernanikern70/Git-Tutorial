@@ -6,7 +6,7 @@
 ![GitHub branch status](https://img.shields.io/github/checks-status/ernanikern70/Git-Tutorial/main) 
 ![Last commit](https://img.shields.io/github/last-commit/ernanikern70/Git-Tutorial?label=Last%20commit&style=flat-round&color=green) 
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ernanikern70/Git-Tutorial)
-![GitHub stars](https://img.shields.io/github/stars/ernanikern70/Git-Tutorial?label=Stars&style=flat-round&color=yellow?logo=Star) 
+![GitHub stars](https://img.shields.io/github/stars/ernanikern70/Git-Tutorial?logo=star?label=Stars&style=flat-round&color=yellow) 
 ![GitHub followers](https://img.shields.io/github/followers/ernanikern70) 
 <!--
 " }}}
