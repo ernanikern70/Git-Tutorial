@@ -6,7 +6,7 @@
 ![GitHub branch status](https://img.shields.io/github/checks-status/ernanikern70/Git-Tutorial/main) 
 ![Last commit](https://img.shields.io/github/last-commit/ernanikern70/Git-Tutorial?label=Last%20commit&style=flat-round&color=green) 
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ernanikern70/Git-Tutorial)
-![GitHub stars](https://img.shields.io/github/stars/ernanikern70/Git-Tutorial?label=Stars&style=flat-round&color=yellow&logo=star) 
+![GitHub labels](https://img.shields.io/github/labels/ernanikern70/Git-Tutorial/)
 ![GitHub stars](https://img.shields.io/github/stars/ernanikern70/Git-Tutorial?label=%E2%AD%90%20Stars&style=flat-square&color=yellow)
 ![GitHub followers](https://img.shields.io/github/followers/ernanikern70) 
 <!--
@@ -60,6 +60,12 @@ Nas _Issues_ criadas o dono do repositório pode adicionar _labels_ e _milestone
 O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original.  
 
 Caso aceita, o responsável pelo projeto original executa um _merge pull request_ via Github. 
+
+##### Arquivo README.md: 
+
+Este arquivo, que não é obrigatório, pode estar na raiz do repositório, com o objetivo de documentá-lo, bem como podem existir outros README.md em outros diretórios. 
+
+Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a escrever o arquivo é a plataforma [Dillinger](https://dillinger.io).
 
 ---
 <!--
