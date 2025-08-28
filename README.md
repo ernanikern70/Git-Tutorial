@@ -83,7 +83,7 @@ A plataforma permite autenticação via usuário e senha, ou via SSH, esta últi
 
 Após fazer essa alteração, a _url_ do repositório deve ser alterada para:  
 
-_git@github.com:<user>/<repo.git>_
+_git@github.com:\<user\>/\<repo.git\>_
 
 ---
 <!--
