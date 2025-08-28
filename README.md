@@ -58,7 +58,7 @@ Adicionar o endereço remoto do projeto no servidor (Github ou outro):
 ```
 git remote add origin <url>
 ```
-O termo _origin_ serve como alias para a <url>, e pode ser alterado.  
+O termo _origin_ serve como alias para a url, e pode ser alterado.  
 
 Alterar a url do projeto: 
 ```
