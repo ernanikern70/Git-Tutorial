@@ -375,6 +375,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git switch -c <branch>
   ```
+
 - Trocar de branch eliminando as alterações rastreadas: 
   ```
   git checkout -f <branch>
