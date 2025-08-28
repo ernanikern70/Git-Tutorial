@@ -375,6 +375,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git switch -c <branch>
   ```
+  O branch é sempre criado no estado do commit atual do projeto.
 
 - Trocar de branch eliminando as alterações rastreadas: 
   ```
