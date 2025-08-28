@@ -2,7 +2,12 @@
 " Badges ------------------ {{{
 -->
 <!-- Estes badges só funcionarão quando o repositório do github for público -->
-![GitHub repo size](https://img.shields.io/github/repo-size/ernanikern70/Git-Tutorial?label=Repo%20size&style=flat-round) ![GitHub branch status](https://img.shields.io/github/checks-status/ernanikern70/Git-Tutorial/main) ![GitHub stars](https://img.shields.io/github/stars/ernanikern70/Git-Tutorial?label=Stars&style=flat-round&color=yellow) ![Last commit](https://img.shields.io/github/last-commit/ernanikern70/Git-Tutorial?label=Last%20commit&style=flat-round&color=green) ![GitHub followers](https://img.shields.io/github/followers/ernanikern70) 
+![GitHub repo size](https://img.shields.io/github/repo-size/ernanikern70/Git-Tutorial?label=Repo%20size&style=flat-round) 
+![GitHub branch status](https://img.shields.io/github/checks-status/ernanikern70/Git-Tutorial/main) 
+![Last commit](https://img.shields.io/github/last-commit/ernanikern70/Git-Tutorial?label=Last%20commit&style=flat-round&color=green) 
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ernanikern70/Git-Tutorial)
+![GitHub stars](https://img.shields.io/github/stars/ernanikern70/Git-Tutorial?label=Stars&style=flat-round&color=yellow) 
+![GitHub followers](https://img.shields.io/github/followers/ernanikern70) 
 <!--
 " }}}
 -->
@@ -44,6 +49,8 @@ Um arquivo pode estar em __mais de um estado ao mesmo tempo__.
 O Github, além de servir como repositório de projetos e controle de versionamento, tem um funcionamento semelhante a uma rede social, é possível seguir projetos (__star__), ou criar cópias de projetos (__fork__) para poder fazer alterações sem mudar o projeto principal.  
 
 Após fazer o __fork__ de um projeto, ele ainda pode ser atualizado conforme o projeto original, através de _git pull_ ou via Github. 
+
+O Github permite a abertura de _Issues_ (problemas), onde os colaboradores podem informar questões a serem corrigidas. 
 
 ##### Pull Request (PR):
 
