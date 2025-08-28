@@ -36,6 +36,10 @@ São ramificações de projetos que permitem a aplicação de alterações ao me
 
 Por exemplo, em um projeto surge a necessidade de desenvolver uma funcionalidade de cadastro de usuários; pode-se então criar a _branch_ _cad-users_ a partir da branch _main_. Caso seja necessária outra funcionalidade independente dessa última, cria-se outro _branch_ _func-extra_ também a partir do _main_. 
 
+Neste exemplo, cada _branch_ é independente das outras, e as alterações não afetam as demais. 
+
+No momento em que uma tarefa de um _branch_ é aprovado, ele é mesclado no _branch main_ - __merge__ -, e o _branch main_ absorve as alterações.
+
 ##### Estados de um arquivo no Git:   
 
 - Untracked: não rastreado (logo após ser criado ou modificado)
