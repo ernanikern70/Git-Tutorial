@@ -363,6 +363,11 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git checkout <branch>
   ```
 
+- Criar um branch e já usá-lo: 
+  ```
+  git checkout -b <branch>
+  ```
+
 - Verificar atualizações no repositório remoto sem aplicar localmente:
   ```bash
   git fetch origin
