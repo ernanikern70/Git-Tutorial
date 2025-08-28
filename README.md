@@ -362,6 +362,10 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git checkout <branch>
   ```
+  ou
+  ```
+  git switch <branch>
+  ```
 
 - Criar um branch e já usá-lo: 
   ```
