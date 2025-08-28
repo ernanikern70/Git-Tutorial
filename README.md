@@ -354,6 +354,15 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git branch -a
   ```
 
+- Criar nova branch: 
+  ```
+  git branch <nome>
+  ```
+- Entrar em um branch: 
+  ```
+  git checkout <branch>
+  ```
+
 - Verificar atualizações no repositório remoto sem aplicar localmente:
   ```bash
   git fetch origin
