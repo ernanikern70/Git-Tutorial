@@ -1,9 +1,8 @@
 <!--
 " Badges ------------------ {{{
 -->
-   
 <!-- Estes badges só funcionarão quando o repositório do github for público -->
-![GitHub Release](https://img.shields.io/github/v/release/ernanikern70/Git-Tutorial) ![GitHub repo size](https://img.shields.io/github/repo-size/ernanikern70/Git-Tutorial?label=Repo%20size&style=flat-round) ![GitHub branch status](https://img.shields.io/github/checks-status/ernanikern70/Git-Tutorial/main) ![GitHub stars](https://img.shields.io/github/stars/ernanikern70/Git-Tutorial?label=Stars&style=flat-round&color=yellow) ![Last commit](https://img.shields.io/github/last-commit/ernanikern70/Git-Tutorial?label=Last%20commit&style=flat-round&color=green)                                               
+![GitHub Version](https://img.shields.io/github/lerna-version/v/ernanikern70/Git-Tutorial) ![GitHub repo size](https://img.shields.io/github/repo-size/ernanikern70/Git-Tutorial?label=Repo%20size&style=flat-round) ![GitHub branch status](https://img.shields.io/github/checks-status/ernanikern70/Git-Tutorial/main) ![GitHub stars](https://img.shields.io/github/stars/ernanikern70/Git-Tutorial?label=Stars&style=flat-round&color=yellow) ![Last commit](https://img.shields.io/github/last-commit/ernanikern70/Git-Tutorial?label=Last%20commit&style=flat-round&color=green)                                               
 <!--
 " }}}
 -->
