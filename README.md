@@ -28,6 +28,11 @@ O arquivo também pode retornar à 'untracked caso rode 'git rm --cached file'.
 
 Um arquivo pode estar em __mais de um estado ao mesmo tempo__. 
 
+##### Características do Github: 
+
+O Github, além de servir como repositório de projetos e controle de versionamento, tem um funcionamento semelhante a uma rede social, é possível seguir projetos (_star_), ou criar cópias de projetos (_fork_) para poder fazer alterações sem mudar o projeto principal.  
+
+
 ---
 <!--
 " }}}
@@ -79,7 +84,7 @@ Por padrão, o Git cria o branch principal como _main_, isso é apenas uma nomen
 git config init.defaultBranch <branch>
 ```
 
-Caso o projeto sofra alterações no servidor (esteja 'à frente' do projeto local, é preciso atualizá-lo (puxá-lo) para o projeto local: 
+Caso o projeto sofra alterações no servidor (esteja 'à frente' do projeto local), é preciso atualizá-lo (puxá-lo) para o projeto local: 
 ```
 git pull <origin> <main>
 ```
