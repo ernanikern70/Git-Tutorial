@@ -74,6 +74,11 @@ git push origin main
 ```
 ** O 'commit' mais recente recebe a marcação 'HEAD' **
 
+Por padrão, o Git cria o branch principal como _main_, isso é apenas uma nomenclatura, e pode ser alterado com: 
+```
+git config init.defaultBranch <branch>
+```
+
 ---
 ---
 <!--
