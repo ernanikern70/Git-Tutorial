@@ -6,7 +6,6 @@
 ![GitHub branch status](https://img.shields.io/github/checks-status/ernanikern70/Git-Tutorial/main) 
 ![Last commit](https://img.shields.io/github/last-commit/ernanikern70/Git-Tutorial?label=Last%20commit&style=flat-round&color=green) 
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/ernanikern70/Git-Tutorial)
-![GitHub labels](https://img.shields.io/github/labels/ernanikern70/Git-Tutorial/good-first-issue)
 ![GitHub stars](https://img.shields.io/github/stars/ernanikern70/Git-Tutorial?label=%E2%AD%90%20Stars&style=flat-square&color=yellow)
 ![GitHub followers](https://img.shields.io/github/followers/ernanikern70) 
 <!--
@@ -66,6 +65,25 @@ Caso aceita, o responsável pelo projeto original executa um _merge pull request
 Este arquivo, que não é obrigatório, pode estar na raiz do repositório, com o objetivo de documentá-lo, bem como podem existir outros README.md em outros diretórios. 
 
 Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a escrever o arquivo é a plataforma [Dillinger](https://dillinger.io).
+
+##### Segurança no Github: 
+
+A plataforma permite autenticação via usuário e senha, ou via SSH, esta última sendo mais recomendada. Para usá-la, é preciso adicionar uma chave pública no Github:  
+
+- No Github - code - SSH - 'add a new public key', _ou_
+    - Ícone do usuário - settings - SSH and GPG keys
+
+- No PC, criar a chave: 
+    ```
+    ssh-keygen
+    ```
+    O comando irá pedir nome e localização do arquivo, pode-se deixar o default, e passphrase, pode-se deixar em branco. 
+
+- Copiar todo o conteúdo da chave .pub e colar no Github, incluindo um título qualquer
+
+Após fazer essa alteração, a _url_ do repositório deve ser alterada para:
+
+    _git@github.com:<user>/<repo.git>_
 
 ---
 <!--
@@ -235,6 +253,12 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 " Comandos úteis --------------------- {{{
 -->
 ## 14. Comandos úteis
+
+- Clonar um repositório remoto: 
+  ```
+  git clone <url> [diretório]
+  ```
+  Se _diretório_ não for informado, será criado com o nome do repositório.
 
 - Ver status:
   ```bash
