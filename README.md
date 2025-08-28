@@ -371,6 +371,10 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git checkout -b <branch>
   ```
+  ou
+  ```
+  git switch -c <branch>
+  ```
 
 - Verificar atualizações no repositório remoto sem aplicar localmente:
   ```bash
