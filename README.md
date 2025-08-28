@@ -81,7 +81,7 @@ A plataforma permite autenticação via usuário e senha, ou via SSH, esta últi
 
 - Copiar todo o conteúdo da chave .pub e colar no Github, incluindo um título qualquer
 
-Após fazer essa alteração, a _url_ do repositório deve ser alterada para:
+Após fazer essa alteração, a _url_ do repositório deve ser alterada para:  
 
     _git@github.com:<user>/<repo.git>_
 
