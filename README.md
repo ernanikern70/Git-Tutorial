@@ -407,7 +407,6 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git config --global core.editor "vim"
   ```
 
-_teste_
 ---
 <!--
 " }}}
