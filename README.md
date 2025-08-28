@@ -30,6 +30,10 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 -->
 ## Definições
 
+##### Branches: 
+
+São ramificações de projetos que permitem a aplicação de alterações ao mesmo tempo em que uma ramificação principal é mantida. 
+
 ##### Estados de um arquivo no Git:   
 
 - Untracked: não rastreado (logo após ser criado ou modificado)
