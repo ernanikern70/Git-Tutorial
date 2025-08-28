@@ -79,6 +79,11 @@ Por padrão, o Git cria o branch principal como _main_, isso é apenas uma nomen
 git config init.defaultBranch <branch>
 ```
 
+Caso o projeto sofra alterações no servidor (esteja 'à frente' do projeto local, é preciso atualizá-lo (puxá-lo) para o projeto local: 
+```
+git pull <origin> <main>
+```
+
 ---
 ---
 <!--
