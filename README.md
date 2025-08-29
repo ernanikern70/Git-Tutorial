@@ -126,7 +126,6 @@ Podem ocorrer conflitos entre branches ao fazer um merge, p. ex., se um arquivo 
 
 Ao tentar fazer o merge, o git mostrará a mensagem de erro e o arquivo mostrará linhas como as abaixo: 
 ```
-<!--                                                                         
 " Badges ------------------ {{{
 -->
 <<<<<<< HEAD
