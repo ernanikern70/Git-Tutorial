@@ -435,6 +435,13 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git push --set-upstream <origin> <branch>
   ```
 
+- Fazer um merge: 
+  ```
+  git merge <branch>
+  ```
+  * \<branch\> deve ser o branch que receberá o merge.
+  * O git abrirá o editor de texto padrão para comentar o merge (obrigatório).
+
 - Verificar quais _branches_ ainda tiveram ou não tiveram _merge_:
   ```
   git branch --no-merged
