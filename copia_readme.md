@@ -16,6 +16,7 @@ linha 4: rodrigo
 <!--
 " }}}
 -->
+linha 19: renata
 <!--
 " Introdução --------------------- {{{
 -->
@@ -155,6 +156,7 @@ _git@github.com:\<user\>/\<repo.git\>_
 <!--
 " }}}  
 -->
+linha 159: ernani
 <!--
 " Criação de Projeto --------------------- {{{
 -->
