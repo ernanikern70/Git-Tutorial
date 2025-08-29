@@ -1,11 +1,7 @@
 <!--
 " Badges ------------------ {{{
 -->
-linha 4: ernani
-teste2 teste2 teste2
-teste3 teste3 teste3
-teste4 teste4 teste4
-teste5 teste5 teste5
+linha 4: rodrigo
 <!-- Estes badges só funcionarão quando o repositório do github for público -->
 ![GitHub repo size](https://img.shields.io/github/repo-size/ernanikern70/Git-Tutorial?label=Repo%20size&style=flat-round&logo=github) 
 ![GitHub branch status](https://img.shields.io/github/checks-status/ernanikern70/Git-Tutorial/main) 
