@@ -49,13 +49,13 @@ Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a esc
 
 #### Estados de um arquivo no Git:   
 
-- Untracked: não rastreado (logo após ser criado ou modificado)
+- _Untracked_: não rastreado (logo após ser criado ou modificado)
 
-- Staged: após ser adicionado ao Git (git add file)
+- _Staged_: após ser adicionado ao Git (git add file)
 
-- Unmodified: após o commit, se não foi mais alterado (git commit -m 'xx')
+- _Unmodified_: após o commit, se não foi mais alterado (git commit -m 'xx')
 
-- Modified: arquivo editado após o commit (se as edições forem desfeitas (git restore file), volta ao 'unmodified'; se forem mantidas e usar 'git add file', volta a 'staged')
+- _Modified_: arquivo editado após o commit (se as edições forem desfeitas (git restore file), volta ao 'unmodified'; se forem mantidas e usar 'git add file', volta a 'staged')
 
 #### Branches: 
 
@@ -93,7 +93,9 @@ No DETACHED HEAD, existem duas possibilidades:
 
 O __merge__ é um dos principais comandos do _git_, que faz a 'união' entre um _branch_ aprovado em outro branch, que pode ser ou não o _main_. 
 
-O _merge_ sempre 'trás' o conteúdo de um _branch_ para o branch atual, ou seja, é preciso rodar o comando no _branch_ onde se quer atualizar. 
+O _merge_ sempre 'trás' o conteúdo de um _branch_ para o branch atual, ou seja, é preciso rodar o comando no _branch_ onde se quer atualizar.  
+
+A realização do _merge_ não faz o _push_ para o servidor. 
 
 #### Pull Request (PR):
 
@@ -128,61 +130,4 @@ _git@github.com:\<user\>/\<repo.git\>_
 ---
 <!--
 " }}}  
--->
-<!--
-" Criação de Projeto --------------------- {{{
--->
-
-## Criação de um projeto
-
-Configurar de forma global (em todos os projetos) o autor e email dos projetos:  
-```
-git config --global user.name "Fulano de Tal"
-git config --global user.email "fulano.tal@email.com"
-```
-
-Criar o primeiro projeto, localmente:  
-```bash
-mkdir projeto1
-cd projeto1
-```
-
-Inicializar o diretório como um repositório git (cria o subdiretório .git):  
-```bash
-git init
-```
-
-Adicionar o endereço remoto do projeto no servidor (Github ou outro):
-```
-git remote add origin <url>
-```
-O termo _origin_ serve como alias para a url, e pode ser alterado.  
-
-Alterar a url do projeto: 
-```
-git remote set-url _origin_ <url>
-```
-
-Criar e adicionar o primeiro arquivo do projeto (geralmente README.md);  
-```
-git add README.md (caso seja um ou poucos arquivos)
-git add . (para muitos arquivos)
-git commit -m 'versão 1'
-git push origin main
-```
-** O 'commit' mais recente recebe a marcação 'HEAD' **
-
-Por padrão, o Git cria o branch principal como _main_, isso é apenas uma nomenclatura, e pode ser alterado com: 
-```
-git config init.defaultBranch <branch>
-```
-
-Caso o projeto sofra alterações no servidor (esteja 'à frente' do projeto local), é preciso atualizá-lo (puxá-lo) para o projeto local: 
-```
-git pull <origin> <main>
-```
-
----
-<!--
-" }}}
 -->
