@@ -97,6 +97,27 @@ O _merge_ sempre 'trás' o conteúdo de um _branch_ para o branch atual, ou seja
 
 A realização do _merge_ não faz o _push_ para o servidor.
 
+##### Passo a passo para execução de merge: 
+
+Partindo do branch _main_, com _commit_ executado:
+
+    - Fazer alterações (criar diretório, criar arquivo, alterar arquivo);
+    - Criar novo _branch_, caso necessário: 
+    ```
+    git switch -c teste-rede
+    ```
+    - Verificar as alterações 
+    - Caso positivo, fazer commit:
+    ```
+    git commit -m "ambiente de teste de rede"
+    ```
+    - Voltar ao branch que receberá o _merge_:
+    ```
+    git switch -
+    git merge teste-rede
+    ```
+    * Antes de fazer o merge, o git abrirá o editor de texto para comentar, se não for comentado, _não será feito o merge_.
+
 #### Pull Request (PR):
 
 O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
