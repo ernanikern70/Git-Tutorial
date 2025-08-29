@@ -120,6 +120,10 @@ Partindo do branch _main_, com _commit_ executado:
 
 A realização do _merge_ não faz o _push_ para o servidor.
 
+##### Conflitos no merge: 
+
+
+
 #### Pull Request (PR):
 
 O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
