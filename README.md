@@ -95,6 +95,8 @@ O __merge__ é um dos principais comandos do _git_, que faz a 'união' entre um 
 
 O _merge_ sempre 'trás' o conteúdo de um _branch_ para o branch atual, ou seja, é preciso rodar o comando no _branch_ onde se quer atualizar. 
 
+A realização do _merge_ não faz o _push_ para o servidor.
+
 #### Pull Request (PR):
 
 O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
