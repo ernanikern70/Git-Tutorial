@@ -467,7 +467,6 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
 
 ---
--->
 <!--
 " }}}
 -->
