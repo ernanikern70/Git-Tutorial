@@ -431,9 +431,10 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git push --set-upstream <origin> <branch>
   ```
 
-- Verificar quais _branches_ ainda não tiveram _merge_:
+- Verificar quais _branches_ ainda tiveram ou não tiveram _merge_:
   ```
   git branch --no-merged
+  git branch --merged
   ```
 
 - Verificar atualizações no repositório remoto sem aplicar localmente:
