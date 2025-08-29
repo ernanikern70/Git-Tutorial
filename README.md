@@ -78,7 +78,7 @@ Ele tem esse nome, pois, como o _commit_ mais recente recebe a marcação _HEAD_
 
 No DETACHED HEAD, existem duas possibilidades: 
 
-- Não são feitas alterações, ou, se feitas, são descartadas, apenas usando ```_git switch <branch>_```, mesmo se já houve _commit_; 
+- Não são feitas alterações, ou, se feitas, são descartadas, apenas usando ```git switch <branch>```, mesmo se já houve _commit_; 
 
 - Caso se queira salvar alterações, é preciso criar outro branch, após já estar no _detached head_:
 
@@ -398,6 +398,12 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 - Trocar de branch eliminando as alterações rastreadas: 
   ```
   git checkout -f <branch>
+  ```
+
+- Fazer _push_ de um _branch_ inexistente no servidor: 
+  ```
+  git checkout <branch>
+  git push --set-upstream <origin> <branch>
   ```
 
 - Verificar atualizações no repositório remoto sem aplicar localmente:
