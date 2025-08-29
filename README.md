@@ -57,6 +57,10 @@ Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a esc
 
 - _Modified_: arquivo editado após o commit (se as edições forem desfeitas (git restore file), volta ao 'unmodified'; se forem mantidas e usar 'git add file', volta a 'staged')
 
+O arquivo também pode retornar à 'untracked caso rode 'git rm --cached file'.
+
+Um arquivo pode estar em __mais de um estado ao mesmo tempo__. 
+
 #### Branches: 
 
 São ramificações de projetos que permitem a aplicação de alterações ao mesmo tempo em que uma ramificação principal é mantida. 
@@ -66,10 +70,6 @@ Por exemplo, em um projeto surge a necessidade de desenvolver uma funcionalidade
 Neste exemplo, cada _branch_ é independente das outras, e as alterações não afetam as demais. 
 
 No momento em que uma tarefa de um _branch_ é aprovado, ele é mesclado no _branch main_ - __merge__ -, e o _branch main_ absorve as alterações.
-
-O arquivo também pode retornar à 'untracked caso rode 'git rm --cached file'.
-
-Um arquivo pode estar em __mais de um estado ao mesmo tempo__. 
 
 #### DETACHED HEAD: 
 
