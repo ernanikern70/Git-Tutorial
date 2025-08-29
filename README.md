@@ -90,7 +90,9 @@ No DETACHED HEAD, existem duas possibilidades:
 
 #### Merge: 
 
+O __merge__ é um dos principais comandos do _git_, que faz a 'união' entre um _branch_ aprovado em outro branch, que pode ser ou não o _main_. 
 
+O _merge_ sempre 'trás' o conteúdo de um _branch_ para o branch atual, ou seja, é preciso rodar o comando no _branch_ onde se quer atualizar. 
 
 #### Pull Request (PR):
 
@@ -124,11 +126,12 @@ _git@github.com:\<user\>/\<repo.git\>_
 
 ---
 <!--
-" }}}
+" }}}  
 -->
 <!--
 " Criação de Projeto --------------------- {{{
 -->
+
 ## Criação de um projeto
 
 Configurar de forma global (em todos os projetos) o autor e email dos projetos:  
@@ -463,6 +466,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
 
 ---
+-->
 <!--
 " }}}
 -->
