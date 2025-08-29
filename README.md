@@ -84,7 +84,7 @@ No DETACHED HEAD, existem duas possibilidades:
 
     - Fazer as alterações;
     - Criar um novo branch: ```git switch -c <branch-head>```
-    - ```git add <files> | git commit -m 'xx'```
+    - ```git add <files> | git commit -m 'xx'```  
     Agora, as alterações estão salvas no branch _branch-head_.
     - ```git push [--set-upstream] <origin> <branch-head>```
 
