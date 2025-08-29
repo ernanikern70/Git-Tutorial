@@ -127,13 +127,11 @@ Podem ocorrer conflitos entre branches ao fazer um merge, p. ex., se um arquivo 
 Ao tentar fazer o merge, o git mostrará a mensagem de erro e o arquivo mostrará linhas como as abaixo: 
 ```
 " Badges ------------------ {{{
--->
 <<<<<<< HEAD
 linha 4: ernani     # status no 'main'
 =======
 linha 4: rodrigo    # status no 'devel-teste'
 >>>>>>> devel-teste
-teste2 teste2 teste2
 ```
 
 As opção de solução são: 
