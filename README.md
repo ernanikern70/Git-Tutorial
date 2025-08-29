@@ -373,6 +373,12 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   * O _restore_ precisa de um _commit_ já executado para poder voltar
 
+- Restaurar ou buscar um arquivo de outro _branch_:
+  ```
+  git restore --source <branch> <file>
+  ```
+  Isso copiará o arquivo \<file\> de outro branch para o local atual.
+
 - Ver histórico:
   ```
   git log [<branch>] [--oneline] [--graph] [--stat] [-n] [--all]
