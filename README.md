@@ -30,15 +30,21 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 -->
 ## Definições
 
-##### Branches: 
+##### Características do Github: 
 
-São ramificações de projetos que permitem a aplicação de alterações ao mesmo tempo em que uma ramificação principal é mantida. 
+O Github, além de servir como repositório de projetos e controle de versionamento, tem um funcionamento semelhante a uma rede social, é possível seguir projetos (__star__), ou criar cópias de projetos (__fork__) para poder fazer alterações sem mudar o projeto principal.  
 
-Por exemplo, em um projeto surge a necessidade de desenvolver uma funcionalidade de cadastro de usuários; pode-se então criar a _branch_ _cad-users_ a partir da branch _main_. Caso seja necessária outra funcionalidade independente dessa última, cria-se outro _branch_ _func-extra_ também a partir do _main_. 
+Após fazer o __fork__ de um projeto, ele ainda pode ser atualizado conforme o projeto original, através de _git pull_ ou via Github. 
 
-Neste exemplo, cada _branch_ é independente das outras, e as alterações não afetam as demais. 
+O Github permite a abertura de _Issues_ (problemas), onde os colaboradores podem informar questões a serem corrigidas. 
 
-No momento em que uma tarefa de um _branch_ é aprovado, ele é mesclado no _branch main_ - __merge__ -, e o _branch main_ absorve as alterações.
+Nas _Issues_ criadas o dono do repositório pode adicionar _labels_ e _milestones_, semelhantemente ao _GitLab_.
+
+##### Arquivo README.md: 
+
+Este arquivo, que não é obrigatório, pode estar na raiz do repositório, com o objetivo de documentá-lo, bem como podem existir outros README.md em outros diretórios. 
+
+Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a escrever o arquivo é a plataforma [Dillinger](https://dillinger.io).
 
 ##### Estados de um arquivo no Git:   
 
@@ -50,31 +56,25 @@ No momento em que uma tarefa de um _branch_ é aprovado, ele é mesclado no _bra
 
 - Modified: arquivo editado após o commit (se as edições forem desfeitas (git restore file), volta ao 'unmodified'; se forem mantidas e usar 'git add file', volta a 'staged')
 
+##### Branches: 
+
+São ramificações de projetos que permitem a aplicação de alterações ao mesmo tempo em que uma ramificação principal é mantida. 
+
+Por exemplo, em um projeto surge a necessidade de desenvolver uma funcionalidade de cadastro de usuários; pode-se então criar a _branch_ _cad-users_ a partir da branch _main_. Caso seja necessária outra funcionalidade independente dessa última, cria-se outro _branch_ _func-extra_ também a partir do _main_. 
+
+Neste exemplo, cada _branch_ é independente das outras, e as alterações não afetam as demais. 
+
+No momento em que uma tarefa de um _branch_ é aprovado, ele é mesclado no _branch main_ - __merge__ -, e o _branch main_ absorve as alterações.
+
 O arquivo também pode retornar à 'untracked caso rode 'git rm --cached file'.
 
 Um arquivo pode estar em __mais de um estado ao mesmo tempo__. 
-
-##### Características do Github: 
-
-O Github, além de servir como repositório de projetos e controle de versionamento, tem um funcionamento semelhante a uma rede social, é possível seguir projetos (__star__), ou criar cópias de projetos (__fork__) para poder fazer alterações sem mudar o projeto principal.  
-
-Após fazer o __fork__ de um projeto, ele ainda pode ser atualizado conforme o projeto original, através de _git pull_ ou via Github. 
-
-O Github permite a abertura de _Issues_ (problemas), onde os colaboradores podem informar questões a serem corrigidas. 
-
-Nas _Issues_ criadas o dono do repositório pode adicionar _labels_ e _milestones_, semelhantemente ao _GitLab_.
 
 ##### Pull Request (PR):
 
 O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original.  
 
 Caso aceita, o responsável pelo projeto original executa um _merge pull request_ via Github. 
-
-##### Arquivo README.md: 
-
-Este arquivo, que não é obrigatório, pode estar na raiz do repositório, com o objetivo de documentá-lo, bem como podem existir outros README.md em outros diretórios. 
-
-Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a escrever o arquivo é a plataforma [Dillinger](https://dillinger.io).
 
 ##### Segurança no Github: 
 
@@ -268,7 +268,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 <!--
 " Comandos úteis --------------------- {{{
 -->
-## 14. Comandos úteis
+## Comandos úteis
 
 - Clonar um repositório remoto: 
   ```
