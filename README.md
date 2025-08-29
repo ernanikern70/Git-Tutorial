@@ -347,7 +347,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   * O _restore_ precisa de um _commit_ já executado para poder voltar
 
 - Ver histórico:
-  ```bash
+  ```
   git log [<branch>] [--oneline] [--graph] [--stat] [-n] [--all]
   ```
   * se não passar o nome da branch, mostra só da atual
