@@ -405,6 +405,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git checkout -f <branch>
   ```
+
 - Renomear _branch_ local: 
   ```
   git branch -m [<branch.old>] <branch.new>
@@ -428,6 +429,11 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git checkout <branch>
   git push --set-upstream <origin> <branch>
+  ```
+
+- Verificar quais _branches_ ainda não tiveram _merge_:
+  ```
+  git branch --no-merged
   ```
 
 - Verificar atualizações no repositório remoto sem aplicar localmente:
