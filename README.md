@@ -36,7 +36,7 @@ O Github, além de servir como repositório de projetos e controle de versioname
 
 Após fazer o __fork__ de um projeto, ele ainda pode ser atualizado conforme o projeto original, através de _git pull_ ou via Github. 
 
-O Github permite a abertura de _Issues_ (problemas), onde os colaboradores podem informar questões a serem corrigidas. 
+O Github permite a abertura de __Issues__ (problemas), onde os colaboradores podem informar questões a serem corrigidas. 
 
 Nas _Issues_ criadas o dono do repositório pode adicionar _labels_ e _milestones_, semelhantemente ao _GitLab_.
 
@@ -69,6 +69,18 @@ No momento em que uma tarefa de um _branch_ é aprovado, ele é mesclado no _bra
 O arquivo também pode retornar à 'untracked caso rode 'git rm --cached file'.
 
 Um arquivo pode estar em __mais de um estado ao mesmo tempo__. 
+
+##### DETACHED HEAD: 
+
+Em situações em que usamos _git checkout <commit_hash>_, para ver o estado do projeto naquele ponto, o Git nos move da branch atual para aquele commit específico. Nessa situação, não estaremos dentro de um branch, mas em um _limbo_ dentro do projeto - o _DETACHED HEAD_. 
+
+Ele tem esse nome, pois, como o _commit_ mais recente recebe a marcação _HEAD_, neste caso o _HEAD_ fica separado ou 'destacado' de um branch. 
+
+No DETACHED HEAD, existem duas possibilidades: 
+
+- Não são feitas alterações, ou, se feitas, são descartadas, apenas usando _git switch <branch>_, mesmo se já houve _commit_; 
+
+- Caso se queira salvar alterações, é preciso criar outro branch
 
 ##### Pull Request (PR):
 
