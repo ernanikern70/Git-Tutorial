@@ -304,9 +304,9 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
 
 - Adicionar o endereço remoto: 
- ```
- git remote add origin <https|ssh:@@@@@@@@@@.git>
- ```
+  ```
+  git remote add origin <https|ssh:@@@@@@@@@@.git>
+  ```
 
 - Remover arquivo (apenas do rastreamento do git):  
   ```
