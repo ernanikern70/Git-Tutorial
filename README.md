@@ -19,7 +19,7 @@
 -->
 # Guia Rápido: Projeto com Git e GitHub
 
-Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub — ideal para projetos Ansible ou qualquer outro. Nesse caso, são enviados _n_ _commits_ no _pull request_. 
+Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub — ideal para projetos Ansible ou qualquer outro.  
 
 ---
 <!--
@@ -84,7 +84,7 @@ No DETACHED HEAD, existem duas possibilidades:
 
 ##### Pull Request (PR):
 
-O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original.  
+O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
 
 Caso aceita, o responsável pelo projeto original executa um _merge pull request_ via Github. 
 
