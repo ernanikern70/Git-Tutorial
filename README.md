@@ -164,7 +164,7 @@ git pull <origin> <main>
 <!--
 " Rascunho --------------------- {{{
 -->
-
+<!--
 ## 4. Criar ou copiar arquivos do projeto
 
 ```bash
@@ -261,6 +261,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 ```
 
 ---
+-->
 <!--
 " }}}
 -->
