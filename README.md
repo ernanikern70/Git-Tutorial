@@ -78,7 +78,7 @@ Ele tem esse nome, pois, como o _commit_ mais recente recebe a marcação _HEAD_
 
 No DETACHED HEAD, existem duas possibilidades: 
 
-- Não são feitas alterações, ou, se feitas, são descartadas, apenas usando _git switch <branch>_, mesmo se já houve _commit_; 
+- Não são feitas alterações, ou, se feitas, são descartadas, apenas usando ```_git switch <branch>_```, mesmo se já houve _commit_; 
 
 - Caso se queira salvar alterações, é preciso criar outro branch, após já estar no _detached head_:
 
