@@ -101,22 +101,22 @@ A realização do _merge_ não faz o _push_ para o servidor.
 
 Partindo do branch _main_, com _commit_ executado:
 
-    - Fazer alterações (criar diretório, criar arquivo, alterar arquivo);
-    - Criar novo _branch_, caso necessário: 
-    ```
-    git switch -c teste-rede
-    ```
-    - Verificar as alterações 
-    - Caso positivo, fazer commit:
-    ```
-    git commit -m "ambiente de teste de rede"
-    ```
-    - Voltar ao branch que receberá o _merge_:
-    ```
-    git switch -
-    git merge teste-rede
-    ```
-    * Antes de fazer o merge, o git abrirá o editor de texto para comentar, se não for comentado, _não será feito o merge_.
+- Fazer alterações (criar diretório, criar arquivo, alterar arquivo):
+- Criar novo _branch_, caso necessário: 
+  ```
+  git switch -c teste-rede
+  ```
+- Verificar as alterações 
+- Caso positivo, fazer commit:
+  ```
+  git commit -m "ambiente de teste de rede"
+  ```
+- Voltar ao branch que receberá o _merge_:
+  ```
+  git switch -
+  git merge teste-rede
+  ```
+  * Antes de fazer o merge, o git abrirá o editor de texto para comentar, se não for comentado, _não será feito o merge_.
 
 #### Pull Request (PR):
 
