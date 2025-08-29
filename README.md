@@ -344,10 +344,11 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 
 - Ver histórico:
   ```bash
-  git log [--oneline] [--graph] [--stat] [-n] [--all]
+  git log [<branch>] [--oneline] [--graph] [--stat] [-n] [--all]
   ```
-  ** n = número de commits  
-  ** stats mostra arquivos alterados
+  * se não passar o nome da branch, mostra só da atual
+  * n = número de commits  
+  * stats mostra arquivos alterados
 
 - Retornar a um commit anterior:  
   ```
