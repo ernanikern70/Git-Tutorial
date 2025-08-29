@@ -118,6 +118,44 @@ Partindo do branch _main_, com _commit_ executado:
   ```
   * Antes de fazer o merge, o git abrirá o editor de texto para comentar, se não for comentado, _não será feito o merge_.
 
+A realização do _merge_ não faz o _push_ para o servidor.
+
+##### Conflitos no merge: 
+
+Podem ocorrer conflitos entre branches ao fazer um merge, p. ex., se um arquivo possui edições distintas num mesmo trecho. 
+
+Ao tentar fazer o merge, o git mostrará a mensagem de erro e o arquivo mostrará linhas como as abaixo: 
+```
+" Badges ------------------ {{{
+<<<<<<< HEAD
+linha 4: ernani     # status no 'main'
+=======
+linha 4: rodrigo    # status no 'devel-teste'
+>>>>>>> devel-teste
+```
+
+As opção de solução são: 
+
+- Desistir do merge: 
+```
+git merge --abort  # ou
+git reset --hard
+```
+
+- Caso o conflito seja em poucas linhas de um arquivo, pode-se editá-lo diretamente o manter apenas o conteúdo desejado, eliminando as linhas com '<<<<<<<', '>>>>>' e '======='. 
+  * Após, é preciso rodar novamente ```git add .``` e ```git commit -m ''```
+
+  - Caso haja mais conflitos num arquivo, pode-se usar as ferramentas disponíveis para gerenciar conflitos em merge: 
+    - Meld: 
+    ```
+    git config --global merge.tool meld
+    git mergetool
+    ```
+
+    - Vimdiff: app do Linux
+
+    - Fugitive.vim: plugin do Git para Vim
+
 #### Pull Request (PR):
 
 O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
@@ -450,6 +488,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git branch -d <branch>
   ```
+  * Usar '-D' para forçar.
   _Ao apagar um branch, todos os _commits_ são perdidos!_
 
 - Apagar um _branch_ remoto:
