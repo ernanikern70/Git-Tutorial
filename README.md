@@ -30,7 +30,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 -->
 ## Definições
 
-##### Características do Github: 
+#### Características do Github: 
 
 O Github, além de servir como repositório de projetos e controle de versionamento, tem um funcionamento semelhante a uma rede social, é possível seguir projetos (__star__), ou criar cópias de projetos (__fork__) para poder fazer alterações sem mudar o projeto principal.  
 
@@ -40,13 +40,13 @@ O Github permite a abertura de __Issues__ (problemas), onde os colaboradores pod
 
 Nas _Issues_ criadas o dono do repositório pode adicionar _labels_ e _milestones_, semelhantemente ao _GitLab_.
 
-##### Arquivo README.md: 
+#### Arquivo README.md: 
 
 Este arquivo, que não é obrigatório, pode estar na raiz do repositório, com o objetivo de documentá-lo, bem como podem existir outros README.md em outros diretórios. 
 
 Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a escrever o arquivo é a plataforma [Dillinger](https://dillinger.io).
 
-##### Estados de um arquivo no Git:   
+#### Estados de um arquivo no Git:   
 
 - Untracked: não rastreado (logo após ser criado ou modificado)
 
@@ -56,7 +56,7 @@ Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a esc
 
 - Modified: arquivo editado após o commit (se as edições forem desfeitas (git restore file), volta ao 'unmodified'; se forem mantidas e usar 'git add file', volta a 'staged')
 
-##### Branches: 
+#### Branches: 
 
 São ramificações de projetos que permitem a aplicação de alterações ao mesmo tempo em que uma ramificação principal é mantida. 
 
@@ -70,7 +70,7 @@ O arquivo também pode retornar à 'untracked caso rode 'git rm --cached file'.
 
 Um arquivo pode estar em __mais de um estado ao mesmo tempo__. 
 
-##### DETACHED HEAD: 
+#### DETACHED HEAD: 
 
 Em situações em que usamos _git checkout <commit_hash>_, para ver o estado do projeto naquele ponto, o Git nos move da branch atual para aquele commit específico. Nessa situação, não estaremos dentro de um branch, mas em um _limbo_ dentro do projeto - o _DETACHED HEAD_. 
 
@@ -87,13 +87,13 @@ No DETACHED HEAD, existem duas possibilidades:
     - ```git add <files> | git commit -m 'xx'```
     Agora, as alterações estão salvas no branch _branch-head_.
 
-##### Pull Request (PR):
+#### Pull Request (PR):
 
 O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
 
 Caso aceita, o responsável pelo projeto original executa um _merge pull request_ via Github. 
 
-##### Segurança no Github: 
+#### Segurança no Github: 
 
 A plataforma permite autenticação via usuário e senha, ou via SSH, esta última sendo mais recomendada. Para usá-la, é preciso adicionar uma chave pública no Github:  
 
