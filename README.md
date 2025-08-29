@@ -80,7 +80,12 @@ No DETACHED HEAD, existem duas possibilidades:
 
 - Não são feitas alterações, ou, se feitas, são descartadas, apenas usando _git switch <branch>_, mesmo se já houve _commit_; 
 
-- Caso se queira salvar alterações, é preciso criar outro branch
+- Caso se queira salvar alterações, é preciso criar outro branch, após já estar no _detached head_:
+
+    - Fazer as alterações;
+    - Criar um novo branch: ```git switch -c <branch-head>```
+    - ```git add <files> | git commit -m 'xx'```
+    Agora, as alterações estão salvas no branch _branch-head_.
 
 ##### Pull Request (PR):
 
