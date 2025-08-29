@@ -400,6 +400,12 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git checkout -f <branch>
   ```
+- Renomear _branch_ local: 
+  ```
+  git branch -m [<branch.old>] <branch.new>
+  ```
+  _O nome antigo só é necessário se estiver em_ __outra__ _branch_.
+  Remotamente não é possível fazer, é preciso apagar e fazer novo _push_.
 
 - Apagar um _branch_ local: 
   ```
