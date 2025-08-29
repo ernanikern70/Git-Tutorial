@@ -405,6 +405,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git branch -d <branch>
   ```
+  _Ao apagar um branch, todos os _commits_ são perdidos!_
 
 - Fazer _push_ de um _branch_ inexistente no servidor: 
   ```
