@@ -401,6 +401,11 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git checkout -f <branch>
   ```
 
+- Apagar um _branch_ local: 
+  ```
+  git branch -d <branch>
+  ```
+
 - Fazer _push_ de um _branch_ inexistente no servidor: 
   ```
   git checkout <branch>
