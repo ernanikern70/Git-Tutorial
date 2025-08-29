@@ -407,6 +407,12 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   _Ao apagar um branch, todos os _commits_ são perdidos!_
 
+- Apagar um _branch_ remoto:
+  ```
+  git push --delete <origin> <branch>
+  ```
+  _O branch local NÃO é apagado_
+
 - Fazer _push_ de um _branch_ inexistente no servidor: 
   ```
   git checkout <branch>
