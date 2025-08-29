@@ -452,6 +452,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git branch -d <branch>
   ```
+  * Usar '-D' para forçar.
   _Ao apagar um branch, todos os _commits_ são perdidos!_
 
 - Apagar um _branch_ remoto:
