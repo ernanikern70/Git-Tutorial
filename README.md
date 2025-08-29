@@ -49,13 +49,13 @@ Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a esc
 
 #### Estados de um arquivo no Git:   
 
-- Untracked: não rastreado (logo após ser criado ou modificado)
+- _Untracked_: não rastreado (logo após ser criado ou modificado)
 
-- Staged: após ser adicionado ao Git (git add file)
+- _Staged_: após ser adicionado ao Git (git add file)
 
-- Unmodified: após o commit, se não foi mais alterado (git commit -m 'xx')
+- _Unmodified_: após o commit, se não foi mais alterado (git commit -m 'xx')
 
-- Modified: arquivo editado após o commit (se as edições forem desfeitas (git restore file), volta ao 'unmodified'; se forem mantidas e usar 'git add file', volta a 'staged')
+- _Modified_: arquivo editado após o commit (se as edições forem desfeitas (git restore file), volta ao 'unmodified'; se forem mantidas e usar 'git add file', volta a 'staged')
 
 #### Branches: 
 
