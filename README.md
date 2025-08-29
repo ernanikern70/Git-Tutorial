@@ -88,6 +88,10 @@ No DETACHED HEAD, existem duas possibilidades:
     Agora, as alterações estão salvas no branch _branch-head_.
     - ```git push [--set-upstream] <origin> <branch-head>```
 
+#### Merge: 
+
+
+
 #### Pull Request (PR):
 
 O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
