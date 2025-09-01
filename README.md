@@ -13,14 +13,11 @@
 " }}}
 -->
 <!--
-" }}}
--->
-<!--
-" Introdução --------------------- {{{
+" Introdução --------------------------- {{{
 -->
 # Guia Rápido: Projeto com Git e GitHub
 
-Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub — ideal para projetos Ansible ou qualquer outro.  
+Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub - ideal para projetos Ansible ou qualquer outro.
 
 ---
 <!--
