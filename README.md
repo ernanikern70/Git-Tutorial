@@ -180,6 +180,7 @@ Exemplo de arquivo de configuração:
  branch.head-teste.remote=origin
  branch.head-teste.merge=refs/heads/head-teste
  ```
+* O app 'p4merge' não é instalado, então é preciso informar o 'path' e 'cmd'; se for um app como _vimdiff_ ou _mold_, basta informar 'merge.tool'
 
 Todos os itens acima são configuráveis com:
 ```
