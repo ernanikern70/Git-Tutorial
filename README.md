@@ -218,6 +218,24 @@ Após fazer essa alteração, a _url_ do repositório deve ser alterada para:
 
 _git@github.com:\<user\>/\<repo.git\>_
 
+#### Tags: 
+
+Funcionam como ponteiros, assim como o _HEAD_ e _main_. _Tags_ podem apontar para _commits_ específicos, que representem algum marco no projeto. 
+
+Também são bastante usadas para marcar números de versões, o que também incluem o uso acima. 
+
+Criação de tags: 
+```
+git tag v0.1
+```
+* Os nomes de tags devem ser únicos. 
+* A tag acima é chamada de '_lightweight_'.
+
+```
+git tag -a -m "Tag criada v0.2" v2
+```
+* A tag acima é chamada de '_annotated_', que marca seu autor, comentário, data
+
 ---
 <!--
 " }}}  
@@ -572,6 +590,16 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git config --global core.editor "vim"
   ```
+
+- Mostra as _tags_ do projeto: 
+```
+git tag [-l]
+```
+
+- Mostra as _tags_ com descrições: 
+```
+git tag -n
+```
 
 ---
 <!--
