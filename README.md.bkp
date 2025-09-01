@@ -337,4 +337,9 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 <!--
 " }}}
 -->
+<<<<<<< HEAD
 linha B
+=======
+linha A
+>>>>>>> teste1
+linha C
