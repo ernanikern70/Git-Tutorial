@@ -212,6 +212,16 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   git config --global core.editor "vim"
   ```
 
+- Mostra as _tags_ do projeto: 
+```
+git tag [-l]
+```
+
+- Mostra as _tags_ com descrições: 
+```
+git tag -n
+```
+
 ---
 <!--
 " }}}
