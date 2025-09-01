@@ -93,9 +93,103 @@ No DETACHED HEAD, existem duas possibilidades:
 
 O __merge__ é um dos principais comandos do _git_, que faz a 'união' entre um _branch_ aprovado em outro branch, que pode ser ou não o _main_. 
 
-O _merge_ sempre 'trás' o conteúdo de um _branch_ para o branch atual, ou seja, é preciso rodar o comando no _branch_ onde se quer atualizar. 
+O _merge_ sempre 'trás' o conteúdo de um _branch_ para o branch atual, ou seja, é preciso rodar o comando no _branch_ onde se quer atualizar.  
+
+A realização do _merge_ não faz o _push_ para o servidor. 
+
+##### Passo a passo para execução de merge: 
+
+Partindo do branch _main_, com _commit_ executado:
+
+- Fazer alterações (criar diretório, criar arquivo, alterar arquivo):
+- Criar novo _branch_, caso necessário: 
+  ```
+  git switch -c teste-rede
+  ```
+- Verificar as alterações 
+- Caso positivo, fazer commit:
+  ```
+  git commit -m "ambiente de teste de rede"
+  ```
+- Voltar ao branch que receberá o _merge_:
+  ```
+  git switch -
+  git merge teste-rede
+  ```
+  * Antes de fazer o merge, o git abrirá o editor de texto para comentar, se não for comentado, _não será feito o merge_.
 
 A realização do _merge_ não faz o _push_ para o servidor.
+
+##### Conflitos no merge: 
+
+Podem ocorrer conflitos entre branches ao fazer um merge, p. ex., se um arquivo possui edições distintas num mesmo trecho. 
+
+Ao tentar fazer o merge, o git mostrará a mensagem de erro e o arquivo mostrará linhas como as abaixo: 
+```
+Badges ------------------ 
+<<<<<<< HEAD
+linha 4: ernani     # status no 'main'
+=======
+linha 4: rodrigo    # status no 'devel-teste'
+>>>>>>> devel-teste
+```
+
+As opção de solução são: 
+
+- Desistir do merge: 
+```
+git merge --abort  # ou
+git reset --hard
+```
+
+- Caso o conflito seja em poucas linhas de um arquivo, pode-se editá-lo diretamente o manter apenas o conteúdo desejado, eliminando as linhas com '<<<<<<<', '>>>>>' e '======='. 
+  * Após, é preciso rodar novamente ```git add .``` e ```git commit -m ''```
+
+  - Caso haja mais conflitos num arquivo, pode-se usar as ferramentas disponíveis para gerenciar conflitos em merge: 
+    - Meld: 
+    ```
+    git config --global merge.tool meld
+    git mergetool
+    ```
+
+    - Vimdiff: app do Linux
+
+    - Fugitive.vim: plugin do Git para Vim
+
+#### Configurações do Git:
+
+Exemplo de arquivo de configuração: 
+
+```
+   $ >  git config -l
+ init.defaultbranch=main
+ credential.helper=store
+ user.name=Ernani Kern
+ user.email=ernani.kern@gmail.com
+ credencial.helper=store
+ mergetool.prompt=false
+ mergetool.p4merge.cmd=/home/ernani/p4v-2025.2.2796382/bin/p4merge $BASE $LOCAL $REMOTE $MERGED
+ mergetool.p4merge.path=/home/ernani/p4v-2025.2.2796382/bin/
+ merge.tool=p4merge
+ core.repositoryformatversion=0
+ core.filemode=true
+ core.bare=false
+ core.logallrefupdates=true
+ remote.origin.url=https://github.com/ernanikern70/Git-Tutorial.git
+ remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+ branch.head-teste.remote=origin
+ branch.head-teste.merge=refs/heads/head-teste
+ ```
+* O app 'p4merge' não é instalado, então é preciso informar o 'path' e 'cmd'; se for um app como _vimdiff_ ou _mold_, basta informar 'merge.tool'
+
+Todos os itens acima são configuráveis com:
+```
+git config <item>.<parâmetro> <valor>
+```
+E pode-se apagar uma configuração com: 
+```
+git config --unset <item>.<parâmetro>
+```
 
 #### Pull Request (PR):
 
@@ -352,6 +446,12 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   * O _restore_ precisa de um _commit_ já executado para poder voltar
 
+- Restaurar ou buscar um arquivo de outro _branch_:
+  ```
+  git restore --source <branch> <file>
+  ```
+  Isso copiará o arquivo \<file\> de outro branch para o local atual.
+
 - Ver histórico:
   ```
   git log [<branch>] [--oneline] [--graph] [--stat] [-n] [--all]
@@ -423,6 +523,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git branch -d <branch>
   ```
+  * Usar '-D' para forçar.
   _Ao apagar um branch, todos os _commits_ são perdidos!_
 
 - Apagar um _branch_ remoto:
