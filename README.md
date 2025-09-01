@@ -592,14 +592,14 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
 
 - Mostra as _tags_ do projeto: 
-```
-git tag [-l]
-```
+  ```
+  git tag [-l]
+  ```
 
 - Mostra as _tags_ com descrições: 
-```
-git tag -n
-```
+  ```
+  git tag -n
+  ```
 
 ---
 <!--
