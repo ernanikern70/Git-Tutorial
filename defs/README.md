@@ -156,6 +156,41 @@ git reset --hard
 
     - Fugitive.vim: plugin do Git para Vim
 
+#### Configurações do Git:
+
+Exemplo de arquivo de configuração: 
+
+```
+   $ >  git config -l
+ init.defaultbranch=main
+ credential.helper=store
+ user.name=Ernani Kern
+ user.email=ernani.kern@gmail.com
+ credencial.helper=store
+ mergetool.prompt=false
+ mergetool.p4merge.cmd=/home/ernani/p4v-2025.2.2796382/bin/p4merge $BASE $LOCAL $REMOTE $MERGED
+ mergetool.p4merge.path=/home/ernani/p4v-2025.2.2796382/bin/
+ merge.tool=p4merge
+ core.repositoryformatversion=0
+ core.filemode=true
+ core.bare=false
+ core.logallrefupdates=true
+ remote.origin.url=https://github.com/ernanikern70/Git-Tutorial.git
+ remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+ branch.head-teste.remote=origin
+ branch.head-teste.merge=refs/heads/head-teste
+ ```
+* O app 'p4merge' não é instalado, então é preciso informar o 'path' e 'cmd'; se for um app como _vimdiff_ ou _mold_, basta informar 'merge.tool'
+
+Todos os itens acima são configuráveis com:
+```
+git config <item>.<parâmetro> <valor>
+```
+E pode-se apagar uma configuração com: 
+```
+git config --unset <item>.<parâmetro>
+```
+
 #### Pull Request (PR):
 
 O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
