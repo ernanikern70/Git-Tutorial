@@ -82,6 +82,12 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   ```
   * O _restore_ precisa de um _commit_ já executado para poder voltar
 
+- Restaurar ou buscar um arquivo de outro _branch_:
+  ```
+  git restore --source <branch> <file>
+  ```
+  Isso copiará o arquivo \<file\> de outro branch para o local atual.
+
 - Ver histórico:
   ```
   git log [<branch>] [--oneline] [--graph] [--stat] [-n] [--all]
@@ -153,6 +159,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   ```
   git branch -d <branch>
   ```
+  * Usar '-D' para forçar.
   _Ao apagar um branch, todos os _commits_ são perdidos!_
 
 - Apagar um _branch_ remoto:
