@@ -226,6 +226,8 @@ Funcionam como ponteiros, assim como o _HEAD_ e _main_. _Tags_ podem apontar par
 
 Também são bastante usadas para marcar números de versões, o que também incluem o uso acima. 
 
+Como também são ponteiros, __as tags podem ser usadas no lugar dos hashes de commits em vários comandos__. 
+
 Criação de tags: 
 ```
 git tag v0.1
@@ -607,6 +609,27 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 - Mostra as _tags_ com descrições: 
   ```
   git tag -n
+  ```
+
+- Enviar tags pro repositório: 
+  ```
+  git push origin <tag>
+  ```
+
+- Enviar todas as tags pro repositório (não recomendado):
+  ```
+  git push origin --tags
+  ```
+
+- Verificar diferenças entre _tags_ (entre _commits_ ou versões):
+  ```
+  git diff \<tag1\> \<tag2\>
+  ```
+
+- Remoção local e remota de tags: 
+  ```
+  git tag -d <tag>
+  git push --delete origin <tag>
   ```
 
 ---
