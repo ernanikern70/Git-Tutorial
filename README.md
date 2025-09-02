@@ -153,6 +153,8 @@ git reset --hard
 
     - Fugitive.vim: plugin do Git para Vim
 
+  - Melhores ferramentas testadas: Meld (instalável) e P4merge (p4v - binário).
+
 #### Configurações do Git:
 
 Exemplo de arquivo de configuração: 
@@ -223,6 +225,8 @@ _git@github.com:\<user\>/\<repo.git\>_
 Funcionam como ponteiros, assim como o _HEAD_ e _main_. _Tags_ podem apontar para _commits_ específicos, que representem algum marco no projeto. 
 
 Também são bastante usadas para marcar números de versões, o que também incluem o uso acima. 
+
+Como também são ponteiros, __as tags podem ser usadas no lugar dos hashes de commits em vários comandos__. 
 
 Criação de tags: 
 ```
@@ -595,7 +599,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git tag v0.1 [<commit>]
   git tag -a -m "Versão 0.2" v0.2 [<commit>]
   ```
-  * Se <commit> não é informado, a tag é criada no commit atual.
+  * Se \<commit\> não é informado, a tag é criada no commit atual.
 
 - Mostra as _tags_ do projeto: 
   ```
@@ -605,6 +609,27 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 - Mostra as _tags_ com descrições: 
   ```
   git tag -n
+  ```
+
+- Enviar tags pro repositório: 
+  ```
+  git push origin <tag>
+  ```
+
+- Enviar todas as tags pro repositório (não recomendado):
+  ```
+  git push origin --tags
+  ```
+
+- Verificar diferenças entre _tags_ (entre _commits_ ou versões):
+  ```
+  git diff \<tag1\> \<tag2\>
+  ```
+
+- Remoção local e remota de tags: 
+  ```
+  git tag -d <tag>
+  git push --delete origin <tag>
   ```
 
 ---
