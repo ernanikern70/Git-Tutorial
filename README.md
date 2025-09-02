@@ -323,7 +323,6 @@ git stash pop [stash@{n}]
   git stash push -u -m "Incluindo arquivos novos"
   ```
 
-
 ---
 <!--
 " }}}  
