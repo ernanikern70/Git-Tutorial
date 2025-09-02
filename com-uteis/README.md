@@ -216,7 +216,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   git tag v0.1 [<commit>]
   git tag -a -m "Versão 0.2" v0.2 [<commit>]
   ```
-  * Se <commit> não é informado, a tag é criada no commit atual.
+  * Se \<commit\> não é informado, a tag é criada no commit atual.
 
 - Mostra as _tags_ do projeto: 
   ```
@@ -226,6 +226,27 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 - Mostra as _tags_ com descrições: 
   ```
   git tag -n
+  ```
+
+- Enviar tags pro repositório: 
+  ```
+  git push origin <tag>
+  ```
+
+- Enviar todas as tags pro repositório (não recomendado):
+  ```
+  git push origin --tags
+  ```
+
+- Verificar diferenças entre _tags_ (entre _commits_ ou versões):
+  ```
+  git diff \<tag1\> \<tag2\>
+  ```
+
+- Remoção local e remota de tags: 
+  ```
+  git tag -d <tag>
+  git push --delete origin <tag>
   ```
 
 ---
