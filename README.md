@@ -661,6 +661,11 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git push --delete origin <tag>
   ```
 
+- Ver detalhes de um stash: 
+  ```
+  git stash show -p stash@{n}
+  ```
+
 - Apagar um stash: 
   ```
   git stash drop [stash@{n}]
