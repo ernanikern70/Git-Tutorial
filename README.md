@@ -153,6 +153,8 @@ git reset --hard
 
     - Fugitive.vim: plugin do Git para Vim
 
+  - Melhores ferramentas testadas: Meld (instalável) e P4merge (p4v - binário).
+
 #### Configurações do Git:
 
 Exemplo de arquivo de configuração: 
@@ -595,7 +597,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git tag v0.1 [<commit>]
   git tag -a -m "Versão 0.2" v0.2 [<commit>]
   ```
-  * Se <commit> não é informado, a tag é criada no commit atual.
+  * Se \<commit\> não é informado, a tag é criada no commit atual.
 
 - Mostra as _tags_ do projeto: 
   ```
