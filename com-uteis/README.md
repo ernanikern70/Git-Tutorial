@@ -240,13 +240,28 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 
 - Verificar diferenças entre _tags_ (entre _commits_ ou versões):
   ```
-  git diff \<tag1\> \<tag2\>
+  git diff <tag1> <tag2>
   ```
 
 - Remoção local e remota de tags: 
   ```
   git tag -d <tag>
   git push --delete origin <tag>
+  ```
+
+- Ver detalhes de um stash: 
+  ```
+  git stash show -p stash@{n}
+  ```
+
+- Apagar um stash: 
+  ```
+  git stash drop [stash@{n}]
+  ```
+
+- Limpar a lista de stashes: 
+  ```
+  git stash clear
   ```
 
 ---
