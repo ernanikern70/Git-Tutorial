@@ -226,6 +226,8 @@ Funcionam como ponteiros, assim como o _HEAD_ e _main_. _Tags_ podem apontar par
 
 Também são bastante usadas para marcar números de versões, o que também incluem o uso acima. 
 
+Como também são ponteiros, __as tags podem ser usadas no lugar dos hashes de commits em vários comandos__. 
+
 Criação de tags: 
 ```
 git tag v0.1
