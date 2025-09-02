@@ -269,6 +269,61 @@ Para aplicar e remover da lista:
 git stash pop [stash@{n}]
 ```
 
+##### Passo a passo do _stash_:
+
+  ```
+  git init stash-teste  # novo repositório por segurança
+  cd stash-teste
+  echo "linha 1" >> arquivo.txt
+  git add arquivo.txt
+  git commit -m "commit inicial"
+  ```
+
+  Acima, foi criado, adicionado e commitado o projeto. 
+
+  A seguir, editar o arquivo: 
+
+  ```
+  echo "linha 2 (nova)" >> arquivo.txt
+  ```
+
+  Agora o arquivo está editado, e não foi feito '_add_', mas ele já é _modified_ (portanto, rastreado) pelo git. 
+
+  ```
+  git stash push -m "Adicionei linha 2"
+  ```
+  * O 'push' permite incluir um comentário, para deixar o _stash_ mais legível, senão, ele sempre receberá o mesmo comentário do último _commit_.  
+
+  A partir desse comando acima, se rodarmos ```cat arquivo.txt```, o retorno será apenas ```linha 1```. 
+
+  Verificar a lista: 
+  ```
+  git stash list
+  ```
+
+  Para ver o conteúdo guardado: 
+  ```
+  git stash show -p stash@{0}
+  ```
+
+  Testar __sem apagar__ o stash: 
+  ```
+  git stash apply stash@{0}
+  ```
+
+  Agora o arquivo voltou a ter a "linha 2".  
+
+  Para __aplicar e apagar__ o stash: 
+  ```
+  git stash pop stash@{0}
+  ```
+
+  __Arquivos não rastreados não vão para o stash__. Para incluí-los, usar: 
+  ```
+  git stash push -u -m "Incluindo arquivos novos"
+  ```
+
+
 ---
 <!--
 " }}}  
