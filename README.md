@@ -240,6 +240,35 @@ git tag -a -m "Tag criada v0.2" v2
 ```
 * A tag acima é chamada de '_annotated_', que marca seu autor, comentário, data
 
+#### Git stash: 
+
+O _stash_ é uma funcionalidade do git que permite salvar em memória alterações que não estão prontas para _commit_, para que seja possível trabalhar em outro branch, por exemplo. 
+
+Estando no branch de trabalho, com as alterações feitas (estas precisam ser rastreadas), para incluir no stash: 
+```
+git stash
+```
+
+Pode-se criar vários stashes no projeto. 
+
+Para checar a lista:
+```
+git stash list
+```
+
+Para aplicar as mudanças do stash: 
+```
+git stash apply [stash@{n}]
+```
+* Isso deixa o git no estado anterior, é preciso continuar com o 'git add|commit'.
+* Se o stash não for informado, será aplicado o primeiro da lista.  
+* O apply __não remove o stash da lista__.
+
+Para aplicar e remover da lista:
+```
+git stash pop [stash@{n}]
+```
+
 ---
 <!--
 " }}}  
