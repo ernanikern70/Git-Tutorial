@@ -13,14 +13,11 @@
 " }}}
 -->
 <!--
-" }}}
--->
-<!--
-" Introdução --------------------- {{{
+" Introdução --------------------------- {{{
 -->
 # Guia Rápido: Projeto com Git e GitHub
 
-Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub — ideal para projetos Ansible ou qualquer outro.  
+Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub - ideal para projetos Ansible ou qualquer outro.
 
 ---
 <!--
@@ -156,6 +153,8 @@ git reset --hard
 
     - Fugitive.vim: plugin do Git para Vim
 
+  - Melhores ferramentas testadas: Meld (instalável) e P4merge (p4v - binário).
+
 #### Configurações do Git:
 
 Exemplo de arquivo de configuração: 
@@ -220,6 +219,24 @@ A plataforma permite autenticação via usuário e senha, ou via SSH, esta últi
 Após fazer essa alteração, a _url_ do repositório deve ser alterada para:  
 
 _git@github.com:\<user\>/\<repo.git\>_
+
+#### Tags: 
+
+Funcionam como ponteiros, assim como o _HEAD_ e _main_. _Tags_ podem apontar para _commits_ específicos, que representem algum marco no projeto. 
+
+Também são bastante usadas para marcar números de versões, o que também incluem o uso acima. 
+
+Criação de tags: 
+```
+git tag v0.1
+```
+* Os nomes de tags devem ser únicos. 
+* A tag acima é chamada de '_lightweight_'.
+
+```
+git tag -a -m "Tag criada v0.2" v2
+```
+* A tag acima é chamada de '_annotated_', que marca seu autor, comentário, data
 
 ---
 <!--
