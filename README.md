@@ -623,7 +623,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 
 - Verificar diferenças entre _tags_ (entre _commits_ ou versões):
   ```
-  git diff \<tag1\> \<tag2\>
+  git diff <tag1> <tag2>
   ```
 
 - Remoção local e remota de tags: 
