@@ -348,7 +348,7 @@ git stash pop [stash@{n}]
 
 - __git checkout <branch/arquivo>__ → Traz o estado de outro commit/branch/arquivo, útil para restaurar ou navegar.
 
-###### Conflitos que podem ocorrer: 
+###### Por que ocorrem conflitos no _revert_: 
 
 ```
          ┌────────────────────────┐
