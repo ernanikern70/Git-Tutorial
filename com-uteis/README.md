@@ -285,7 +285,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   git stash clear
   ```
 
-- Git reset (_volta ao commit anterior e): 
+- Git reset (_volta ao commit anterior e..._): 
   ```
   git reset --hard  # apaga todas as alterações locais, inclusivo _untracked_.
   git reset --mixed # mantém as mudanças na área de trabalho como _modified_.
