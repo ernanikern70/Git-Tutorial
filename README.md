@@ -811,7 +811,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git stash clear
   ```
 
-- Git reset (_volta ao commit anterior e): 
+- Git reset (_volta ao commit anterior e..._): 
   ```
   git reset --hard  # apaga todas as alterações locais, inclusivo _untracked_.
   git reset --mixed # mantém as mudanças na área de trabalho como _modified_.
