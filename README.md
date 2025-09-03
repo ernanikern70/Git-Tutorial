@@ -318,7 +318,7 @@ git stash pop [stash@{n}]
   git stash pop stash@{0}
   ```
 
-  __Arquivos não rastreados não vão para o stash__. Para incluí-los, usar: 
+  _Arquivos não rastreados não vão para o stash_. Para incluí-los, usar: 
   ```
   git stash push -u -m "Incluindo arquivos novos"
   ```
@@ -326,19 +326,19 @@ git stash pop [stash@{n}]
 #### Sobre alterações em _commits_:
 
 ```
-             ┌───────-───────┐
-             │ Alterações no │
-             │   projeto     │
-             └─────-─┬───────┘
-                     │
-        ┌────────────┼─────────────┐
-        │            │             │
-        ▼            ▼             ▼
-   git revert   git reset      git checkout
- (cria novo    (move HEAD,    (troca de
-  commit que    apaga ou       branch ou
-  desfaz algo)   preserva       restaura
-                 commits)       arquivos)
+             ┌────-───-───────┐
+             │  Alterações no │
+             │    projeto     │
+             └─────--─┬───────┘
+                      │
+        ┌────────-────┼────────────┐
+        │             │            │
+        ▼             ▼            ▼
+   git revert     git reset     git checkout
+  (cria novo      (move HEAD,   (troca de
+  commit que      apaga ou      branch ou
+  desfaz algo)    preserva      restaura
+                  commits)      arquivos)
 ```
 - __git revert <hash>__ → Cria um novo commit que desfaz o commit indicado. Histórico fica limpo, sem apagar nada.
 
@@ -347,6 +347,41 @@ git stash pop [stash@{n}]
 - __git reset --soft <hash>__ → Volta no tempo, mas mantém alterações no staging area.
 
 - __git checkout <branch/arquivo>__ → Traz o estado de outro commit/branch/arquivo, útil para restaurar ou navegar.
+
+###### Conflitos que podem ocorrer: 
+
+```
+         ┌────────────────────────┐
+         │ git revert <commit>    │
+         └───────────┬────────────┘
+                     │
+          ┌──────────▼───────────┐
+          │ É o último commit?   │
+          └──────────┬───────────┘
+                     │
+       ┌─────────────┼─────────────┐
+       │                           │
+       ▼                           ▼
+┌──────────────┐             ┌─────────────────────┐
+│ Sim (HEAD)   │             │ Não (commit antigo) │
+└───────┬──────┘             └───────────┬─────────┘
+        │                                │
+        ▼                                ▼
+┌─-─────────────────────┐ ┌───────────────────────────┐
+│ Cria novo commit que  │ │ O código mudou após esse  │
+│ desfaz o último       │ │ commit?                   │
+│ (sem conflito)        │ └───────────┬───────────────┘
+└───────────────────────┘             │
+                                      │
+                   ┌──────────────────┼─────────────────┐
+                   │                                    │
+                   ▼                                    ▼
+      ┌──────────────────────┐             ┌─────────────────────────┐
+      │ Não mudou: Git cria  │             │ Mudou: pode surgir      │
+      │ commit de revert sem │             │ conflito. Usuário deve  │
+      │ conflito             │             │ editar, salvar e commit │
+      └──────────────────────┘             └─────────────────────────┘
+```
 
 ---
 <!--
