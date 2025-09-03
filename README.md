@@ -323,9 +323,34 @@ git stash pop [stash@{n}]
   git stash push -u -m "Incluindo arquivos novos"
   ```
 
+#### Sobre alterações em _commits_:
+
+```
+             ┌───────-───────┐
+             │ Alterações no │
+             │   projeto     │
+             └─────-─┬───────┘
+                     │
+        ┌────────────┼─────────────┐
+        │            │             │
+        ▼            ▼             ▼
+   git revert   git reset      git checkout
+ (cria novo    (move HEAD,    (troca de
+  commit que    apaga ou       branch ou
+  desfaz algo)   preserva       restaura
+                 commits)       arquivos)
+```
+- __git revert <hash>__ → Cria um novo commit que desfaz o commit indicado. Histórico fica limpo, sem apagar nada.
+
+- __git reset --hard <hash>__ → Move o ponteiro do branch para trás, apagando commits posteriores.
+
+- __git reset --soft <hash>__ → Volta no tempo, mas mantém alterações no staging area.
+
+- __git checkout <branch/arquivo>__ → Traz o estado de outro commit/branch/arquivo, útil para restaurar ou navegar.
+
 ---
 <!--
-" }}}  
+"  }}}  
 -->
 <!--
 " Criação de Projeto --------------------- {{{
@@ -675,11 +700,11 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 
 - Reverter um _commit_:
   ```
-  git revert <commit>|HEAD
+  git revert HEAD|<hash_commit>
   ```
   * Solicita alteração no comentário do commit.
-  * Ele não apaga o commit revertido.
-  * Se for rodado novamente, ele 'desreverte' o commit.
+  * Usando o 'HEAD', ele vai voltar 1 commit, o que é mais seguro para não ocorrer conflitos - _porém, ele vai ficar 'revertendo e voltando' ao mesmo commit_.  
+  * Ele não apaga o commit revertido, e cria outro.
 
 - Desfazer um _commit_ (apagar):
   ```
@@ -697,6 +722,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git config --global core.editor "vim"
   ```
+
 - Cria tags:
   ```
   git tag v0.1 [<commit>]
@@ -750,11 +776,11 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git stash clear
   ```
 
-- Git reset: 
+- Git reset (_volta ao commit anterior e): 
   ```
-  git reset --hard  # apaga todas as alterações locais
-  git reset --mixed # desfaz o commit e mantém as mudanças na área de trabalho
-  git reset --soft  # desfaz o commit e deixa mudanças na área de preparação (_staged_)
+  git reset --hard  # apaga todas as alterações locais, inclusivo _untracked_.
+  git reset --mixed # mantém as mudanças na área de trabalho como _modified_.
+  git reset --soft  # mantém as mudanças na área de preparação (_staged_).
   ```
 
 ---
