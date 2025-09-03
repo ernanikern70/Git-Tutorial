@@ -663,10 +663,30 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git config -l
   ```
 
+- Adicionar e fazer _commit_ em um comando: 
+  ```
+  git -a -m 'comentário'
+  ```
+
 - Alterar commit atual com autor correto (se esqueceu de configurar nome/email antes):
   ```bash
   git commit --amend --reset-author
   ```
+
+- Reverter um _commit_:
+  ```
+  git revert <commit>|HEAD
+  ```
+  * Solicita alteração no comentário do commit.
+  * Ele não apaga o commit revertido.
+  * Se for rodado novamente, ele 'desreverte' o commit.
+
+- Desfazer um _commit_ (apagar):
+  ```
+  git reset --hard HEAD~1
+  ```
+  * __Apaga__ 1 commit, volta o HEAD para o anterior. 
+  * O número após 'HEAD~' indica quantos commits voltar.
 
 - Ignorar tudo desde o último _commit_ (só não atinge _untracked_):  
   ```
@@ -728,6 +748,13 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 - Limpar a lista de stashes: 
   ```
   git stash clear
+  ```
+
+- Git reset: 
+  ```
+  git reset --hard  # apaga todas as alterações locais
+  git reset --mixed # desfaz o commit e mantém as mudanças na área de trabalho
+  git reset --soft  # desfaz o commit e deixa mudanças na área de preparação (_staged_)
   ```
 
 ---
