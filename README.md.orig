@@ -385,7 +385,7 @@ git stash pop [stash@{n}]
 
 ---
 <!--
-" }}}  
+"  }}}  
 -->
 <!--
 " Criação de Projeto --------------------- {{{
@@ -811,7 +811,11 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git stash clear
   ```
 
+<<<<<<< HEAD
 - Git reset (_volta ao commit anterior e..._): 
+=======
+- Git reset (_volta ao commit anterior e): 
+>>>>>>> defs
   ```
   git reset --hard  # apaga todas as alterações locais, inclusivo _untracked_.
   git reset --mixed # mantém as mudanças na área de trabalho como _modified_.
