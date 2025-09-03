@@ -318,14 +318,74 @@ git stash pop [stash@{n}]
   git stash pop stash@{0}
   ```
 
-  __Arquivos não rastreados não vão para o stash__. Para incluí-los, usar: 
+  _Arquivos não rastreados não vão para o stash_. Para incluí-los, usar: 
   ```
   git stash push -u -m "Incluindo arquivos novos"
   ```
 
+#### Sobre alterações em _commits_:
+
+```
+             ┌────-───-───────┐
+             │  Alterações no │
+             │    projeto     │
+             └─────--─┬───────┘
+                      │
+        ┌────────-────┼────────────┐
+        │             │            │
+        ▼             ▼            ▼
+   git revert     git reset     git checkout
+  (cria novo      (move HEAD,   (troca de
+  commit que      apaga ou      branch ou
+  desfaz algo)    preserva      restaura
+                  commits)      arquivos)
+```
+- __git revert <hash>__ → Cria um novo commit que desfaz o commit indicado. Histórico fica limpo, sem apagar nada.
+
+- __git reset --hard <hash>__ → Move o ponteiro do branch para trás, apagando commits posteriores.
+
+- __git reset --soft <hash>__ → Volta no tempo, mas mantém alterações no staging area.
+
+- __git checkout <branch/arquivo>__ → Traz o estado de outro commit/branch/arquivo, útil para restaurar ou navegar.
+
+###### Por que ocorrem conflitos no _revert_: 
+
+```
+         ┌────────────────────────┐
+         │ git revert <commit>    │
+         └───────────┬────────────┘
+                     │
+          ┌──────────▼───────────┐
+          │ É o último commit?   │
+          └──────────┬───────────┘
+                     │
+       ┌─────────────┼─────────────┐
+       │                           │
+       ▼                           ▼
+┌──────────────┐             ┌─────────────────────┐
+│ Sim (HEAD)   │             │ Não (commit antigo) │
+└───────┬──────┘             └───────────┬─────────┘
+        │                                │
+        ▼                                ▼
+┌─-─────────────────────┐ ┌───────────────────────────┐
+│ Cria novo commit que  │ │ O código mudou após esse  │
+│ desfaz o último       │ │ commit?                   │
+│ (sem conflito)        │ └───────────┬───────────────┘
+└───────────────────────┘             │
+                                      │
+                   ┌──────────────────┼─────────────────┐
+                   │                                    │
+                   ▼                                    ▼
+      ┌──────────────────────┐             ┌─────────────────────────┐
+      │ Não mudou: Git cria  │             │ Mudou: pode surgir      │
+      │ commit de revert sem │             │ conflito. Usuário deve  │
+      │ conflito             │             │ editar, salvar e commit │
+      └──────────────────────┘             └─────────────────────────┘
+```
+
 ---
 <!--
-" }}}  
+"  }}}  
 -->
 <!--
 " Criação de Projeto --------------------- {{{
@@ -663,10 +723,30 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   git config -l
   ```
 
+- Adicionar e fazer _commit_ em um comando: 
+  ```
+  git -a -m 'comentário'
+  ```
+
 - Alterar commit atual com autor correto (se esqueceu de configurar nome/email antes):
   ```bash
   git commit --amend --reset-author
   ```
+
+- Reverter um _commit_:
+  ```
+  git revert HEAD|<hash_commit>
+  ```
+  * Solicita alteração no comentário do commit.
+  * Usando o 'HEAD', ele vai voltar 1 commit, o que é mais seguro para não ocorrer conflitos - _porém, ele vai ficar 'revertendo e voltando' ao mesmo commit_.  
+  * Ele não apaga o commit revertido, e cria outro.
+
+- Desfazer um _commit_ (apagar):
+  ```
+  git reset --hard HEAD~1
+  ```
+  * __Apaga__ 1 commit, volta o HEAD para o anterior. 
+  * O número após 'HEAD~' indica quantos commits voltar.
 
 - Ignorar tudo desde o último _commit_ (só não atinge _untracked_):  
   ```
@@ -677,6 +757,7 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
   ```
   git config --global core.editor "vim"
   ```
+
 - Cria tags:
   ```
   git tag v0.1 [<commit>]
@@ -728,6 +809,13 @@ pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
 - Limpar a lista de stashes: 
   ```
   git stash clear
+  ```
+
+- Git reset (_volta ao commit anterior e): 
+  ```
+  git reset --hard  # apaga todas as alterações locais, inclusivo _untracked_.
+  git reset --mixed # mantém as mudanças na área de trabalho como _modified_.
+  git reset --soft  # mantém as mudanças na área de preparação (_staged_).
   ```
 
 ---
