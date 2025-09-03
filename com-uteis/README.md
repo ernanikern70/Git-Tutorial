@@ -197,10 +197,30 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   git config -l
   ```
 
+- Adicionar e fazer _commit_ em um comando: 
+  ```
+  git -a -m 'comentário'
+  ```
+
 - Alterar commit atual com autor correto (se esqueceu de configurar nome/email antes):
   ```bash
   git commit --amend --reset-author
   ```
+
+- Reverter um _commit_:
+  ```
+  git revert HEAD|<hash_commit>
+  ```
+  * Solicita alteração no comentário do commit.
+  * Usando o 'HEAD', ele vai voltar 1 commit, o que é mais seguro para não ocorrer conflitos - _porém, ele vai ficar 'revertendo e voltando' ao mesmo commit_.  
+  * Ele não apaga o commit revertido, e cria outro.
+
+- Desfazer um _commit_ (apagar):
+  ```
+  git reset --hard HEAD~1
+  ```
+  * __Apaga__ 1 commit, volta o HEAD para o anterior. 
+  * O número após 'HEAD~' indica quantos commits voltar.
 
 - Ignorar tudo desde o último _commit_ (só não atinge _untracked_):  
   ```
@@ -211,6 +231,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   ```
   git config --global core.editor "vim"
   ```
+
 - Cria tags:
   ```
   git tag v0.1 [<commit>]
@@ -262,6 +283,13 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 - Limpar a lista de stashes: 
   ```
   git stash clear
+  ```
+
+- Git reset (_volta ao commit anterior e): 
+  ```
+  git reset --hard  # apaga todas as alterações locais, inclusivo _untracked_.
+  git reset --mixed # mantém as mudanças na área de trabalho como _modified_.
+  git reset --soft  # mantém as mudanças na área de preparação (_staged_).
   ```
 
 ---
