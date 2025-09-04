@@ -327,21 +327,6 @@ git stash pop [stash@{n}]
 
 ![Alterações em projetos](images/reset-revert-checkout.png)
 
-```
-             ┌────-───-───────┐
-             │  Alterações no │
-             │    projeto     │
-             └─────--─┬───────┘
-                      │
-        ┌────────-────┼────────────┐
-        │             │            │
-        ▼             ▼            ▼
-   git revert     git reset     git checkout
-  (cria novo      (move HEAD,   (troca de
-  commit que      apaga ou      branch ou
-  desfaz algo)    preserva      restaura
-                  commits)      arquivos)
-```
 - __git revert <hash>__ → Cria um novo commit que desfaz o commit indicado. Histórico fica limpo, sem apagar nada.
 
 - __git reset --hard <hash>__ → Move o ponteiro do branch para trás, apagando commits posteriores.
@@ -352,38 +337,7 @@ git stash pop [stash@{n}]
 
 ###### Por que ocorrem conflitos no _revert_: 
 
-```
-         ┌────────────────────────┐
-         │ git revert <commit>    │
-         └───────────┬────────────┘
-                     │
-          ┌──────────▼───────────┐
-          │ É o último commit?   │
-          └──────────┬───────────┘
-                     │
-       ┌─────────────┼─────────────┐
-       │                           │
-       ▼                           ▼
-┌──────────────┐             ┌─────────────────────┐
-│ Sim (HEAD)   │             │ Não (commit antigo) │
-└───────┬──────┘             └───────────┬─────────┘
-        │                                │
-        ▼                                ▼
-┌─-─────────────────────┐ ┌───────────────────────────┐
-│ Cria novo commit que  │ │ O código mudou após esse  │
-│ desfaz o último       │ │ commit?                   │
-│ (sem conflito)        │ └───────────┬───────────────┘
-└───────────────────────┘             │
-                                      │
-                   ┌──────────────────┼─────────────────┐
-                   │                                    │
-                   ▼                                    ▼
-      ┌──────────────────────┐             ┌─────────────────────────┐
-      │ Não mudou: Git cria  │             │ Mudou: pode surgir      │
-      │ commit de revert sem │             │ conflito. Usuário deve  │
-      │ conflito             │             │ editar, salvar e commit │
-      └──────────────────────┘             └─────────────────────────┘
-```
+![Conflitos no revert](images/conflict-revert.png)
 
 #### Git pull
 
