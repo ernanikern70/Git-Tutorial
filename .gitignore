@@ -2,3 +2,4 @@
 Git+Resumo+Prático.pdf
 *.sw*
 .*.sw*
+.gitignore.orig
