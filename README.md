@@ -325,6 +325,8 @@ git stash pop [stash@{n}]
 
 #### Sobre alterações em _commits_:
 
+![Alterações em projetos](images/reset-revert-checkout.png)
+
 ```
              ┌────-───-───────┐
              │  Alterações no │
