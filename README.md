@@ -469,29 +469,6 @@ git pull <origin> <main>
 " }}}
 -->
 <!--
-" Rascunho --------------------- {{{
--->
-<!--
-
-## 9. Configurar autenticação (com token pessoal)
-
-```bash
-git config --global credential.helper store
-```
-
-Depois, salve seu token no arquivo `~/.git-credentials` assim:
-
-```
-https://SEU_USUARIO:TOKEN@github.com
-```
-
----
-
--->
-<!--
-" }}}
--->
-<!--
 " Comandos úteis --------------------- {{{
 -->
 ## Comandos úteis
@@ -771,7 +748,6 @@ https://SEU_USUARIO:TOKEN@github.com
   git push origin main --force-with-lease
   ```
 
-  
 ---
 <!--
 " }}}
