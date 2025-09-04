@@ -385,8 +385,10 @@ git stash pop [stash@{n}]
 
 #### Git pull
 
-Este é o comando para trazer um repositório remoto para a máquina local.  
-Por padrão, ele faz um _git fetch + git merge_, ou seja, se o repositório remoto tiver alterações ausentes no repositório local, e o repositório local tiver outras alterações ausentes no remoto, desde que não sejam nas mesmas linhas do mesmo arquivo, as alterações locais _não serão perdidas_, como ocorreria com o _git push_, por exemplo. 
+Este é o comando para trazer um repositório remoto para a máquina local.   
+Por padrão, ele faz um '_git fetch + git merge_', ou seja, se o repositório remoto tiver alterações ausentes no repositório local, e o repositório local tiver outras alterações ausentes no remoto, desde que não sejam nas mesmas linhas do mesmo arquivo, as alterações locais _não serão perdidas_, como ocorreria com o _git push_, por exemplo. 
+
+Caso as diferenças sejam nas mesmas linhas de um mesmo arquivo, então haverá conflito e deverá ser tratado manualmente.  
 
 ---
 <!--
@@ -398,7 +400,7 @@ Por padrão, ele faz um _git fetch + git merge_, ou seja, se o repositório remo
 
 ## Criação de um projeto
 
-Configurar de forma global (em todos os projetos) o autor e email dos projetos:  
+Configurar de forma global (em todos os projetos da máquina local) o autor e email dos projetos:  
 ```
 git config --global user.name "Fulano de Tal"
 git config --global user.email "fulano.tal@email.com"
@@ -415,11 +417,27 @@ Inicializar o diretório como um repositório git (cria o subdiretório .git):
 git init
 ```
 
+A criação do repositório remoto pode ser feita de duas formas:  
+
+    - No [Github.com](https://github.com): 
+        - 'Novo repositório'
+        - Copiar a URL para configurar no repo local
+
+    - Usando a linha de comando, com [GitHub CLI](https://cli.github.com)  
+        - _gh auth login_
+            - Logar em _GitHub.com_
+            - Logar com web browser
+            - Copiar o código informado e colar no browser
+        - _gh auth status_ para testar
+
+        - _gh repo create_
+            - Seguir instruções
+
 Adicionar o endereço remoto do projeto no servidor (Github ou outro):
 ```
 git remote add origin <url>
 ```
-O termo _origin_ serve como alias para a url, e pode ser alterado.  
+* O termo _origin_ serve como alias para a url, e pode ser alterado.  
 
 Alterar a url do projeto: 
 ```
@@ -446,7 +464,6 @@ git pull <origin> <main>
 ```
 
 ---
----
 <!--
 " }}}
 -->
@@ -454,45 +471,6 @@ git pull <origin> <main>
 " Rascunho --------------------- {{{
 -->
 <!--
-## 4. Criar ou copiar arquivos do projeto
-
-```bash
-nano README.md
-```
-
----
-
-## 5. Adicionar os arquivos ao controle de versão
-
-```bash
-git add .
-```
-
----
-
-## 6. Fazer o primeiro commit
-
-```bash
-git commit -m "Primeiro commit"
-```
-
----
-
-## 7. Criar um repositório no GitHub (via navegador)
-
-- Acesse: https://github.com/new
-- Defina o nome e a visibilidade (público/privado)
-- **Não adicione README, .gitignore ou licença** — eles já estão no projeto local
-
----
-
-## 8. Conectar o repositório local ao GitHub
-
-```bash
-git remote add origin https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
-```
-
----
 
 ## 9. Configurar autenticação (com token pessoal)
 
@@ -508,48 +486,6 @@ https://SEU_USUARIO:TOKEN@github.com
 
 ---
 
-## 10. Renomear a branch principal, se necessário
-
-Se for usar `main`:
-```bash
-git branch -M main
-```
-
----
-
-## 11. Fazer o push inicial para o GitHub
-
-```bash
-git push -u origin main
-```
-
-Ou, se estiver usando `master`:
-```bash
-git push -u origin master
-```
-
----
-
-## 12. Sincronizar alterações futuras
-
-```bash
-git pull origin main  # o pull busca alterações do github ou outro gerenciador usado
-```
-
----
-
-## 13. Configurações do pull
-
-```bash
-CONFIGURAÇÃO		COMPORTAMENTO DO 'git pull'		HISTÓRICO	COMMIT DE MERGE?
-------------		----------------------------		---------	----------------
-pull.rebase false	Faz merge com os commits do remoto	Ramificado	Sim
-pull.rebase true	Faz rebase dos commits locais 
-					sobre o remoto		Linear		Não
-pull.ff only		Só puxa se puder fazer fast-forward	Linear		Não (ou falha)
-```
-
----
 -->
 <!--
 " }}}
