@@ -385,7 +385,8 @@ git stash pop [stash@{n}]
 
 #### Git pull
 
-Este é o comando para trazer um repositório remoto para a máquina local.   
+Este é o comando para trazer um repositório remoto para a máquina local.  
+
 Por padrão, ele faz um '_git fetch + git merge_', ou seja, se o repositório remoto tiver alterações ausentes no repositório local, e o repositório local tiver outras alterações ausentes no remoto, desde que não sejam nas mesmas linhas do mesmo arquivo, as alterações locais _não serão perdidas_, como ocorreria com o _git push_, por exemplo. 
 
 Caso as diferenças sejam nas mesmas linhas de um mesmo arquivo, então haverá conflito e deverá ser tratado manualmente.  
