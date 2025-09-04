@@ -391,6 +391,9 @@ Por padrão, ele faz um '_git fetch + git merge_', ou seja, se o repositório re
 
 Caso as diferenças sejam nas mesmas linhas de um mesmo arquivo, então haverá conflito e deverá ser tratado manualmente.  
 
+#### Rebase
+
+
 ---
 <!--
 "  }}}  
