@@ -393,6 +393,7 @@ Caso as diferenças sejam nas mesmas linhas de um mesmo arquivo, então haverá 
 
 #### Rebase
 
+![Branch não linear](~/images/rebase\ 1.odg)
 
 ---
 <!--
