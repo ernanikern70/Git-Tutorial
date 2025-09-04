@@ -4,3 +4,4 @@ Git+Resumo+Prático.pdf
 .*.sw*
 .gitignore.orig
 .~*
+*.odg
