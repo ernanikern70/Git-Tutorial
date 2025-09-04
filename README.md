@@ -420,19 +420,19 @@ git init
 
 A criação do repositório remoto pode ser feita de duas formas:  
 
-    - No [Github.com](https://github.com): 
-        - 'Novo repositório'
-        - Copiar a URL para configurar no repo local
+- No [Github.com](https://github.com): 
+    - 'Novo repositório'
+    - Copiar a URL para configurar no repo local
 
-    - Usando a linha de comando, com [GitHub CLI](https://cli.github.com)  
-        - _gh auth login_
-            - Logar em _GitHub.com_
-            - Logar com web browser
-            - Copiar o código informado e colar no browser
-        - _gh auth status_ para testar
+- Usando a linha de comando, com [GitHub CLI](https://cli.github.com)  
+    - _gh auth login_
+        - Logar em _GitHub.com_
+        - Logar com web browser
+        - Copiar o código informado e colar no browser
+    - _gh auth status_ para testar
 
-        - _gh repo create_
-            - Seguir instruções
+    - _gh repo create_
+        - Seguir instruções
 
 Adicionar o endereço remoto do projeto no servidor (Github ou outro):
 ```
