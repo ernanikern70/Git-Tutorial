@@ -292,6 +292,17 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   git reset --soft  # mantém as mudanças na área de preparação (_staged_).
   ```
 
+- Forçar o push de um repositório local para o remoto, quando ocorre conflito: 
+  ```
+  git push origin main --force
+  ```
+  * Atenção, só usar quando tiver certeza que o repositório local é o correto, o remoto será sobrescrito. 
+
+- Forçar o push, mas apenas se não sobrescrever alterações no destino: 
+  ```
+  git push origin main --force-with-lease
+  ```
+
 ---
 <!--
 " }}}
