@@ -372,7 +372,15 @@ O _rebase_ permite reaplicar commits de um branch sobre outra base (normalmente 
 
 Dessa forma, é como se o branch 'teste' tivesse sido criado após o último commit do main (com sua __base__ nesse commit). 
 
+Exemplo usando _rebase_:
 
+Nas imagens abaixo temos os logs do branch _main_, com 2 commits após o _origin_, a branch _dev_, também com 2 _commits_ após o _origin_. 
+
+![rebase-main](images/rebase-main.png)![rebase-dev](images/rebase-dev.png)
+
+Para aplicar o rebase, vamos ao branch _dev_, e rodamos ```git rebase main```, para __trazer__ os commits de _main_ para o branch _dev_, e o resultado é esse:  
+
+![rebase-dev-main](images/rebase-dev-main.png)
 
 ---
 <!--
