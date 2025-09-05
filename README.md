@@ -359,7 +359,7 @@ Os históricos não lineares facilitam os conflitos de merge, e tornam os logs c
 
 O _rebase_ permite reaplicar commits de um branch sobre outra base (normalmente a principal), criando um histórico linear, sem merges intermediários:
 
-![Branch linear](images/rebase-2.img)
+![Branch linear](images/rebase-2.png)
 
 
 ---
