@@ -149,6 +149,8 @@ git reset --hard
     git mergetool
     ```
 
+    - [P4merge](https://www.perforce.com/products/helix-core-apps/merge-diff-tool-p4merge): binário, não instalável, modo gráfico
+
     - Vimdiff: app do Linux
 
     - Fugitive.vim: plugin do Git para Vim
@@ -355,11 +357,20 @@ No momento em que esse colaborador, após ter feito alguns commits no branch de 
 
 ![Branch não linear](images/rebase-1.png)
 
+Visualizando branches não lineares pelos logs: 
+
+Na esquerda, o branch _main_ teve 2 _commits_ a partir de _origin_, onde foi criado o branch _teste_; na direita, o branch _teste_ também teve 2 commits após o commit _zerado_ do _main_. Após executar '_git merge teste_' a partir do _main_, foi gerado um _commit_ extra, o _Merge branch 'teste'_.
+
+![Branch main](images/branch-main.png) ![Branch teste](images/branch-teste.png) ![branch-merge](images/branch-merge.png)
+
 Os históricos não lineares facilitam os conflitos de merge, e tornam os logs complexos, dificultando o rastreio de mudanças. 
 
 O _rebase_ permite reaplicar commits de um branch sobre outra base (normalmente a principal), criando um histórico linear, sem merges intermediários:
 
 ![Branch linear](images/rebase-2.png)
+
+Dessa forma, é como se o branch 'teste' tivesse sido criado após o último commit do main (com sua __base__ nesse commit). 
+
 
 
 ---
