@@ -349,6 +349,10 @@ Caso as diferenças sejam nas mesmas linhas de um mesmo arquivo, então haverá 
 
 #### Rebase
 
+Em projetos onde há fluxos de colaboração com vários branches, é comum ocorrer situações onde um colaborador cria um branch de testes, por exemplo, enquanto o branch principal segue recebendo commits. 
+
+No momento em que esse colaborador, após ter feito alguns commits no branch de testes, fizer um merge no main, este último está num ponto mais adiantado em relação ao da origem do branch teste, e esse merge criará o que chamamos '_merge de commit_', deixando o histórico '_não linear_', conforme figura abaixo: 
+
 ![Branch não linear](images/rebase-1.png)
 
 ---
