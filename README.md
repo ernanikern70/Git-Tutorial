@@ -355,13 +355,13 @@ Em projetos onde há fluxos de colaboração com vários branches, é comum ocor
 
 No momento em que esse colaborador, após ter feito alguns commits no branch de testes, fizer um merge no main, este último estará num ponto mais adiantado em relação ao da origem do branch teste, e esse merge criará o que chamamos '_merge de commit_', deixando o histórico '_não linear_', conforme figura abaixo: 
 
-![Branch não linear](images/rebase-1.png)
+![Branch não linear](images/branch-nao-linear.png)
 
 Visualizando branches não lineares pelos logs: 
 
 Na primeira imagem, o branch _main_ teve 2 _commits_ a partir de _origin_, onde foi criado o branch _teste_; no meio, o branch _teste_ também teve 2 commits após o commit _zerado_ do _main_. Após executar '_git merge teste_' a partir do _main_, foi gerado um _commit_ extra, o _Merge branch 'teste'_, conforme última imagem.
 
-![Branch main](images/branch-main.png)![Branch teste](images/branch-teste.png)  
+![Branch main](images/branch-main.png)![Branch teste](images/branch-teste.png) 
 ![branch-merge](images/branch-merge.png)
 
 Os históricos não lineares facilitam os conflitos de merge, e tornam os logs complexos, dificultando o rastreio de mudanças. 
