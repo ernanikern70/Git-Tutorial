@@ -382,6 +382,12 @@ Para aplicar o rebase, vamos ao branch _dev_, e rodamos ```git rebase main```, p
 
 ![rebase-dev-main](images/rebase-dev-main.png)
 
+Após executado o _rebase_, voltar ao branch _main_ e executar o _merge_:
+```
+git switch main
+git merge dev
+```
+
 ---
 <!--
 "  }}}  
