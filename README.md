@@ -390,6 +390,19 @@ git switch main
 git merge dev
 ```
 
+##### Conflitos no _rebase_
+
+Em caso de conflito (alterações distintas nos mesmos trechos de arquivos):
+
+```
+git rebase --abort  # cancela o rebase
+```
+
+Resolver o conflito manualmente.
+```
+git rebase --continue  # retoma a execução do rebase
+```
+
 ---
 <!--
 "  }}}  
