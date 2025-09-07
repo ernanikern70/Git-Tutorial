@@ -403,6 +403,12 @@ Resolver o conflito manualmente.
 git rebase --continue  # retoma a execução do rebase
 ```
 
+##### git pull --rebase
+
+Quando um colaborador de projeto tiver um ou mais _commits_ à frente do projeto remoto, e o remoto também tiver _commits_ que não estiverem no projeto local, o comando ```git pull``` irá criar o _merge commit_, como nos casos anteriores. 
+
+Para evitar isso, o usuário pode usar ```git pull --rebase```, que trás os _commits_ remotos e mantém o histórico linear do Git.
+
 ---
 <!--
 "  }}}  
