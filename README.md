@@ -735,6 +735,16 @@ git pull <origin> <main>
   git fetch origin
   ```
 
+- Buscar um _branch_ específico do repositório remoto (idealmente que não exista localmente):
+  ```
+  git fetch origin <branch>
+  ```
+  * O _branch_ será listado apenas com ```git branch -a```:
+  remotes/origin/<branch>
+
+  Se fizer depois: ```git switch <branch>```
+  O _branch_ será criado localmente. 
+
 - Ver configurações:
   ```bash
   git config -l
