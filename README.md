@@ -424,7 +424,7 @@ Quando um colaborador de projeto tiver um ou mais _commits_ à frente do projeto
 
 Para evitar isso, o usuário pode usar ```git pull --rebase```, que trás os _commits_ remotos e mantém o histórico linear do Git.
 
-<sub>[⬆ Voltar ao topo](#sumário)</sub>
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 "  }}}  
@@ -498,7 +498,7 @@ Caso o projeto sofra alterações no servidor (esteja 'à frente' do projeto loc
 git pull <origin> <main>
 ```
 
-[⬆ Voltar ao topo](#sumário)
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
@@ -783,7 +783,7 @@ git pull <origin> <main>
   git push origin main --force-with-lease
   ```
 
-[⬆ Voltar ao topo](#sumário)
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
