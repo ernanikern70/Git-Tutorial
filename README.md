@@ -13,12 +13,27 @@
 " }}}
 -->
 <!--
+" Sumário ----------------------- {{{
+-->
+## Sumário
+
+- [Introdução](#guia-rápido:-projeto-com-git-e-github)
+- [Definições](#definições)
+- [Criação de Projeto](#criação-de-projeto)
+- [Comandos Úteis](#comandos-úteis)
+
+---
+<!---
+" }}}
+-->
+<!--
 " Introdução --------------------------- {{{
 -->
 # Guia Rápido: Projeto com Git e GitHub
 
 Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub - ideal para projetos Ansible ou qualquer outro.
 
+[⬆ Voltar ao topo](#sumário)
 ---
 <!--
 " }}}
@@ -409,6 +424,7 @@ Quando um colaborador de projeto tiver um ou mais _commits_ à frente do projeto
 
 Para evitar isso, o usuário pode usar ```git pull --rebase```, que trás os _commits_ remotos e mantém o histórico linear do Git.
 
+[⬆ Voltar ao topo](#sumário)
 ---
 <!--
 "  }}}  
@@ -417,7 +433,7 @@ Para evitar isso, o usuário pode usar ```git pull --rebase```, que trás os _co
 " Criação de Projeto --------------------- {{{
 -->
 
-## Criação de um projeto
+## Criação de projeto
 
 Configurar de forma global (em todos os projetos da máquina local) o autor e email dos projetos:  
 ```
@@ -482,6 +498,7 @@ Caso o projeto sofra alterações no servidor (esteja 'à frente' do projeto loc
 git pull <origin> <main>
 ```
 
+[⬆ Voltar ao topo](#sumário)
 ---
 <!--
 " }}}
@@ -766,6 +783,7 @@ git pull <origin> <main>
   git push origin main --force-with-lease
   ```
 
+[⬆ Voltar ao topo](#sumário)
 ---
 <!--
 " }}}
