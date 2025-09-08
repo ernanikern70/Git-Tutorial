@@ -705,7 +705,7 @@ git pull <origin> <main>
 
 - Fazer _push_ de um _branch_ inexistente no servidor: 
   ```
-  git checkout <branch>
+  git switch <branch>
   git push --set-upstream <origin> <branch>
   ```
 
@@ -732,7 +732,7 @@ git pull <origin> <main>
   git fetch origin <branch>
   ```
   * O _branch_ será listado apenas com ```git branch -a```:
-  remotes/origin/<branch>
+  remotes/origin/\<branch\>
 
   Se fizer depois: ```git switch <branch>```
   O _branch_ será criado localmente. 
