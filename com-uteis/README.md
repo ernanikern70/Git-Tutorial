@@ -13,12 +13,25 @@
 " }}}
 -->
 <!--
+" Sumário ----------------------- {{{
+-->
+## Sumário
+
+- [Introdução](#introdução)
+- [Comandos Úteis](#comandos-úteis)
+
+---
+<!---
+" }}}
+-->
+<!--
 " Introdução --------------------------- {{{
 -->
-# Guia Rápido: Projeto com Git e GitHub
+# Introdução 
 
 Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub - ideal para projetos Ansible ou qualquer outro.
 
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
@@ -162,6 +175,11 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   * Usar '-D' para forçar.
   _Ao apagar um branch, todos os _commits_ são perdidos!_
 
+- Enviar um _branch_ local ao repositório remoto: 
+  ```
+  git push origin <branch>
+  ```
+
 - Apagar um _branch_ remoto:
   ```
   git push --delete <origin> <branch>
@@ -199,7 +217,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 
 - Adicionar e fazer _commit_ em um comando: 
   ```
-  git -a -m 'comentário'
+  git -am 'comentário'
   ```
 
 - Alterar commit atual com autor correto (se esqueceu de configurar nome/email antes):
@@ -287,7 +305,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 
 - Git reset (_volta ao commit anterior e..._): 
   ```
-  git reset --hard  # apaga todas as alterações locais, inclusivo _untracked_.
+  git reset --hard  # apaga todas as alterações locais, menos _untracked_.
   git reset --mixed # mantém as mudanças na área de trabalho como _modified_.
   git reset --soft  # mantém as mudanças na área de preparação (_staged_).
   ```
@@ -303,6 +321,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   git push origin main --force-with-lease
   ```
 
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
