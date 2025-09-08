@@ -475,6 +475,8 @@ No arquivo final (parte inferior), os conflitos são mostrados com os símbolos 
 
 Caso este método traga outros trechos não desejados, pode-se fazer a edição manual do arquivo final. 
 
+![P4merge](../images/p4merge1.png)
+
 ###### Alternativa para comparação simples de arquivos: 
 
 Quando se deseja apenas comparar dois arquivos, ou alterar um com base no mesmo, localizado em outro diretório, é mais simples usar o __meld <file1> <file2>__. 
