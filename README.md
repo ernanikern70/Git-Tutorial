@@ -673,10 +673,6 @@ git pull <origin> <main>
 
 - Criar um branch e já usá-lo: 
   ```
-  git checkout -b <branch>
-  ```
-  ou
-  ```
   git switch -c <branch>
   ```
   O branch é sempre criado no estado do commit atual do projeto.
