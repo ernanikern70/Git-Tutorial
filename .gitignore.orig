@@ -1,0 +1,8 @@
+*.swp
+Git+Resumo+Prático.pdf
+*.sw*
+<<<<<<< HEAD
+.*.sw*
+=======
+>>>>>>> create-proj
+.gitignore.orig
