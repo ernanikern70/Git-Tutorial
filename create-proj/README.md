@@ -13,12 +13,25 @@
 " }}}
 -->
 <!--
+" Sumário ----------------------- {{{
+-->
+## Sumário
+
+- [Introdução](#introdução)
+- [Criação de Projeto](#criação-de-projeto)
+
+---
+<!---
+" }}}
+-->
+<!--
 " Introdução --------------------------- {{{
 -->
-# Guia Rápido: Projeto com Git e GitHub
+# Introdução 
 
 Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub - ideal para projetos Ansible ou qualquer outro.
 
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
@@ -27,7 +40,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 " Criação de Projeto --------------------- {{{
 -->
 
-## Criação de um projeto
+## Criação de projeto
 
 Configurar de forma global (em todos os projetos da máquina local) o autor e email dos projetos:  
 ```
@@ -92,6 +105,7 @@ Caso o projeto sofra alterações no servidor (esteja 'à frente' do projeto loc
 git pull <origin> <main>
 ```
 
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
