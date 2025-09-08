@@ -56,7 +56,7 @@ Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a esc
 
 O arquivo também pode retornar à 'untracked caso rode 'git rm --cached file'.
 
-Um arquivo pode estar em __mais de um estado ao mesmo tempo__. 
+Um arquivo pertence à apenas um estado por vez, mas diferentes arquivos podem estar em estados distintos simultaneamente. 
 
 #### Branches: 
 
@@ -88,9 +88,9 @@ No DETACHED HEAD, existem duas possibilidades:
 
 #### Merge: 
 
-O __merge__ é um dos principais comandos do _git_, que faz a 'união' entre um _branch_ aprovado em outro branch, que pode ser ou não o _main_. 
+O __merge__ é um dos principais comandos do _git_, que faz a 'união' entre um _branch_ em outro branch, que pode ser ou não o _main_. 
 
-O _merge_ sempre 'trás' o conteúdo de um _branch_ para o branch atual, ou seja, é preciso rodar o comando no _branch_ onde se quer atualizar.  
+O _merge_ sempre deve ser executado no _branch_ de destino; o conteúdo de um _branch_ é mesclado no branch atual.  
 
 A realização do _merge_ não faz o _push_ para o servidor. 
 
@@ -335,7 +335,9 @@ git stash pop [stash@{n}]
 
 - __git reset --soft <hash>__ → Volta no tempo, mas mantém alterações no staging area.
 
-- __git checkout <branch/arquivo>__ → Traz o estado de outro commit/branch/arquivo, útil para restaurar ou navegar.
+- __git switch <branch>__ → Trás o estado de outro branch, útil para restaurar ou navegar.
+
+- __git checkout <commit/arquivo>__ → Retorna ao estado de um _commit_ ou _arquivo_.
 
 ###### Por que ocorrem conflitos no _revert_: 
 
@@ -660,7 +662,7 @@ git pull <origin> <main>
 
 - Adicionar e fazer _commit_ em um comando: 
   ```
-  git -a -m 'comentário'
+  git -am 'comentário'
   ```
 
 - Alterar commit atual com autor correto (se esqueceu de configurar nome/email antes):
@@ -748,7 +750,7 @@ git pull <origin> <main>
 
 - Git reset (_volta ao commit anterior e..._): 
   ```
-  git reset --hard  # apaga todas as alterações locais, inclusivo _untracked_.
+  git reset --hard  # apaga todas as alterações locais, menos _untracked_.
   git reset --mixed # mantém as mudanças na área de trabalho como _modified_.
   git reset --soft  # mantém as mudanças na área de preparação (_staged_).
   ```
