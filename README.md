@@ -33,7 +33,7 @@
 
 Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub - ideal para projetos Ansible ou qualquer outro.
 
-<sub>[⬆ Voltar ao topo](#sumário)</sub>
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
