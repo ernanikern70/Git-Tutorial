@@ -664,10 +664,6 @@ git pull <origin> <main>
   ```
 - Entrar em um branch: 
   ```
-  git checkout <branch>
-  ```
-  ou
-  ```
   git switch <branch>
   ```
 
