@@ -17,7 +17,7 @@
 -->
 ## Sumário
 
-- [Introdução](#guia-rápido:-projeto-com-git-e-github)
+- [Introdução](#introdução)
 - [Definições](#definições)
 - [Criação de Projeto](#criação-de-projeto)
 - [Comandos Úteis](#comandos-úteis)
@@ -29,11 +29,11 @@
 <!--
 " Introdução --------------------------- {{{
 -->
-# Guia Rápido: Projeto com Git e GitHub
+# Introdução 
 
 Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub - ideal para projetos Ansible ou qualquer outro.
 
-[⬆ Voltar ao topo](#sumário)
+<sub>[⬆ Voltar ao topo](#sumário)</sub>
 ---
 <!--
 " }}}
@@ -424,7 +424,7 @@ Quando um colaborador de projeto tiver um ou mais _commits_ à frente do projeto
 
 Para evitar isso, o usuário pode usar ```git pull --rebase```, que trás os _commits_ remotos e mantém o histórico linear do Git.
 
-[⬆ Voltar ao topo](#sumário)
+<sub>[⬆ Voltar ao topo](#sumário)</sub>
 ---
 <!--
 "  }}}  
