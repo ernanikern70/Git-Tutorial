@@ -327,7 +327,7 @@ git stash pop [stash@{n}]
 
 #### Sobre alterações em _commits_:
 
-![Alterações em projetos](images/reset-revert-checkout.png)
+![Alterações em projetos](../images/reset-revert-checkout.png)
 
 - __git revert <hash>__ → Cria um novo commit que desfaz o commit indicado. Histórico fica limpo, sem apagar nada.
 
@@ -339,7 +339,7 @@ git stash pop [stash@{n}]
 
 ###### Por que ocorrem conflitos no _revert_: 
 
-![Conflitos no revert](images/conflict-revert.png)
+![Conflitos no revert](../images/conflict-revert.png)
 
 #### Git pull
 
@@ -355,20 +355,20 @@ Em projetos onde há fluxos de colaboração com vários branches, é comum ocor
 
 No momento em que esse colaborador, após ter feito alguns commits no branch de testes, fizer um merge no main, este último estará num ponto mais adiantado em relação ao da origem do branch teste, e esse merge criará o que chamamos '_merge de commit_', deixando o histórico '_não linear_', conforme figura abaixo: 
 
-![Branch não linear](images/branch-nao-linear.png)
+![Branch não linear](../images/branch-nao-linear.png)
 
 Visualizando branches não lineares pelos logs: 
 
 Na primeira imagem, o branch _main_ teve 2 _commits_ a partir de _origin_, onde foi criado o branch _teste_; no meio, o branch _teste_ também teve 2 commits após o commit _zerado_ do _main_. Após executar '_git merge teste_' a partir do _main_, foi gerado um _commit_ extra, o _Merge branch 'teste'_, conforme última imagem.
 
-![Branch main](images/branch-main.png)![Branch teste](images/branch-teste.png) 
-![branch-merge](images/branch-merge.png)
+![Branch main](../images/branch-main.png)![Branch teste](../images/branch-teste.png) 
+![branch-merge](../images/branch-merge.png)
 
 Os históricos não lineares facilitam os conflitos de merge, e tornam os logs complexos, dificultando o rastreio de mudanças. 
 
 O _rebase_ permite reaplicar commits de um branch sobre outra base (normalmente a principal), criando um histórico linear, sem merges intermediários:
 
-![Branch linear](images/rebase-2.png)
+![Branch linear](../images/rebase-2.png)
 
 Dessa forma, é como se o branch 'teste' tivesse sido criado após o último commit do main (com sua __base__ nesse commit). 
 
@@ -376,11 +376,11 @@ Exemplo usando _rebase_:
 
 Nas imagens abaixo temos os logs do branch _main_, com 2 commits após o _origin_, a branch _dev_, também com 2 _commits_ após o _origin_. 
 
-![rebase-main](images/rebase-main.png)![rebase-dev](images/rebase-dev.png)
+![rebase-main](../images/rebase-main.png)![rebase-dev](../images/rebase-dev.png)
 
 Para aplicar o rebase, vamos ao branch _dev_, e rodamos ```git rebase main```, para __trazer__ os commits de _main_ para o branch _dev_, e o resultado é esse:  
 
-![rebase-dev-main](images/rebase-dev-main.png)
+![rebase-dev-main](../images/rebase-dev-main.png)
 
 @@@ botar imagem do histórico linear
 
