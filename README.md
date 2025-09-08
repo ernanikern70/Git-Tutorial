@@ -642,6 +642,11 @@ git pull <origin> <main>
   * Usar '-D' para forçar.
   _Ao apagar um branch, todos os _commits_ são perdidos!_
 
+- Enviar um _branch_ local ao repositório remoto: 
+  ```
+  git push origin <branch>
+  ```
+
 - Apagar um _branch_ remoto:
   ```
   git push --delete <origin> <branch>
