@@ -13,12 +13,27 @@
 " }}}
 -->
 <!--
+" Sumário ----------------------- {{{
+-->
+## Sumário
+
+- [Introdução](#introdução)
+- [Definições](#definições)
+- [Criação de Projeto](#criação-de-projeto)
+- [Comandos Úteis](#comandos-úteis)
+
+---
+<!---
+" }}}
+-->
+<!--
 " Introdução --------------------------- {{{
 -->
-# Guia Rápido: Projeto com Git e GitHub
+# Introdução 
 
 Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub - ideal para projetos Ansible ou qualquer outro.
 
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
@@ -56,7 +71,7 @@ Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a esc
 
 O arquivo também pode retornar à 'untracked caso rode 'git rm --cached file'.
 
-Um arquivo pode estar em __mais de um estado ao mesmo tempo__. 
+Um arquivo pertence à apenas um estado por vez, mas diferentes arquivos podem estar em estados distintos simultaneamente. 
 
 #### Branches: 
 
@@ -88,9 +103,9 @@ No DETACHED HEAD, existem duas possibilidades:
 
 #### Merge: 
 
-O __merge__ é um dos principais comandos do _git_, que faz a 'união' entre um _branch_ aprovado em outro branch, que pode ser ou não o _main_. 
+O __merge__ é um dos principais comandos do _git_, que faz a 'união' entre um _branch_ em outro branch, que pode ser ou não o _main_. 
 
-O _merge_ sempre 'trás' o conteúdo de um _branch_ para o branch atual, ou seja, é preciso rodar o comando no _branch_ onde se quer atualizar.  
+O _merge_ sempre deve ser executado no _branch_ de destino; o conteúdo de um _branch_ é mesclado no branch atual.  
 
 A realização do _merge_ não faz o _push_ para o servidor. 
 
@@ -148,6 +163,8 @@ git reset --hard
     git config --global merge.tool meld
     git mergetool
     ```
+
+    - [P4merge](https://www.perforce.com/products/helix-core-apps/merge-diff-tool-p4merge): binário, não instalável, modo gráfico
 
     - Vimdiff: app do Linux
 
@@ -325,63 +342,21 @@ git stash pop [stash@{n}]
 
 #### Sobre alterações em _commits_:
 
-```
-             ┌────-───-───────┐
-             │  Alterações no │
-             │    projeto     │
-             └─────--─┬───────┘
-                      │
-        ┌────────-────┼────────────┐
-        │             │            │
-        ▼             ▼            ▼
-   git revert     git reset     git checkout
-  (cria novo      (move HEAD,   (troca de
-  commit que      apaga ou      branch ou
-  desfaz algo)    preserva      restaura
-                  commits)      arquivos)
-```
+![Alterações em projetos](images/reset-revert-checkout.png)
+
 - __git revert <hash>__ → Cria um novo commit que desfaz o commit indicado. Histórico fica limpo, sem apagar nada.
 
 - __git reset --hard <hash>__ → Move o ponteiro do branch para trás, apagando commits posteriores.
 
 - __git reset --soft <hash>__ → Volta no tempo, mas mantém alterações no staging area.
 
-- __git checkout <branch/arquivo>__ → Traz o estado de outro commit/branch/arquivo, útil para restaurar ou navegar.
+- __git switch <branch>__ → Trás o estado de outro branch, útil para restaurar ou navegar.
+
+- __git checkout <commit/arquivo>__ → Retorna ao estado de um _commit_ ou _arquivo_.
 
 ###### Por que ocorrem conflitos no _revert_: 
 
-```
-         ┌────────────────────────┐
-         │ git revert <commit>    │
-         └───────────┬────────────┘
-                     │
-          ┌──────────▼───────────┐
-          │ É o último commit?   │
-          └──────────┬───────────┘
-                     │
-       ┌─────────────┼─────────────┐
-       │                           │
-       ▼                           ▼
-┌──────────────┐             ┌─────────────────────┐
-│ Sim (HEAD)   │             │ Não (commit antigo) │
-└───────┬──────┘             └───────────┬─────────┘
-        │                                │
-        ▼                                ▼
-┌─-─────────────────────┐ ┌───────────────────────────┐
-│ Cria novo commit que  │ │ O código mudou após esse  │
-│ desfaz o último       │ │ commit?                   │
-│ (sem conflito)        │ └───────────┬───────────────┘
-└───────────────────────┘             │
-                                      │
-                   ┌──────────────────┼─────────────────┐
-                   │                                    │
-                   ▼                                    ▼
-      ┌──────────────────────┐             ┌─────────────────────────┐
-      │ Não mudou: Git cria  │             │ Mudou: pode surgir      │
-      │ commit de revert sem │             │ conflito. Usuário deve  │
-      │ conflito             │             │ editar, salvar e commit │
-      └──────────────────────┘             └─────────────────────────┘
-```
+![Conflitos no revert](images/conflict-revert.png)
 
 #### Git pull
 
@@ -391,6 +366,65 @@ Por padrão, ele faz um '_git fetch + git merge_', ou seja, se o repositório re
 
 Caso as diferenças sejam nas mesmas linhas de um mesmo arquivo, então haverá conflito e deverá ser tratado manualmente.  
 
+#### Rebase
+
+Em projetos onde há fluxos de colaboração com vários branches, é comum ocorrer situações onde um colaborador cria um branch de testes, a partir de um _commit_ do _main_, por exemplo, e após isso o _main_ segue recebendo commits. 
+
+No momento em que esse colaborador, após ter feito alguns commits no branch de testes, fizer um merge no main, este último estará num ponto mais adiantado em relação ao da origem do branch teste, e esse merge criará o que chamamos '_merge de commit_', deixando o histórico '_não linear_', conforme figura abaixo: 
+
+![Branch não linear](images/branch-nao-linear.png)
+
+Visualizando branches não lineares pelos logs: 
+
+Na primeira imagem, o branch _main_ teve 2 _commits_ a partir de _origin_, onde foi criado o branch _teste_; no meio, o branch _teste_ também teve 2 commits após o commit _zerado_ do _main_. Após executar '_git merge teste_' a partir do _main_, foi gerado um _commit_ extra, o _Merge branch 'teste'_, conforme última imagem.
+
+![Branch main](images/branch-main.png)![Branch teste](images/branch-teste.png) 
+![branch-merge](images/branch-merge.png)
+
+Os históricos não lineares facilitam os conflitos de merge, e tornam os logs complexos, dificultando o rastreio de mudanças. 
+
+O _rebase_ permite reaplicar commits de um branch sobre outra base (normalmente a principal), criando um histórico linear, sem merges intermediários:
+
+![Branch linear](images/rebase-2.png)
+
+Dessa forma, é como se o branch 'teste' tivesse sido criado após o último commit do main (com sua __base__ nesse commit). 
+
+Exemplo usando _rebase_:
+
+Nas imagens abaixo temos os logs do branch _main_, com 2 commits após o _origin_, a branch _dev_, também com 2 _commits_ após o _origin_. 
+
+![rebase-main](images/rebase-main.png)![rebase-dev](images/rebase-dev.png)
+
+Para aplicar o rebase, vamos ao branch _dev_, e rodamos ```git rebase main```, para __trazer__ os commits de _main_ para o branch _dev_, e o resultado é esse:  
+
+![rebase-dev-main](images/rebase-dev-main.png)
+
+Após executado o _rebase_, voltar ao branch _main_ e executar o _merge_:
+```
+git switch main
+git merge dev
+```
+
+##### Conflitos no _rebase_
+
+Em caso de conflito (alterações distintas nos mesmos trechos de arquivos):
+
+```
+git rebase --abort  # cancela o rebase
+```
+
+Resolver o conflito manualmente.
+```
+git rebase --continue  # retoma a execução do rebase
+```
+
+##### git pull --rebase
+
+Quando um colaborador de projeto tiver um ou mais _commits_ à frente do projeto remoto, e o remoto também tiver _commits_ que não estiverem no projeto local, o comando ```git pull``` irá criar o _merge commit_, como nos casos anteriores. 
+
+Para evitar isso, o usuário pode usar ```git pull --rebase```, que trás os _commits_ remotos e mantém o histórico linear do Git.
+
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 "  }}}  
@@ -399,7 +433,7 @@ Caso as diferenças sejam nas mesmas linhas de um mesmo arquivo, então haverá 
 " Criação de Projeto --------------------- {{{
 -->
 
-## Criação de um projeto
+## Criação de projeto
 
 Configurar de forma global (em todos os projetos da máquina local) o autor e email dos projetos:  
 ```
@@ -464,6 +498,7 @@ Caso o projeto sofra alterações no servidor (esteja 'à frente' do projeto loc
 git pull <origin> <main>
 ```
 
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
@@ -607,6 +642,11 @@ git pull <origin> <main>
   * Usar '-D' para forçar.
   _Ao apagar um branch, todos os _commits_ são perdidos!_
 
+- Enviar um _branch_ local ao repositório remoto: 
+  ```
+  git push origin <branch>
+  ```
+
 - Apagar um _branch_ remoto:
   ```
   git push --delete <origin> <branch>
@@ -644,7 +684,7 @@ git pull <origin> <main>
 
 - Adicionar e fazer _commit_ em um comando: 
   ```
-  git -a -m 'comentário'
+  git -am 'comentário'
   ```
 
 - Alterar commit atual com autor correto (se esqueceu de configurar nome/email antes):
@@ -732,7 +772,7 @@ git pull <origin> <main>
 
 - Git reset (_volta ao commit anterior e..._): 
   ```
-  git reset --hard  # apaga todas as alterações locais, inclusivo _untracked_.
+  git reset --hard  # apaga todas as alterações locais, menos _untracked_.
   git reset --mixed # mantém as mudanças na área de trabalho como _modified_.
   git reset --soft  # mantém as mudanças na área de preparação (_staged_).
   ```
@@ -748,6 +788,7 @@ git pull <origin> <main>
   git push origin main --force-with-lease
   ```
 
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
