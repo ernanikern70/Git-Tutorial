@@ -483,6 +483,8 @@ Quando se deseja apenas comparar dois arquivos, ou alterar um com base no mesmo,
 
 O _meld_ permite edição direta dos arquivos, e as diferenças são mostradas em linhas destacadas dos dois lados, com setas que indicam para qual arquivo enviar as diferenças. 
 
+![Meld](../images/meld1.png)
+
 <sub>[⬆](#sumário)</sub> 
 ---
 <!--
