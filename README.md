@@ -580,7 +580,81 @@ O comando _bisect_ nos ajuda a encontrar em qual _commit_ ocorreu alguma mudanç
     - se for menor, ele descarta a segunda metade e divide a primeira metade em dois, e descobre novamente se o item buscado é menor ou maior;
     - se é maior, descarta a primeira metade e divide novamente a metade maior em dois, e assim por diante, até encontrar o valor. 
 
+Para utilizar o _bisect_, visualizar o log de _commits_, e rodar: 
+```
+git bisect start
+```
+O retorno será: ```status: waiting for both good and bad commits```
+Neste ponto, devemos informar um _commit_ onde o projeto estava 'ok', e outro _commit_ onde foi notado erro: 
 
+```
+git bisect good <commit>
+git bisect bad <commit>
+```
+
+Com essa informação, o _bisect_ irá executar seu algoritmo, informando e já executando _git switch_ no _commit_ sugerido, que deve ser testado manualmente. 
+
+Se o _commit_ informado estiver 'ok' (anterior ao erro buscado), responder ```git bisect good``` e o _bisect_ continuará a busca. Quando for testado um _commit_ com o problema, responder ```git bisect bad```, e o algoritmo prosseguirá com a busca.  
+
+###### Simulação do _bisect_: 
+
+Temos os logs abaixo, e sabemos que algum _commit_ com erro foi executado entre 'Merge branch titulos' e o 'HEAD': 
+```
+$ ▶ git log --oneline
+26f709b (HEAD -> main) o céu muda
+048c868 brisa traz cheiro
+aae140a sons entrelaçam
+14fa9f4 tempo suspenso
+5ca7179 bagunça generalizada
+dca6e21 passos ecoam
+0341f82 o silencio abraça
+090b7b8 cores se misturam
+40549be rio corre
+98c68e5 folhas dançam
+219a076 sol desperta
+fdd72d4 Merge branch 'titulos'
+491e493 versão 1.3
+088d033 (origin/main) lorem-ipsum.txt inicial
+```
+
+Iniciamos então com:
+```
+$ ▶ git bisect start 
+status: waiting for both good and bad commits
+
+$ ▶ git bisect good fdd72d4
+status: waiting for bad commit, 1 good commit known
+
+$ ▶ git bisect bad 26f709b
+Bisecting: 5 revisions left to test after this (roughly 3 steps)
+[0341f82bc28f11cb5ea6d9357434a9ab7fff00c5] o silencio abraça ## S/ ERRO
+
+$ ▶ git bisect good   
+Bisecting: 2 revisions left to test after this (roughly 2 steps)
+[14fa9f4db7e91d61247eb9d3be717bebd5c79611] tempo suspenso  ## C/ ERRO
+
+$ ▶ git bisect bad 
+Bisecting: 0 revisions left to test after this (roughly 1 step)
+[5ca7179dde5448ae5ddfeb9aadd4bb723a9115b9] bagunça generalizada ## << ERRO
+
+$ ▶ git bisect bad 
+Bisecting: 0 revisions left to test after this (roughly 0 steps)
+[dca6e21c7bd7924dd29a5ba15034d5941e84a3b0] passos ecoam ## S/ ERRO
+
+$ ▶ git bisect good 
+5ca7179dde5448ae5ddfeb9aadd4bb723a9115b9 is the first bad commit
+commit 5ca7179dde5448ae5ddfeb9aadd4bb723a9115b9
+Author: Ernani Kern <ernani.kern@gmail.com>
+Date:   Tue Sep 9 12:02:06 2025 -0300
+
+    bagunça generalizada
+
+     lorem-ipsum.txt | 1 +
+      1 file changed, 1 insertion(+)
+```
+No momento em que o _commit_ problemático for encontrado, o \<hash\> será mostrado em amarelo, conforme último prompt acima:
+
+Para resolver, rodar ```git bisect reset``` para finalizar o _bisect_, e rodar um ```git rebase --interactive``` e marcar com _drop_ o _commit_ indesejado. 
 
 <sub>[⬆](#sumário)</sub>
 ---
@@ -1011,6 +1085,15 @@ git pull <origin> <main>
   git rebase --interactive
   ```
 
+- Inicar um _git bisect_:
+  ```
+  git bisect start
+  ```
+
+- Encerrar o _bisect_:
+  ```
+  git bisect reset
+  ```
   
 <sub>[⬆](#sumário)</sub>
 ---
