@@ -572,6 +572,16 @@ $ ▶ git log --oneline -3
 088d033 (origin/main) lorem-ipsum.txt inicial
 ```
 
+##### bisect (busca binária)
+
+O comando _bisect_ nos ajuda a encontrar em qual _commit_ ocorreu alguma mudança no projeto. Ele realiza uma busca binária, considerando elementos ordenados: 
+
+    - caso existam 100 elementos, o algoritmo vai no meio deles e descobre se o item buscado é menor ou maior;
+    - se for menor, ele descarta a segunda metade e divide a primeira metade em dois, e descobre novamente se o item buscado é menor ou maior;
+    - se é maior, descarta a primeira metade e divide novamente a metade maior em dois, e assim por diante, até encontrar o valor. 
+
+
+
 <sub>[⬆](#sumário)</sub>
 ---
 <!--
