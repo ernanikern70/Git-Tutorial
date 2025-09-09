@@ -137,6 +137,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   ```
   git branch <nome>
   ```
+
 - Entrar em um branch: 
   ```
   git checkout <branch>
@@ -188,7 +189,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 
 - Fazer _push_ de um _branch_ inexistente no servidor: 
   ```
-  git checkout <branch>
+  git switch <branch>
   git push --set-upstream <origin> <branch>
   ```
 
@@ -210,12 +211,22 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   git fetch origin
   ```
 
+- Buscar um _branch_ específico do repositório remoto (idealmente que não exista localmente):
+  ```
+  git fetch origin <branch>
+  ```
+  * O _branch_ será listado apenas com ```git branch -a```:
+  remotes/origin/\<branch\>
+
+  Se fizer depois: ```git switch <branch>```
+  O _branch_ será criado localmente. 
+
 - Ver configurações:
   ```bash
   git config -l
   ```
 
-- Adicionar e fazer _commit_ em um comando: 
+- Adicionar e fazer _commit_ em um comando (para arquivo já rastreado): 
   ```
   git -am 'comentário'
   ```

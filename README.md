@@ -19,6 +19,7 @@
 
 - [Introdução](#introdução)
 - [Definições](#definições)
+- [Merge Tools](#merge-tools)
 - [Criação de Projeto](#criação-de-projeto)
 - [Comandos Úteis](#comandos-úteis)
 
@@ -39,7 +40,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 " }}}
 -->
 <!--
-" Definições --------------------- {{{
+" Definições --------------------- {{{ 
 -->
 ## Definições
 
@@ -417,6 +418,121 @@ Resolver o conflito manualmente.
 ```
 git rebase --continue  # retoma a execução do rebase
 ```
+##### git rebase --interactive
+
+Existem situações em que um projeto é editado várias vezes em algum período de tempo, e cada alteração recebe um _commit_, para não ser perdida. Isso gera um log com vários _commits_ referentes a um mesmo arquivo, geralmente, que após estarem na sua versão definitiva, ficará relacionada com todos os diversos _commits_. Isso dificulta uma pesquisa, por exemplo, se queremos descobrir em qual _commit_ uma determinada mudança foi feita:  
+
+```
+ $ ▶ git log --oneline -10
+ c3c745a (HEAD -> main) versão 1.3
+ ff35442 versão 1.2
+ 32b5b8d versão 1.1
+ cfe555b versão 1
+ 088d033 (origin/main) lorem-ipsum.txt inicial
+```
+
+Esses _commits_ relacionados podem ser 'reorganizados' ou 'agrupados', usando o comando ```git rebase --interactive [HEAD~n]```, que abrirá o editor de textos do Git com as seguintes opções: 
+```
+pick cfe555b versão 1                                                           
+pick 32b5b8d versão 1.1
+pick ff35442 versão 1.2
+pick c3c745a versão 1.3
+           
+# Rebase 088d033..c3c745a onto 088d033 (4 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit
+# f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+#                    commit's log message, unless -C is used, in which case
+#                    keep only this commit's message; -c is same as -C but
+#                    opens the editor
+# x, exec <command> = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop <commit> = remove commit
+# l, label <label> = label current HEAD with a name
+# t, reset <label> = reset HEAD to a label
+# m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+#         create a merge commit using the original merge commit's
+#         message (or the oneline, if no original merge commit was
+#         specified); use -c <commit> to reword the commit message
+# u, update-ref <ref> = track a placeholder for the <ref> to be updated
+#                       to this position in the new commits. The <ref> is
+#                       updated at the end of the rebase
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+
+```
+
+As opções informadas no arquivo são auto explicativas, mas no nosso caso, a principal opção seria o _squash_, que faz um _meld_ (merge) dos _commits_:
+```
+pick cfe555b versão 1
+squash 32b5b8d versão 1.1
+squash ff35442 versão 1.2
+squash c3c745a versão 1.3
+       
+# Rebase 088d033..c3c745a onto 088d033 (4 commands)
+#
+# Commands: (...)
+```
+
+Ao salvar o arquivo, o editor solicitará a edição das mensagens de _commit_:
+```
+# This is a combination of 4 commits.                                                                                 
+# This is the 1st commit message:
+   
+versão 1
+         
+# This is the commit message #2:
+              
+versão 1.1 
+                    
+# This is the commit message #3:
+                        
+versão 1.2 
+                              
+# This is the commit message #4:
+                                   
+versão 1.3 
+                                        
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Tue Sep 9 09:02:30 2025 -0300
+#
+# interactive rebase in progress; onto 088d033
+# Last commands done (4 commands done):
+#    squash ff35442 versão 1.2
+#    squash c3c745a versão 1.3
+# No commands remaining.
+# You are currently rebasing branch 'main' on '088d033'.
+#
+# Changes to be committed:
+#   modified:   lorem-ipsum.txt
+#
+```
+
+Após salvar o arquivo, o _rebase_ finalizará com sucesso: 
+```
+▶ $ ▶ git rebase --interactive
+[detached HEAD 491e493] versão 1.3
+ Date: Tue Sep 9 09:02:30 2025 -0300
+  1 file changed, 4 insertions(+), 2 deletions(-)
+  Successfully rebased and updated refs/heads/main.
+```
+
+E o log do Git será esse:  
+```
+▶ $ ▶ git log --oneline -10
+491e493 (HEAD -> main) versão 1.3
+088d033 (origin/main) lorem-ipsum.txt inicial
+```
 
 ##### git pull --rebase
 
@@ -429,6 +545,63 @@ Para evitar isso, o usuário pode usar ```git pull --rebase```, que trás os _co
 <!--
 "  }}}  
 -->
+<!--
+" Merge Tools --------------------- {{{
+-->
+## Merge Tools
+
+Neste tópico vou focar no uso do [P4merge](https://www.perforce.com/products/helix-core-apps/merge-diff-tool), por apresentar uma complexidade maior na resolução de conflitos de _merge_. 
+
+##### Configuração do P4merge no _git config_:
+
+```
+ mergetool.p4merge.cmd=/home/ernani/p4v-2025.2.2796382/bin/p4merge $BASE $LOCAL $REMOTE $MERGED
+ mergetool.p4merge.path=/home/ernani/p4v-2025.2.2796382/bin/
+ merge.tool=p4merge
+ mergetool.prompt=false
+```
+Como o _p4merge_ é um binário, é preciso especificar seu caminho no _path_ e _cmd_, caso contrário, apenas o parâmetro '_merge.tool=meld_' seria necessário, por exemplo.  
+
+No parâmetro '_mergetool.p4merge.cmd_', os subparâmetros '$BASE $LOCAL $REMOTE $MERGED' se referem aos arquivos que serão abertos automaticamente, e devem aparecer nesta ordem. 
+
+##### Layout do P4merge: 
+
+###### Parte Superior: 
+
+- Local (triângulo azul): versão atual local, ou _branch_ atual;
+- Base (quadrado amarelo): versão comum mais antiga entre dois _branches_;
+- Remote (círculo verde): versão do _branch_ que tentou fazer _merge_.
+
+* Nenhum dos arquivos acima é diretamente editável.  
+
+###### Parte Inferior: 
+
+O arquivo editável, que será o resultado final do _merge_. 
+
+###### Significados dos Símbolos: 
+
+- Símbolos coloridos simples: indicam que aquele trecho veio diretamente daquela versão.  
+- Símbolos acinzentados: indicam que a mudança __já foi aplicada__ no resultado final, ou que o trecho _não é mais conflitante_. 
+- Símbolos com sinal de '+': indicam __alterações conflitantes__, ou seja, precisam de escolha manual. 
+
+###### Resolvendo os conflitos: 
+
+No arquivo final (parte inferior), os conflitos são mostrados com os símbolos respectivos na margem direita. Ao clicar nos símbolos, são aplicadas ou excluídas as mudanças dos arquivos respectivos. 
+
+Caso este método traga outros trechos não desejados, pode-se fazer a edição manual do arquivo final. 
+
+![P4merge](images/p4merge1.png)
+
+###### Alternativa para comparação simples de arquivos: 
+
+Quando se deseja apenas comparar dois arquivos, ou alterar um com base no mesmo, localizado em outro diretório, é mais simples usar o __meld <file1> <file2>__. 
+
+O _meld_ permite edição direta dos arquivos, e as diferenças são mostradas em linhas destacadas dos dois lados, com setas que indicam para qual arquivo enviar as diferenças. 
+
+![Meld](images/meld1.png)
+
+<sub>[⬆](#sumário)</sub> 
+---
 <!--
 " Criação de Projeto --------------------- {{{
 -->
@@ -604,20 +777,13 @@ git pull <origin> <main>
   ```
   git branch <nome>
   ```
+
 - Entrar em um branch: 
-  ```
-  git checkout <branch>
-  ```
-  ou
   ```
   git switch <branch>
   ```
 
 - Criar um branch e já usá-lo: 
-  ```
-  git checkout -b <branch>
-  ```
-  ou
   ```
   git switch -c <branch>
   ```
@@ -655,7 +821,7 @@ git pull <origin> <main>
 
 - Fazer _push_ de um _branch_ inexistente no servidor: 
   ```
-  git checkout <branch>
+  git switch <branch>
   git push --set-upstream <origin> <branch>
   ```
 
@@ -677,12 +843,22 @@ git pull <origin> <main>
   git fetch origin
   ```
 
+- Buscar um _branch_ específico do repositório remoto (idealmente que não exista localmente):
+  ```
+  git fetch origin <branch>
+  ```
+  * O _branch_ será listado apenas com ```git branch -a```:
+  remotes/origin/\<branch\>
+
+  Se fizer depois: ```git switch <branch>```
+  O _branch_ será criado localmente. 
+
 - Ver configurações:
   ```bash
   git config -l
   ```
 
-- Adicionar e fazer _commit_ em um comando: 
+- Adicionar e fazer _commit_ em um comando (para arquivo já rastreado): 
   ```
   git -am 'comentário'
   ```
