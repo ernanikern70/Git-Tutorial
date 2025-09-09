@@ -1100,6 +1100,15 @@ git pull <origin> <main>
   ```
   git bisect reset
   ```
+
+- Criar _aliases_ para comandos do Git: 
+  ```
+  git config [--global] alias.s status
+  git config [--global] alias.l log
+  git config [--global] alias.line 'log --oneline'
+  ```
+  Os comandos ```git s```, ```git l``` e ```git line``` executarão os comandos configurados. 
+
   
 <sub>[⬆](#sumário)</sub>
 ---
