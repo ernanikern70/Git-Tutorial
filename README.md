@@ -1006,6 +1006,12 @@ git pull <origin> <main>
   git push origin main --force-with-lease
   ```
 
+- Fazer um _rebase_ interativo: 
+  ```
+  git rebase --interactive
+  ```
+
+  
 <sub>[⬆](#sumário)</sub>
 ---
 <!--
