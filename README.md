@@ -959,11 +959,12 @@ git pull <origin> <main>
   git branch --merged
   ```
 
-- Verificar atualizações no repositório remoto sem aplicar localmente:
+- Verificar atualizações no repositório remoto _sem aplicar localmente_:
   ```bash
   git fetch origin
   ```
-
+  * As alterações ficarão no _branch_ _remote/\<branch\>_.
+  
 - Buscar um _branch_ específico do repositório remoto (idealmente que não exista localmente):
   ```
   git fetch origin <branch>
