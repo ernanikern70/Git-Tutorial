@@ -418,6 +418,7 @@ Resolver o conflito manualmente.
 ```
 git rebase --continue  # retoma a execução do rebase
 ```
+
 ##### git rebase --interactive
 
 Existem situações em que um projeto é editado várias vezes em algum período de tempo, e cada alteração recebe um _commit_, para não ser perdida. Isso gera um log com vários _commits_ referentes a um mesmo arquivo, geralmente, que após estarem na sua versão definitiva, ficará relacionada com todos os diversos _commits_. Isso dificulta uma pesquisa, por exemplo, se queremos descobrir em qual _commit_ uma determinada mudança foi feita:  
@@ -433,7 +434,7 @@ Existem situações em que um projeto é editado várias vezes em algum período
 
 Esses _commits_ relacionados podem ser 'reorganizados' ou 'agrupados', usando o comando ```git rebase --interactive [HEAD~n]```, que abrirá o editor de textos do Git com as seguintes opções: 
 ```
-pick cfe555b versão 1                                                           
+pick cfe555b versão 1                                                   
 pick 32b5b8d versão 1.1
 pick ff35442 versão 1.2
 pick c3c745a versão 1.3
@@ -469,6 +470,9 @@ pick c3c745a versão 1.3
 # However, if you remove everything, the rebase will be aborted.
 
 ```
+No arquivo interativo, os _commits_ são mostrados do mais antigo ao mais novo, e é _boa prática_ marcar o mais antigo como _pick_, e os demais como _squash_ ou _fixup_.  
+
+Os _commits_ marcados como _squash_ ou _fixup_ serão fundidos ao _commit_ com _pick_ anterior. 
 
 As opções informadas no arquivo são auto explicativas, mas no nosso caso, a principal opção seria o _squash_, que faz um _meld_ (merge) dos _commits_:
 ```
@@ -533,50 +537,6 @@ E o log do Git será esse:
 491e493 (HEAD -> main) versão 1.3
 088d033 (origin/main) lorem-ipsum.txt inicial
 ```
-###### Considerações sobre o _rebase --interactive_: 
-
-<!--
-No git rebase -i, o comportamento é assim:
-
-A lista de commits aparece em ordem do mais antigo (em cima) para o mais novo (em baixo).
-
-O commit que fica marcado como pick será o que vai “sobrar” como base dos squash/fixup seguintes.
-
-Todos os commits abaixo dele que estiverem com squash (ou fixup) vão ser fundidos no pick anterior.
-
-Exemplo prático:
-
-Suponha este histórico:
-
-pick a1 Commit inicial
-pick b2 Adiciona seção bisect
-pick c3 Corrige detalhe bisect
-pick d4 Acrescenta exemplo bisect
-pick e5 Ajusta texto bisect
-
-
-Se você quiser juntar tudo em um único commit sobre bisect, pode fazer assim:
-
-pick b2 Adiciona seção bisect
-squash c3 Corrige detalhe bisect
-squash d4 Acrescenta exemplo bisect
-squash e5 Ajusta texto bisect
-
-
-👉 Nesse caso, o commit b2 é o que sobra como base, e os outros (c3, d4, e5) viram parte dele.
-
-O commit mais antigo é o melhor para ser o pick, porque assim ele representa o começo da ideia, e os demais (squash) são só ajustes.
-
-Se você marcar o mais novo como pick e colocar os anteriores como squash, vai funcionar também, mas o resultado pode ficar esquisito (porque você está dizendo que as correções antigas são “adições” ao mais novo).
-
-✅ Resumindo:
-
-Normalmente, você deixa o primeiro commit da série (mais antigo) como pick.
-
-Marca os demais (mais novos) como squash.
-
-Depois ajusta a mensagem final no editor que o Git abre.
--->
 
 ##### git pull --rebase
 
