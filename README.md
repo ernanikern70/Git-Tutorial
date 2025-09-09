@@ -540,6 +540,38 @@ Quando um colaborador de projeto tiver um ou mais _commits_ à frente do projeto
 
 Para evitar isso, o usuário pode usar ```git pull --rebase```, que trás os _commits_ remotos e mantém o histórico linear do Git.
 
+##### cherry-pick 
+
+O comando ```git cherry-pick <commit>``` é utilizado para buscar um _commit_ específico de outro _branch_, sem fazer o _merge_ completo desse _branch_, que traria várias outras alterações não desejadas no momento. 
+
+Vamos supor estes commits no _branch_ 'titulos' de um projeto:  
+```
+$ ▶ git log titulos --oneline -10
+5e8520a (titulos) continuação
+8de309e contexto
+c96c1cf introdução
+491e493 (HEAD -> main) versão 1.3
+088d033 (origin/main) lorem-ipsum.txt inicial
+```
+Se quiser trazer apenas o _commit_ 'introdução' para o _main_, executamos: 
+```
+git cherry-pick c96c1cf
+```
+
+O log do _main_ passaria de: 
+```
+$ ▶ git log --oneline -2
+491e493 (HEAD -> main) versão 1.3
+088d033 (origin/main) lorem-ipsum.txt inicial
+```
+Para: 
+```
+$ ▶ git log --oneline -3
+476a911 (HEAD -> main) introdução
+491e493 versão 1.3
+088d033 (origin/main) lorem-ipsum.txt inicial
+```
+
 <sub>[⬆](#sumário)</sub>
 ---
 <!--
