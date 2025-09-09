@@ -777,6 +777,7 @@ git pull <origin> <main>
   ```
   git branch <nome>
   ```
+
 - Entrar em um branch: 
   ```
   git switch <branch>
