@@ -601,7 +601,7 @@ Com essa informação, o _bisect_ irá executar seu algoritmo, informando e já 
 
 Se o _commit_ informado estiver 'ok' (anterior ao erro buscado), responder ```git bisect good``` e o _bisect_ continuará a busca. Quando for testado um _commit_ com o problema, responder ```git bisect bad```, e o algoritmo prosseguirá com a busca.  
 
-###### Simulação do _bisect_: 
+##### Simulação do _bisect_: 
 
 Temos os logs abaixo, e sabemos que algum _commit_ com erro foi executado entre 'Merge branch titulos' e o 'HEAD': 
 ```
