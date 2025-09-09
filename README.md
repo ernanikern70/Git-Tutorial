@@ -857,7 +857,7 @@ git pull <origin> <main>
   git config -l
   ```
 
-- Adicionar e fazer _commit_ em um comando: 
+- Adicionar e fazer _commit_ em um comando (para arquivo já rastreado): 
   ```
   git -am 'comentário'
   ```
