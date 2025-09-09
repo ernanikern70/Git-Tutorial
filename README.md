@@ -188,6 +188,7 @@ Exemplo de arquivo de configuração:
  mergetool.p4merge.cmd=/home/ernani/p4v-2025.2.2796382/bin/p4merge $BASE $LOCAL $REMOTE $MERGED
  mergetool.p4merge.path=/home/ernani/p4v-2025.2.2796382/bin/
  merge.tool=p4merge
+ core.editor=vim
  core.repositoryformatversion=0
  core.filemode=true
  core.bare=false
