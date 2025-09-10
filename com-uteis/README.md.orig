@@ -14,8 +14,9 @@
 -->
 <!--
 " Sumário ----------------------- {{{
+<<<<<<< HEAD
 -->
-### Sumário
+## Sumário
 
 - [Introdução](#introdução)
 - [Comandos Úteis](#comandos-úteis)
@@ -27,7 +28,23 @@
 <!--
 " Introdução --------------------------- {{{
 -->
+# Introdução 
+=======
+-->
+### Sumário
+
+- [Introdução](#introdução)
+- [Comandos Úteis](#comandos-úteis)
+
+---
+<!---
+" }}}
+-->
+<!--
+ " Introdução --------------------------- {{{
+-->
 ## Introdução 
+>>>>>>> com-uteis
 
 Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub - ideal para projetos Ansible ou qualquer outro.
 
@@ -212,7 +229,6 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   ```
   * As alterações ficarão no _branch_ _remote/\<branch\>_.
   
-
 - Buscar um _branch_ específico do repositório remoto (idealmente que não exista localmente):
   ```
   git fetch origin <branch>
@@ -240,6 +256,16 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   git fetch origin
   git branch -vv
   ```
+
+- Buscar um _branch_ específico do repositório remoto (idealmente que não exista localmente):
+  ```
+  git fetch origin <branch>
+  ```
+  * O _branch_ será listado apenas com ```git branch -a```:
+  remotes/origin/\<branch\>
+
+  Se fizer depois: ```git switch <branch>```
+  O _branch_ será criado localmente. 
 
 - Ver configurações:
   ```bash
@@ -352,6 +378,8 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   git push origin main --force-with-lease
   ```
 
+<<<<<<< HEAD
+=======
 - Fazer um _rebase_ interativo: 
   ```
   git rebase --interactive
@@ -376,6 +404,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   Os comandos ```git s```, ```git l``` e ```git line``` executarão os comandos configurados. 
 
   
+>>>>>>> com-uteis
 <sub>[⬆](#sumário)</sub>
 ---
 <!--
