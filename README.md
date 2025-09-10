@@ -540,13 +540,74 @@ E o log do Git será esse:
 088d033 (origin/main) lorem-ipsum.txt inicial
 ```
 
-##### git pull --rebase
+##### Git pull --rebase
 
 Quando um colaborador de projeto tiver um ou mais _commits_ à frente do projeto remoto, e o remoto também tiver _commits_ que não estiverem no projeto local, o comando ```git pull``` irá criar o _merge commit_, como nos casos anteriores. 
 
 Para evitar isso, o usuário pode usar ```git pull --rebase```, que trás os _commits_ remotos e mantém o histórico linear do Git.
 
-##### cherry-pick 
+#### Fast-Forward
+
+O _fast-forward_ acontece quando você faz um _merge_ ou _pull_, e a _branch_ de destino não tem _commits_ novos em relação à _branch_ de origem.
+
+Ou seja, o histórico da _branch_ é linear, então o Git só precisa “mover o ponteiro” para o _commit_ mais recente, sem criar um _commit de merge_ extra.
+
+__Por padrão, o Git executa um _fast-forward_ automaticamente, quando possível, nos _merge_ ou _pull_.__
+
+Exemplo, no seguinte cenário:
+```
+    main:     A --- B --- C
+    feature:           D --- E
+```
+
+A _main_ não teve _commits_ novos desde a criação de  _feature_.
+
+Para executar o _merge_ de _feature_ em _main_:
+```
+git switch main
+git merge feature
+```
+
+O Git percebe que não há divergências, então simplesmente avança o ponteiro da _main_ até o _commit_ E:
+```
+main:     A --- B --- C --- D --- E
+feature:           D --- E
+```
+
+Isso é um _fast-forward merge_: nenhum _commit de merge_ é criado.
+
+O _fast-forward_ mantém o histórico linear, sem _commits_ extras de _merge_, sendo útil para _branches_ pequenas, como feature ou hotfix, que já estão sincronizadas com _main_.
+
+Para forçar um _merge commit_, mesmo que fosse _fast-forward_, usar:
+```
+git merge --no-ff feature
+```
+Para ver se um _fast-forward_ é possível sem alterar nada:
+```
+git merge --ff-only feature
+```
+
+Se não for possível, o Git vai recusar e avisar.
+
+##### Combinação com git pull
+
+O _git pull_ é na prática _git fetch + git merge_.
+
+Se o remoto estiver à frente e não houver _commits_ locais, o _pull_ vai fazer _fast-forward_.
+
+Se houver _commits_ locais, o Git fará um _merge_ normal ou você pode usar _--rebase_ para reaplicar _commits_ locais linearmente:
+```
+git pull --rebase
+```
+
+| Situação | Resultado |
+|:---------|:----------|
+| Branch linear, sem divergência | Fast-forward, ponteiro da branch é movido |
+| Branch com divergência | Merge normal ou rebase necessário |
+| Quer evitar commit extra | Fast-forward automático |
+| Quer registrar merge mesmo assim | --no-ff |
+
+#### Cherry-pick 
 
 O comando ```git cherry-pick <commit>``` é utilizado para buscar um _commit_ específico de outro _branch_, sem fazer o _merge_ completo desse _branch_, que traria várias outras alterações não desejadas no momento. 
 
@@ -578,7 +639,7 @@ $ ▶ git log --oneline -3
 088d033 (origin/main) lorem-ipsum.txt inicial
 ```
 
-##### bisect (busca binária)
+#### Bisect (busca binária)
 
 O comando _bisect_ nos ajuda a encontrar em qual _commit_ ocorreu alguma mudança no projeto. Ele realiza uma busca binária, considerando elementos ordenados: 
 
