@@ -975,6 +975,24 @@ git pull <origin> <main>
   Se fizer depois: ```git switch <branch>```
   O _branch_ será criado localmente. 
 
+- Após o _fetch_, ver diferenças de _commits_ no histórico: 
+  ```
+  git log main..origin/main     # Mostra commits que estão no remoto mas não na sua main local.
+  git log origin/main..main     # Mostra commits que estão na sua main local mas ainda não foram enviados ao remoto.
+  ```
+
+- Ver diferenças entre arquivos: 
+  ```
+  git diff main..origin/main
+  ```
+  * Mostra as mudanças de código que existem no remoto em relação à sua branch local.
+
+- Ver um resumo do estado dos _branches_: 
+  ```
+  git fetch origin
+  git branch -vv
+  ```
+
 - Ver configurações:
   ```bash
   git config -l
