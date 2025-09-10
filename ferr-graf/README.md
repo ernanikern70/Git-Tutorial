@@ -61,6 +61,7 @@ Sua interface é bem mais simples, mas tem as principais funcionalidades para ge
 
 ![Git GUI](../images/gitgui.png)
 
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
