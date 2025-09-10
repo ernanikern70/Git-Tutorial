@@ -1149,7 +1149,7 @@ O [GitKraken](https://www.gitkraken.com/) é uma ferramenta para qualquer S.O. c
 
 Ele inicia com um plano _trial_, com funcionalidades extras, e após o prazo, volta à versão gratuita, ainda bem utilizável. 
 
-![GitKraken](../images/gitkraken.png)
+![GitKraken](images/gitkraken.png)
 
 #### Git GUI
 
@@ -1159,7 +1159,7 @@ Para executá-lo no Linux, basta rodar ```git gui```.
 
 Sua interface é bem mais simples, mas tem as principais funcionalidades para gerenciar um projeto _Git_. 
 
-![Git GUI](../images/gitgui.png)
+![Git GUI](images/gitgui.png)
 
 ---
 <!--
