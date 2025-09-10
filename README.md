@@ -667,7 +667,7 @@ Para resolver, rodar ```git bisect reset``` para finalizar o _bisect_, e rodar u
 "  }}}  
 -->
 <!--
-" Merge Tools --------------------- {{{
+" Merge Tools --------------------------- {{{
 -->
 ## Merge Tools
 
@@ -724,9 +724,11 @@ O _meld_ permite edição direta dos arquivos, e as diferenças são mostradas e
 <sub>[⬆](#sumário)</sub> 
 ---
 <!--
+" }}}
+-->
+<!--
 " Criação de Projeto --------------------- {{{
 -->
-
 ## Criação de projeto
 
 Configurar de forma global (em todos os projetos da máquina local) o autor e email dos projetos:  
@@ -977,8 +979,8 @@ git pull <origin> <main>
 
 - Após o _fetch_, ver diferenças de _commits_ no histórico: 
   ```
-  git log main..origin/main     # Mostra commits que estão no remoto mas não na sua main local.
-  git log origin/main..main     # Mostra commits que estão na sua main local mas ainda não foram enviados ao remoto.
+  git log main..origin/main  # Mostra commits que estão no remoto mas não na sua main local.
+  git log origin/main..main  # Mostra commits que estão na sua main local mas ainda não foram enviados ao remoto.
   ```
 
 - Ver diferenças entre arquivos: 
