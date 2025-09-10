@@ -13,12 +13,25 @@
 " }}}
 -->
 <!--
-" Introdução --------------------------- {{{
+" Sumário ----------------------- {{{
 -->
-# Guia Rápido: Projeto com Git e GitHub
+### Sumário
+
+- [Introdução](#introdução)
+- [Comandos Úteis](#comandos-úteis)
+
+---
+<!---
+" }}}
+-->
+<!--
+ " Introdução --------------------------- {{{
+-->
+## Introdução 
 
 Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub - ideal para projetos Ansible ou qualquer outro.
 
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
@@ -124,6 +137,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   ```
   git branch <nome>
   ```
+
 - Entrar em um branch: 
   ```
   git checkout <branch>
@@ -162,6 +176,11 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   * Usar '-D' para forçar.
   _Ao apagar um branch, todos os _commits_ são perdidos!_
 
+- Enviar um _branch_ local ao repositório remoto: 
+  ```
+  git push origin <branch>
+  ```
+
 - Apagar um _branch_ remoto:
   ```
   git push --delete <origin> <branch>
@@ -170,7 +189,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 
 - Fazer _push_ de um _branch_ inexistente no servidor: 
   ```
-  git checkout <branch>
+  git switch <branch>
   git push --set-upstream <origin> <branch>
   ```
 
@@ -187,9 +206,38 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   git branch --merged
   ```
 
-- Verificar atualizações no repositório remoto sem aplicar localmente:
+- Verificar atualizações no repositório remoto _sem aplicar localmente_:
   ```bash
   git fetch origin
+  ```
+  * As alterações ficarão no _branch_ _remote/\<branch\>_.
+  
+- Buscar um _branch_ específico do repositório remoto (idealmente que não exista localmente):
+  ```
+  git fetch origin <branch>
+  ```
+  * O _branch_ será listado apenas com ```git branch -a```:
+  remotes/origin/\<branch\>
+
+  Se fizer depois: ```git switch <branch>```
+  O _branch_ será criado localmente. 
+
+- Após o _fetch_, ver diferenças de _commits_ no histórico: 
+  ```
+  git log main..origin/main  # Mostra commits que estão no remoto mas não na sua main local.
+  git log origin/main..main  # Mostra commits que estão na sua main local mas ainda não foram enviados ao remoto.
+  ```
+
+- Ver diferenças entre arquivos: 
+  ```
+  git diff main..origin/main
+  ```
+  * Mostra as mudanças de código que existem no remoto em relação à sua branch local.
+
+- Ver um resumo do estado dos _branches_: 
+  ```
+  git fetch origin
+  git branch -vv
   ```
 
 - Ver configurações:
@@ -197,9 +245,9 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   git config -l
   ```
 
-- Adicionar e fazer _commit_ em um comando: 
+- Adicionar e fazer _commit_ em um comando (para arquivo já rastreado): 
   ```
-  git -a -m 'comentário'
+  git -am 'comentário'
   ```
 
 - Alterar commit atual com autor correto (se esqueceu de configurar nome/email antes):
@@ -287,7 +335,7 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 
 - Git reset (_volta ao commit anterior e..._): 
   ```
-  git reset --hard  # apaga todas as alterações locais, inclusivo _untracked_.
+  git reset --hard  # apaga todas as alterações locais, menos _untracked_.
   git reset --mixed # mantém as mudanças na área de trabalho como _modified_.
   git reset --soft  # mantém as mudanças na área de preparação (_staged_).
   ```
@@ -303,6 +351,31 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   git push origin main --force-with-lease
   ```
 
+- Fazer um _rebase_ interativo: 
+  ```
+  git rebase --interactive
+  ```
+
+- Inicar um _git bisect_:
+  ```
+  git bisect start
+  ```
+
+- Encerrar o _bisect_:
+  ```
+  git bisect reset
+  ```
+
+- Criar _aliases_ para comandos do Git: 
+  ```
+  git config [--global] alias.s status
+  git config [--global] alias.l log
+  git config [--global] alias.line 'log --oneline'
+  ```
+  Os comandos ```git s```, ```git l``` e ```git line``` executarão os comandos configurados. 
+
+  
+<sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
