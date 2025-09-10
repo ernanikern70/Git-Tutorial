@@ -25,9 +25,9 @@
 " }}}
 -->
 <!--
-" Introdução --------------------------- {{{
+ " Introdução --------------------------- {{{
 -->
-# Introdução 
+## Introdução 
 
 Este guia descreve os passos recomendados para criar um projeto versionado com Git, conectado ao GitHub - ideal para projetos Ansible ou qualquer outro.
 
@@ -39,7 +39,6 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 <!--
 " Criação de Projeto --------------------- {{{
 -->
-
 ## Criação de projeto
 
 Configurar de forma global (em todos os projetos da máquina local) o autor e email dos projetos:  
