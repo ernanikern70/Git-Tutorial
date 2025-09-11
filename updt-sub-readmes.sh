@@ -1,10 +1,19 @@
 #!/bin/bash
 
-# Verifica se um parâmetro foi fornecido
+# Verifica se um parâmetro foi fornecido e se o branch existe <<<<<
 if [ -z "$1" ]; then
   echo "Por favor, forneça um branch."
   exit 1
 fi
+
+# verifica se o branch existe
+for br in $(git branch)
+    if [ "$1" == "$br" ]; then
+        echo "Branch existe"
+    else
+        echo "Branch não existe"
+        exit 1
+    fi
 
 # Armazena o parâmetro em uma variável (opcional)
 branch=$1
