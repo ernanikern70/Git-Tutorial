@@ -890,10 +890,11 @@ git pull <origin> <main>
 
 - Adicionar o endereço remoto: 
   ```
-  git remote add origin <https|ssh:@@@@@@@@@@.git>
+  git remote add origin <https|ssh://github.com/user/project.git>
   ```
+  * O termo _origin_ pode ser alterado conforme preferência. 
 
-- Remover arquivo (apenas do rastreamento do git):  
+- Remover arquivos (apenas do rastreamento do git):  
   ```
   git rm --cached file
   git rm --cached -r .  # remove todos recursivamente
@@ -918,7 +919,7 @@ git pull <origin> <main>
   git commit --amend --no-edit
   ```
   * Adiciona o arquivo _staged_ ao commit, sem alterar o comentário
-  * O --amend altera o _hash_ do commit, excluindo-o do histórico
+  * O '_--amend_' altera o _hash_ do commit, excluindo-o do histórico
 
 - Restaurar arquivos modificados (_tracked_ ou _staged_): 
   ```
@@ -946,8 +947,10 @@ git pull <origin> <main>
   ```
   * Retorna ao commit selecionado, coloca o projeto num 'detached HEAD'
   ```
-  git checkout main   # retorna ao main, ou branch selecionado
+  git switch main   # retorna ao main, ou branch selecionado
   ```
+  * '_checkout_' deve ser usado para _commits_ e arquivos.
+  * '_switch_' deve ser usado para _branches_. 
 
 - Reverter um arquivo para sua última versão conhecida do Git - _checkout_ ou _modified_ (portanto não pode ser _untracked_): 
   ```
@@ -978,18 +981,18 @@ git pull <origin> <main>
   ```
   git switch -c <branch>
   ```
-  O branch é sempre criado no estado do commit atual do projeto.
+  * O branch é sempre criado no estado do commit atual do projeto.
 
 - Trocar de branch eliminando as alterações rastreadas: 
   ```
-  git checkout -f <branch>
+  git switch -f <branch>
   ```
 
 - Renomear _branch_ local: 
   ```
   git branch -m [<branch.old>] <branch.new>
   ```
-  _O nome antigo só é necessário se estiver em_ __outra__ _branch_.
+  * _O nome antigo só é necessário se estiver em_ __outro__ _branch_.
   Remotamente não é possível fazer, é preciso apagar e fazer novo _push_.
 
 - Apagar um _branch_ local: 
@@ -1008,19 +1011,19 @@ git pull <origin> <main>
   ```
   git push --delete <origin> <branch>
   ```
-  _O branch local NÃO é apagado_
+  * _O branch local NÃO é apagado_
 
 - Fazer _push_ de um _branch_ inexistente no servidor: 
   ```
   git switch <branch>
-  git push --set-upstream <origin> <branch>
+  git push [--set-upstream] <origin> <branch>
   ```
 
 - Fazer um merge: 
   ```
   git merge <branch>
   ```
-  * \<branch\> deve ser o branch que receberá o merge.
+  * O comando deve ser executado no _branch_ de destino de \<branch\>.
   * O git abrirá o editor de texto padrão para comentar o merge (obrigatório).
 
 - Verificar quais _branches_ ainda tiveram ou não tiveram _merge_:
@@ -1064,17 +1067,17 @@ git pull <origin> <main>
   ```
 
 - Ver configurações:
-  ```bash
+  ```
   git config -l
   ```
 
-- Adicionar e fazer _commit_ em um comando (para arquivo já rastreado): 
+- Executar _add_ e _commit_ em um comando (para arquivo já rastreado): 
   ```
   git -am 'comentário'
   ```
 
 - Alterar commit atual com autor correto (se esqueceu de configurar nome/email antes):
-  ```bash
+  ```
   git commit --amend --reset-author
   ```
 
