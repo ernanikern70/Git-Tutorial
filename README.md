@@ -1225,6 +1225,10 @@ git pull <origin> <main>
   ```
   Os comandos ```git s```, ```git l``` e ```git line``` executarão os comandos configurados. 
 
+- Visualiza um arquivo de outro _branch_ sem fazer _switch_:
+  ```
+  git show main:README.md
+  ```
   
 <sub>[⬆](#sumário)</sub>
 ---
