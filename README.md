@@ -45,13 +45,13 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 -->
 ## Definições
 
-#### Características do Github: 
+#### Características do GitHub: 
 
-O Github, além de servir como repositório de projetos e controle de versionamento, tem um funcionamento semelhante a uma rede social, é possível seguir projetos (__star__), ou criar cópias de projetos (__fork__) para poder fazer alterações sem mudar o projeto principal.  
+O GitHub, que é um dos repositórios remotos disponíveis para o Git, além de ter essa função e controle de versionamento, tem um funcionamento semelhante a uma rede social, é possível seguir projetos (__star__), ou criar cópias de projetos (__fork__) para poder fazer alterações sem mudar o projeto principal.  
 
-Após fazer o __fork__ de um projeto, ele ainda pode ser atualizado conforme o projeto original, através de _git pull_ ou via Github. 
+Após fazer o __fork__ de um projeto, ele ainda pode ser atualizado conforme o projeto original, através de _git pull_ ou via GitHub. 
 
-O Github permite a abertura de __Issues__ (problemas), onde os colaboradores podem informar questões a serem corrigidas. 
+O GitHub permite a abertura de __Issues__ (problemas), onde os colaboradores podem informar questões a serem corrigidas. 
 
 Nas _Issues_ criadas o dono do repositório pode adicionar _labels_ e _milestones_, semelhantemente ao _GitLab_.
 
@@ -176,58 +176,83 @@ git reset --hard
 
 #### Configurações do Git:
 
+O comando ```git config -l``` mostra todas as configurações que o Git está usando, mas elas vêm de vários lugares diferentes, não apenas do ```.git/config``` do repositório. Basicamente, existem três níveis de configuração:
+
+- Local (por repositório) – é o que está dentro de ```.git/config```. Afeta apenas aquele repositório.
+
+    - Exemplo: [branch "main"] merge = refs/heads/main
+
+- Global (por usuário) – fica em ```~/.gitconfig``` ou ```~/.config/git/config```. Afeta todos os repositórios do seu usuário, na máquina em uso.
+
+    - Exemplo: ```user.name```, ```user.email```, ```credential.helper```.
+
+- System (por sistema/máquina) – fica em ```/etc/gitconfig``` ou em outro diretório de configuração do sistema (dependendo da distro). Afeta todos os usuários e todos os repositórios da máquina - _este arquivo só existirá se o Git for instalado a nível de sistema_.
+
+##### Resumo:
+
+- ```<projeto>/.git/config```: configurações do repositório atual
+- ```~/.gitconfig``` ou ```~/.config/git/config```: configurações globais do usuário
+- ```/etc/gitconfig```: configurações de sistema, se existirem
+
+Os comandos ```git config -l``` e ```git config --show-origin -l``` mostram as configurações, sendo que o último especifica a origem delas.
+
 Exemplo de arquivo de configuração: 
 
 ```
-   $ >  git config -l
- init.defaultbranch=main
- credential.helper=store
- user.name=Ernani Kern
- user.email=ernani.kern@gmail.com
- credencial.helper=store
- mergetool.prompt=false
- mergetool.p4merge.cmd=/home/ernani/p4v-2025.2.2796382/bin/p4merge $BASE $LOCAL $REMOTE $MERGED
- mergetool.p4merge.path=/home/ernani/p4v-2025.2.2796382/bin/
- merge.tool=p4merge
- core.editor=vim
- core.repositoryformatversion=0
- core.filemode=true
- core.bare=false
- core.logallrefupdates=true
- remote.origin.url=https://github.com/ernanikern70/Git-Tutorial.git
- remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
- branch.head-teste.remote=origin
- branch.head-teste.merge=refs/heads/head-teste
- alias.lo=log --oneline
- alias.sw=switch
- alias.ps=push
- alias.pu=pull
- alias.l=log
- alias.s=status
- alias.cam=commit -am
-  ```
+$ ▶ git config -l
+init.defaultbranch=main
+credential.helper=store
+user.name=Test User
+user.email=test.user@gmail.com
+mergetool.prompt=false
+mergetool.p4merge.cmd=/home/user/p4v-2025.2.2796382/bin/p4merge $BASE $LOCAL $REMOTE $MERGED
+mergetool.p4merge.path=/home/user/p4v-2025.2.2796382/bin/
+merge.tool=p4merge
+core.editor=vim
+alias.lo=log --oneline
+alias.sw=switch
+alias.ps=push
+alias.pu=pull
+alias.l=log
+alias.cam=commit -am
+alias.log=log --oneline --graph
+alias.lg=log --oneline --graph
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/userxxx/Git-Tutorial.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+alias.s=status
+gui.wmstate=normal
+gui.geometry=920x515+1543+223 188 234
+
+```
 * O app 'p4merge' não é instalado, então é preciso informar o 'path' e 'cmd'; se for um app como _vimdiff_ ou _mold_, basta informar 'merge.tool'
 
 Todos os itens acima são configuráveis com:
 ```
-git config <item>.<parâmetro> <valor>
+git config [--global] <item>.<parâmetro> <valor>
 ```
 E pode-se apagar uma configuração com: 
 ```
 git config --unset <item>.<parâmetro>
 ```
+* Ou deletando a configuração no arquivo correspondente. 
 
 #### Pull Request (PR):
 
 O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_ para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
 
-Caso aceita, o responsável pelo projeto original executa um _merge pull request_ via Github. 
+Caso aceita, o responsável pelo projeto original executa um _merge pull request_ via GitHub. 
 
-#### Segurança no Github: 
+#### Segurança no GitHub: 
 
-A plataforma permite autenticação via usuário e senha, ou via SSH, esta última sendo mais recomendada. Para usá-la, é preciso adicionar uma chave pública no Github:  
+A plataforma não permite mais a autenticação via usuário e senha, é necessário usar _PAT - Personal Access Tokens_, ou _SSH keys_ (mais recomendado).  Para usá-las, é preciso adicionar uma chave pública no GitHub:  
 
-- No Github - code - SSH - 'add a new public key', _ou_
+- No GitHub - code - SSH - 'add a new public key', _ou_
     - Ícone do usuário - settings - SSH and GPG keys
 
 - No PC, criar as chaves pública e privada: 
@@ -236,7 +261,7 @@ A plataforma permite autenticação via usuário e senha, ou via SSH, esta últi
     ```
     O comando irá pedir nome e localização do arquivo, pode-se deixar o default, e passphrase, pode-se deixar em branco. 
 
-- Copiar todo o conteúdo da chave .pub e colar no Github, incluindo um título qualquer
+- Copiar todo o conteúdo da chave .pub e colar no GitHub, incluindo um título qualquer
 
 - Adicionar a chave privada ao SSH no PC:
   ```
@@ -744,8 +769,8 @@ Neste tópico vou focar no uso do [P4merge](https://www.perforce.com/products/he
 ##### Configuração do P4merge no _git config_:
 
 ```
- mergetool.p4merge.cmd=/home/ernani/p4v-2025.2.2796382/bin/p4merge $BASE $LOCAL $REMOTE $MERGED
- mergetool.p4merge.path=/home/ernani/p4v-2025.2.2796382/bin/
+ mergetool.p4merge.cmd=/home/user/p4v-2025.2.2796382/bin/p4merge $BASE $LOCAL $REMOTE $MERGED
+ mergetool.p4merge.path=/home/user/p4v-2025.2.2796382/bin/
  merge.tool=p4merge
  mergetool.prompt=false
 ```
@@ -818,7 +843,7 @@ git init
 
 A criação do repositório remoto pode ser feita de duas formas:  
 
-- No [Github.com](https://github.com): 
+- No [GitHub.com](https://github.com): 
     - 'Novo repositório'
     - Copiar a URL para configurar no repo local
 
@@ -832,7 +857,7 @@ A criação do repositório remoto pode ser feita de duas formas:
     - _gh repo create_
         - Seguir instruções
 
-Adicionar o endereço remoto do projeto no servidor (Github ou outro):
+Adicionar o endereço remoto do projeto no servidor (GitHub ou outro):
 ```
 git remote add origin <url>
 ```
@@ -840,7 +865,7 @@ git remote add origin <url>
 
 Alterar a url do projeto: 
 ```
-git remote set-url _origin_ <url>
+git remote set-url <remote> <url>
 ```
 
 Criar e adicionar o primeiro arquivo do projeto (geralmente README.md);  
@@ -952,9 +977,9 @@ git pull <origin> <main>
   * '_checkout_' deve ser usado para _commits_ e arquivos.
   * '_switch_' deve ser usado para _branches_. 
 
-- Reverter um arquivo para sua última versão conhecida do Git - _checkout_ ou _modified_ (portanto não pode ser _untracked_): 
+- Reverter um arquivo para sua última versão conhecida do Git - (arquivo deve ser rastreado): 
   ```
-  git checkout file
+  git restore file
   ```
 
 - Remover arquivos _untracked_:
