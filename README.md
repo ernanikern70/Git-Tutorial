@@ -65,51 +65,51 @@ Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a esc
 
 - _Untracked_: não rastreado (logo após ser criado ou modificado)
 
-- _Staged_: após ser adicionado ao Git (git add file)
+- _Staged_: após ser adicionado ao Git (_git add file_)
 
-- _Unmodified_: após o commit, se não foi mais alterado (git commit -m 'xx')
+- _Unmodified_: após o commit, se não foi mais alterado (_git commit -m 'xx'_)
 
-- _Modified_: arquivo editado após o commit (se as edições forem desfeitas (git restore file), volta ao 'unmodified'; se forem mantidas e usar 'git add file', volta a 'staged')
+- _Modified_: arquivo editado após o commit (se as edições forem desfeitas (_git restore file_), volta ao 'unmodified'; se forem mantidas e usar '_git add file_', volta a 'staged')
 
-O arquivo também pode retornar à 'untracked caso rode 'git rm --cached file'.
+O arquivo também pode retornar à 'untracked' caso rode '_git rm --cached file_'.
 
 Um arquivo pertence à apenas um estado por vez, mas diferentes arquivos podem estar em estados distintos simultaneamente. 
 
 #### Branches: 
 
-São ramificações de projetos que permitem a aplicação de alterações ao mesmo tempo em que uma ramificação principal é mantida. 
+São ramificações de projetos que permitem o desenvolvimento de outras funcionalidades ao mesmo tempo em que um histórico principal é mantido. 
 
-Por exemplo, em um projeto surge a necessidade de desenvolver uma funcionalidade de cadastro de usuários; pode-se então criar a _branch_ _cad-users_ a partir da branch _main_. Caso seja necessária outra funcionalidade independente dessa última, cria-se outro _branch_ _func-extra_ também a partir do _main_. 
+Por exemplo, em um projeto surge a necessidade de desenvolver uma funcionalidade de cadastro de usuários; pode-se então criar a _branch_ _cad-users_ a partir da _branch main_. Caso seja necessária outra funcionalidade independente dessa última, cria-se outro _branch_ _func-extra_ também a partir do _main_. 
 
 Neste exemplo, cada _branch_ é independente das outras, e as alterações não afetam as demais. 
 
-No momento em que uma tarefa de um _branch_ é aprovado, ele é mesclado no _branch main_ - __merge__ -, e o _branch main_ absorve as alterações.
+No momento em que se deseja mesclar o trabalho de um _branch_ ao histórico principal (_main_), é usado o comando __git merge branch__ -, e o _branch main_ absorve as alterações.
 
 #### DETACHED HEAD: 
 
-Em situações em que usamos _git checkout <commit_hash>_, para ver o estado do projeto naquele ponto, o Git nos move da branch atual para aquele commit específico. Nessa situação, não estaremos dentro de um branch, mas em um _limbo_ dentro do projeto - o _DETACHED HEAD_. 
+Em situações em que usamos _git checkout <commit_hash>_, para ver o estado do projeto naquele ponto (naquele _commit_ específico), o Git nos move do _branch_ atual para aquele _commit_ específico. Nessa situação, não estaremos dentro de um _branch_, mas em um 'limbo' dentro do projeto - o _DETACHED HEAD_. 
 
-Ele tem esse nome, pois, como o _commit_ mais recente recebe a marcação _HEAD_, neste caso o _HEAD_ fica separado ou 'destacado' de um branch. 
+Ele tem esse nome, pois, como o _commit_ mais recente recebe a marcação _HEAD_, neste caso o _HEAD_ fica separado ou 'destacado' de um _branch_. 
 
-No DETACHED HEAD, existem duas possibilidades: 
+No _DETACHED HEAD_, existem duas possibilidades: 
 
 - Não são feitas alterações, ou, se feitas, são descartadas, apenas usando ```git switch <branch>```, mesmo se já houve _commit_; 
 
 - Caso se queira salvar alterações, é preciso criar outro branch, após já estar no _detached head_:
 
     - Fazer as alterações;
-    - Criar um novo branch: ```git switch -c <branch-head>```
+    - Criar um novo _branch_: ```git switch -c <branch-head>```
     - ```git add <files> | git commit -m 'xx'```  
-    Agora, as alterações estão salvas no branch _branch-head_.
+    Agora, as alterações estão salvas no _branch branch-head_.
     - ```git push [--set-upstream] <origin> <branch-head>```
 
 #### Merge: 
 
-O __merge__ é um dos principais comandos do _git_, que faz a 'união' entre um _branch_ em outro branch, que pode ser ou não o _main_. 
+O __merge__ é um dos principais comandos do _git_, que faz a 'união' entre um _branch_ em outro _branch_, que pode ser ou não o _main_. 
 
-O _merge_ sempre deve ser executado no _branch_ de destino; o conteúdo de um _branch_ é mesclado no branch atual.  
+O _merge_ sempre deve ser executado no _branch_ de destino; o conteúdo de um _branch_ é mesclado no _branch_ atual.  
 
-A realização do _merge_ não faz o _push_ para o servidor. 
+A realização do _merge_ não faz o _push_ para o servidor, é apenas local. 
 
 ##### Passo a passo para execução de merge: 
 
@@ -121,24 +121,24 @@ Partindo do branch _main_, com _commit_ executado:
   git switch -c teste-rede
   ```
 - Verificar as alterações 
-- Caso positivo, fazer commit:
+- Caso positivo, fazer _commit_:
   ```
   git commit -m "ambiente de teste de rede"
   ```
-- Voltar ao branch que receberá o _merge_:
+- Voltar ao _branch_ que receberá o _merge_:
   ```
   git switch -
   git merge teste-rede
   ```
-  * Antes de fazer o merge, o git abrirá o editor de texto para comentar, se não for comentado, _não será feito o merge_.
+  * Antes de fazer o _merge_, o git abrirá o editor de texto para comentar, se não for comentado, _não será feito o merge_.
 
 A realização do _merge_ não faz o _push_ para o servidor.
 
 ##### Conflitos no merge: 
 
-Podem ocorrer conflitos entre branches ao fazer um merge, p. ex., se um arquivo possui edições distintas num mesmo trecho. 
+Podem ocorrer conflitos entre _branches_ ao fazer um _merge_, p. ex., se um arquivo possui edições distintas num mesmo trecho. 
 
-Ao tentar fazer o merge, o git mostrará a mensagem de erro e o arquivo mostrará linhas como as abaixo: 
+Ao tentar fazer o _merge_, o git mostrará a mensagem de erro e o arquivo mostrará linhas como as abaixo: 
 ```
 Badges ------------------ 
 <<<<<<< HEAD
@@ -150,7 +150,7 @@ linha 4: rodrigo    # status no 'devel-teste'
 
 As opção de solução são: 
 
-- Desistir do merge: 
+- Desistir do _merge_: 
 ```
 git merge --abort  # ou
 git reset --hard
@@ -159,7 +159,7 @@ git reset --hard
 - Caso o conflito seja em poucas linhas de um arquivo, pode-se editá-lo diretamente o manter apenas o conteúdo desejado, eliminando as linhas com '<<<<<<<', '>>>>>' e '======='. 
   * Após, é preciso rodar novamente ```git add .``` e ```git commit -m ''```
 
-  - Caso haja mais conflitos num arquivo, pode-se usar as ferramentas disponíveis para gerenciar conflitos em merge: 
+  - Caso haja mais conflitos num arquivo, pode-se usar as ferramentas disponíveis para gerenciar conflitos em _merge_: 
     - Meld: 
     ```
     git config --global merge.tool meld
@@ -198,7 +198,14 @@ Exemplo de arquivo de configuração:
  remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
  branch.head-teste.remote=origin
  branch.head-teste.merge=refs/heads/head-teste
- ```
+ alias.lo=log --oneline
+ alias.sw=switch
+ alias.ps=push
+ alias.pu=pull
+ alias.l=log
+ alias.s=status
+ alias.cam=commit -am
+  ```
 * O app 'p4merge' não é instalado, então é preciso informar o 'path' e 'cmd'; se for um app como _vimdiff_ ou _mold_, basta informar 'merge.tool'
 
 Todos os itens acima são configuráveis com:
@@ -212,7 +219,7 @@ git config --unset <item>.<parâmetro>
 
 #### Pull Request (PR):
 
-O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
+O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_ para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
 
 Caso aceita, o responsável pelo projeto original executa um _merge pull request_ via Github. 
 
@@ -236,19 +243,18 @@ A plataforma permite autenticação via usuário e senha, ou via SSH, esta últi
   ssh-add ~/.ssh/<chave>
   ```
 
-Após fazer essa alteração, a _url_ do repositório deve ser alterada para:  
-
-_git@github.com:\<user\>/\<repo.git\>_
+Após fazer essa alteração, a _url_ do repositório deve ser alterada para:   
+```git@github.com:<user>/<repo.git>```
 
 #### Tags: 
 
 Funcionam como ponteiros, assim como o _HEAD_ e _main_. _Tags_ podem apontar para _commits_ específicos, que representem algum marco no projeto. 
 
-Também são bastante usadas para marcar números de versões, o que também incluem o uso acima. 
+Também são bastante usadas para marcar números de versões, que também incluem o uso acima. 
 
 Como também são ponteiros, __as tags podem ser usadas no lugar dos hashes de commits em vários comandos__. 
 
-Criação de tags: 
+Criação de _tags_: 
 ```
 git tag v0.1
 ```
@@ -262,26 +268,26 @@ git tag -a -m "Tag criada v0.2" v2
 
 #### Git stash: 
 
-O _stash_ é uma funcionalidade do git que permite salvar em memória alterações que não estão prontas para _commit_, para que seja possível trabalhar em outro branch, por exemplo. 
+O _stash_ é uma funcionalidade do git que permite salvar em memória alterações que não estão prontas para _commit_, para que seja possível trabalhar em outro _branch_, por exemplo. 
 
-Estando no branch de trabalho, com as alterações feitas (estas precisam ser rastreadas), para incluir no stash: 
+Estando no _branch_ de trabalho, com as alterações feitas (estas precisam ser rastreadas), para incluir no _stash_: 
 ```
 git stash
 ```
 
-Pode-se criar vários stashes no projeto. 
+Pode-se criar vários _stashes_ no projeto. 
 
 Para checar a lista:
 ```
 git stash list
 ```
 
-Para aplicar as mudanças do stash: 
+Para aplicar as mudanças do _stash_: 
 ```
 git stash apply [stash@{n}]
 ```
 * Isso deixa o git no estado anterior, é preciso continuar com o 'git add|commit'.
-* Se o stash não for informado, será aplicado o primeiro da lista.  
+* Se o _stash_ não for informado, será aplicado o primeiro da lista.  
 * O apply __não remove o stash da lista__.
 
 Para aplicar e remover da lista:
@@ -326,14 +332,14 @@ git stash pop [stash@{n}]
   git stash show -p stash@{0}
   ```
 
-  Testar __sem apagar__ o stash: 
+  Testar __sem apagar__ o _stash_: 
   ```
   git stash apply stash@{0}
   ```
 
   Agora o arquivo voltou a ter a "linha 2".  
 
-  Para __aplicar e apagar__ o stash: 
+  Para __aplicar e apagar__ o _stash_: 
   ```
   git stash pop stash@{0}
   ```
@@ -347,15 +353,15 @@ git stash pop [stash@{n}]
 
 ![Alterações em projetos](images/reset-revert-checkout.png)
 
-- __git revert <hash>__ → Cria um novo commit que desfaz o commit indicado. Histórico fica limpo, sem apagar nada.
+- __git revert <hash>__ → Cria um novo _commit_ que desfaz o _commit_ indicado. Histórico fica limpo, sem apagar nada.
 
-- __git reset --hard <hash>__ → Move o ponteiro do branch para trás, apagando commits posteriores.
+- __git reset --hard <hash>__ → Move o ponteiro do _branch_ para trás, apagando _commits_ posteriores.
 
-- __git reset --soft <hash>__ → Volta no tempo, mas mantém alterações no staging area.
+- __git reset --soft <hash>__ → Volta no tempo, mas mantém alterações no _staging area_.
 
-- __git switch <branch>__ → Trás o estado de outro branch, útil para restaurar ou navegar.
+- __git switch <branch>__ → Trás o estado de outro _branch_, útil para restaurar ou navegar.
 
-- __git checkout <commit/arquivo>__ → Retorna ao estado de um _commit_ ou _arquivo_.
+- __git checkout <commit/arquivo>__ → Retorna ao estado de um _commit_ ou arquivo.
 
 ###### Por que ocorrem conflitos no _revert_: 
 
@@ -365,26 +371,26 @@ git stash pop [stash@{n}]
 
 Este é o comando para trazer um repositório remoto para a máquina local.  
 
-Por padrão, ele faz um '_git fetch + git merge_', ou seja, se o repositório remoto tiver alterações ausentes no repositório local, e o repositório local tiver outras alterações ausentes no remoto, desde que não sejam nas mesmas linhas do mesmo arquivo, as alterações locais _não serão perdidas_, como ocorreria com o _git push_, por exemplo. 
+Por padrão, ele faz um '_git fetch + git merge_', ou seja, se o repositório remoto tiver alterações ausentes no repositório local, e o repositório local tiver outras alterações ausentes no remoto, desde que não sejam conflitantes (nas mesmas linhas do mesmo arquivo), as alterações locais _não serão perdidas_, como ocorreria com o _git push_, por exemplo. 
 
-Caso as diferenças sejam nas mesmas linhas de um mesmo arquivo, então haverá conflito e deverá ser tratado manualmente.  
+Caso as diferenças sejam conflitantes, então deverá ser tratado manualmente.  
 
 #### Rebase
 
-Em projetos onde há fluxos de colaboração com vários branches, é comum ocorrer situações onde um colaborador cria um branch de testes, a partir de um _commit_ do _main_, por exemplo, e após isso o _main_ segue recebendo commits. 
+Em projetos onde há fluxos de colaboração com vários _branches_, é comum ocorrer situações onde um colaborador cria um _branch_ de testes, a partir de um _commit_ do _main_, por exemplo, e após isso o _main_ segue recebendo _commits_. 
 
-No momento em que esse colaborador, após ter feito alguns commits no branch de testes, fizer um merge no main, este último estará num ponto mais adiantado em relação ao da origem do branch teste, e esse merge criará o que chamamos '_merge de commit_', deixando o histórico '_não linear_', conforme figura abaixo: 
+No momento em que esse colaborador, após ter feito alguns _commits_ no _branch_ de testes, fizer um _merge_ no _main_, este último estará num ponto mais adiantado em relação ao da origem do _branch_ teste, e esse _merge_ criará o que chamamos '_merge de commit_', deixando o histórico '_não linear_', conforme figura abaixo: 
 
 ![Branch não linear](images/branch-nao-linear.png)
 
-Visualizando branches não lineares pelos logs: 
+Visualizando _branches_ não lineares pelos logs: 
 
-Na primeira imagem, o branch _main_ teve 2 _commits_ a partir de _origin_, onde foi criado o branch _teste_; no meio, o branch _teste_ também teve 2 commits após o commit _zerado_ do _main_. Após executar '_git merge teste_' a partir do _main_, foi gerado um _commit_ extra, o _Merge branch 'teste'_, conforme última imagem.
+Na primeira imagem, o _branch_ _main_ teve 2 _commits_ a partir de _origin_, onde foi criado o _branch teste_; no meio, o _branch teste_ também teve 2 _commits_ após o _commit zerado_ do _main_. Após executar '_git merge teste_' a partir do _main_, foi gerado um _commit_ extra, o _Merge branch 'teste'_, conforme última imagem.
 
 ![Branch main](images/branch-main.png)![Branch teste](images/branch-teste.png) 
 ![branch-merge](images/branch-merge.png)
 
-Os históricos não lineares facilitam os conflitos de merge, e tornam os logs complexos, dificultando o rastreio de mudanças. 
+Os históricos não lineares facilitam os conflitos de _merge_, e tornam os logs complexos, dificultando o rastreio de mudanças. 
 
 O _rebase_ permite reaplicar commits de um branch sobre outra base (normalmente a principal), criando um histórico linear, sem merges intermediários:
 
@@ -410,7 +416,7 @@ git merge dev
 
 ##### Conflitos no _rebase_
 
-Em caso de conflito (alterações distintas nos mesmos trechos de arquivos):
+Em caso de conflito:
 
 ```
 git rebase --abort  # cancela o rebase
@@ -576,7 +582,7 @@ feature:           D --- E
 
 Isso é um _fast-forward merge_: nenhum _commit de merge_ é criado.
 
-O _fast-forward_ mantém o histórico linear, sem _commits_ extras de _merge_, sendo útil para _branches_ pequenas, como feature ou hotfix, que já estão sincronizadas com _main_.
+O _fast-forward_ mantém o histórico linear, sem _commits_ extras de _merge_, sendo útil para _branches_ pequenos, como feature ou hotfix, que já estão sincronizadas com _main_.
 
 Para forçar um _merge commit_, mesmo que fosse _fast-forward_, usar:
 ```
@@ -589,7 +595,7 @@ git merge --ff-only feature
 
 Se não for possível, o Git vai recusar e avisar.
 
-##### Combinação com git pull
+##### Combinação do _FF_ com git pull
 
 O _git pull_ é na prática _git fetch + git merge_.
 
@@ -643,8 +649,8 @@ $ ▶ git log --oneline -3
 
 O comando _bisect_ nos ajuda a encontrar em qual _commit_ ocorreu alguma mudança no projeto. Ele realiza uma busca binária, considerando elementos ordenados: 
 
-    - caso existam 100 elementos, o algoritmo vai no meio deles e descobre se o item buscado é menor ou maior;
-    - se for menor, ele descarta a segunda metade e divide a primeira metade em dois, e descobre novamente se o item buscado é menor ou maior;
+    - caso existam 100 elementos, o algoritmo vai no meio deles e verifica se o item buscado é menor ou maior;
+    - se for menor, ele descarta a segunda metade e divide a primeira metade em dois, e verifica novamente se o item buscado é menor ou maior;
     - se é maior, descarta a primeira metade e divide novamente a metade maior em dois, e assim por diante, até encontrar o valor. 
 
 Para utilizar o _bisect_, visualizar o log de _commits_, e rodar: 
@@ -711,7 +717,7 @@ Bisecting: 0 revisions left to test after this (roughly 0 steps)
 $ ▶ git bisect good 
 5ca7179dde5448ae5ddfeb9aadd4bb723a9115b9 is the first bad commit
 commit 5ca7179dde5448ae5ddfeb9aadd4bb723a9115b9
-Author: Ernani Kern <ernani.kern@gmail.com>
+Author: Test User <test.user@gmail.com>
 Date:   Tue Sep 9 12:02:06 2025 -0300
 
     bagunça generalizada
@@ -743,7 +749,7 @@ Neste tópico vou focar no uso do [P4merge](https://www.perforce.com/products/he
  merge.tool=p4merge
  mergetool.prompt=false
 ```
-Como o _p4merge_ é um binário, é preciso especificar seu caminho no _path_ e _cmd_, caso contrário, apenas o parâmetro '_merge.tool=meld_' seria necessário, por exemplo.  
+Como o _p4merge_ é um binário, é preciso especificar seu caminho no _path_ e _cmd_, caso contrário, apenas o parâmetro '_merge.tool=meld_' seria necessário, por exemplo, se fosse usado esse editor.  
 
 No parâmetro '_mergetool.p4merge.cmd_', os subparâmetros '$BASE $LOCAL $REMOTE $MERGED' se referem aos arquivos que serão abertos automaticamente, e devem aparecer nesta ordem. 
 
@@ -752,12 +758,12 @@ No parâmetro '_mergetool.p4merge.cmd_', os subparâmetros '$BASE $LOCAL $REMOTE
 ###### Parte Superior: 
 
 - Local (triângulo azul): versão atual local, ou _branch_ atual;
-- Base (quadrado amarelo): versão comum mais antiga entre dois _branches_;
+- Base (quadrado amarelo): versão comum entre dois _branches_;
 - Remote (círculo verde): versão do _branch_ que tentou fazer _merge_.
 
 * Nenhum dos arquivos acima é diretamente editável.  
 
-###### Parte Inferior: 
+###### Parte Inferior (losango): 
 
 O arquivo editável, que será o resultado final do _merge_. 
 
@@ -769,7 +775,7 @@ O arquivo editável, que será o resultado final do _merge_.
 
 ###### Resolvendo os conflitos: 
 
-No arquivo final (parte inferior), os conflitos são mostrados com os símbolos respectivos na margem direita. Ao clicar nos símbolos, são aplicadas ou excluídas as mudanças dos arquivos respectivos. 
+No arquivo final (parte inferior), os conflitos são mostrados com os símbolos respectivos na margem direita. Ao clicar nos símbolos, são aplicadas ou excluídas as mudanças dos trechos respectivos. 
 
 Caso este método traga outros trechos não desejados, pode-se fazer a edição manual do arquivo final. 
 
@@ -777,7 +783,7 @@ Caso este método traga outros trechos não desejados, pode-se fazer a edição 
 
 ###### Alternativa para comparação simples de arquivos: 
 
-Quando se deseja apenas comparar dois arquivos, ou alterar um com base no mesmo, localizado em outro diretório, é mais simples usar o __meld <file1> <file2>__. 
+Quando se deseja apenas comparar dois arquivos, ou alterar um com base em outra versão do mesmo, localizado em outro diretório, é mais simples usar o __meld <file1> <file2>__. 
 
 O _meld_ permite edição direta dos arquivos, e as diferenças são mostradas em linhas destacadas dos dois lados, com setas que indicam para qual arquivo enviar as diferenças. 
 
@@ -795,18 +801,18 @@ O _meld_ permite edição direta dos arquivos, e as diferenças são mostradas e
 
 Configurar de forma global (em todos os projetos da máquina local) o autor e email dos projetos:  
 ```
-git config --global user.name "Fulano de Tal"
-git config --global user.email "fulano.tal@email.com"
+git config --global user.name "Test User"
+git config --global user.email "test.user@email.com"
 ```
 
-Criar o primeiro projeto, localmente:  
-```bash
+Criar o projeto, localmente:  
+```
 mkdir projeto1
 cd projeto1
 ```
 
 Inicializar o diretório como um repositório git (cria o subdiretório .git):  
-```bash
+```
 git init
 ```
 
