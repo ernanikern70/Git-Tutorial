@@ -846,7 +846,7 @@ git remote set-url _origin_ <url>
 Criar e adicionar o primeiro arquivo do projeto (geralmente README.md);  
 ```
 git add README.md (caso seja um ou poucos arquivos)
-git add . (para muitos arquivos)
+git add . (para muitos arquivos - __apenas diretório atual__)
 git commit -m 'versão 1'
 git push origin main
 ```
