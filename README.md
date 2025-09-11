@@ -156,7 +156,7 @@ git merge --abort  # ou
 git reset --hard
 ```
 
-- Caso o conflito seja em poucas linhas de um arquivo, pode-se editá-lo diretamente o manter apenas o conteúdo desejado, eliminando as linhas com '<<<<<<<', '>>>>>' e '======='. 
+- Caso o conflito seja em poucas linhas de um arquivo, pode-se editá-lo diretamente ou manter apenas o conteúdo desejado, eliminando as linhas com '<<<<<<<', '>>>>>' e '======='. 
   * Após, é preciso rodar novamente ```git add .``` e ```git commit -m ''```
 
   - Caso haja mais conflitos num arquivo, pode-se usar as ferramentas disponíveis para gerenciar conflitos em _merge_: 
@@ -384,7 +384,7 @@ git stash pop [stash@{n}]
 
 - __git reset --soft <hash>__ → Volta no tempo, mas mantém alterações no _staging area_.
 
-- __git switch <branch>__ → Trás o estado de outro _branch_, útil para restaurar ou navegar.
+- __git switch <branch>__ → Traz o estado de outro _branch_, útil para restaurar ou navegar.
 
 - __git checkout <commit/arquivo>__ → Retorna ao estado de um _commit_ ou arquivo.
 
@@ -575,7 +575,7 @@ E o log do Git será esse:
 
 Quando um colaborador de projeto tiver um ou mais _commits_ à frente do projeto remoto, e o remoto também tiver _commits_ que não estiverem no projeto local, o comando ```git pull``` irá criar o _merge commit_, como nos casos anteriores. 
 
-Para evitar isso, o usuário pode usar ```git pull --rebase```, que trás os _commits_ remotos e mantém o histórico linear do Git.
+Para evitar isso, o usuário pode usar ```git pull --rebase```, que traz os _commits_ remotos e mantém o histórico linear do Git.
 
 #### Fast-Forward
 
