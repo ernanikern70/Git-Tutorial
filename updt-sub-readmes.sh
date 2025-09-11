@@ -22,7 +22,7 @@ git sw "$branch"
 
 # Abre o meld para edição do README do branch
 echo "Abrindo meld para edição do README de $branch..."
-git show main;README.md > /tmp/readme
+git show main:README.md > /tmp/readme
 meld /tmp/readme "$branch"/README.md
 
 # Ao fechar o meld, faz novo restore do README do main
