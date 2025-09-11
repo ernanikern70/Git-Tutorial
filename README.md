@@ -937,15 +937,15 @@ git pull <origin> <main>
   ```
   git log [<branch>] [--oneline] [--graph] [--stat] [-n] [--all]
   ```
-  * se não passar o nome da branch, mostra só da atual
-  * n = número de commits  
-  * stats mostra arquivos alterados
+  * se não passar o nome do branch, mostra só do atual - __[--all]__ mostra todos os _branches_.
+  * n = número de _commits_.  
+  * stats mostra arquivos alterados.
 
-- Retornar a um commit anterior:  
+- Retornar a um _commit_ anterior:  
   ```
   git checkout <hash_commit>  # obtido via _git log_
   ```
-  * Retorna ao commit selecionado, coloca o projeto num 'detached HEAD'
+  * Retorna ao _commit_ selecionado, coloca o projeto num '_DETACHED HEAD_'
   ```
   git switch main   # retorna ao main, ou _branch_ selecionado
   ```
