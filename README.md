@@ -95,7 +95,7 @@ No _DETACHED HEAD_, existem duas possibilidades:
 
 - Não são feitas alterações, ou, se feitas, são descartadas, apenas usando ```git switch <branch>```, mesmo se já houve _commit_; 
 
-- Caso se queira salvar alterações, é preciso criar outro branch, após já estar no _detached head_:
+- Caso se queira salvar alterações, é preciso criar outro _branch_, após já estar no _detached head_:
 
     - Fazer as alterações;
     - Criar um novo _branch_: ```git switch -c <branch-head>```
@@ -113,7 +113,7 @@ A realização do _merge_ não faz o _push_ para o servidor, é apenas local.
 
 ##### Passo a passo para execução de merge: 
 
-Partindo do branch _main_, com _commit_ executado:
+Partindo do _branch_ _main_, com _commit_ executado:
 
 - Fazer alterações (criar diretório, criar arquivo, alterar arquivo):
 - Criar novo _branch_, caso necessário: 
@@ -392,23 +392,23 @@ Na primeira imagem, o _branch_ _main_ teve 2 _commits_ a partir de _origin_, ond
 
 Os históricos não lineares facilitam os conflitos de _merge_, e tornam os logs complexos, dificultando o rastreio de mudanças. 
 
-O _rebase_ permite reaplicar commits de um branch sobre outra base (normalmente a principal), criando um histórico linear, sem merges intermediários:
+O _rebase_ permite reaplicar commits de um _branch_ sobre outra base (normalmente a principal), criando um histórico linear, sem merges intermediários:
 
 ![Branch linear](images/rebase-2.png)
 
-Dessa forma, é como se o branch 'teste' tivesse sido criado após o último commit do main (com sua __base__ nesse commit). 
+Dessa forma, é como se o _branch_ 'teste' tivesse sido criado após o último commit do main (com sua __base__ nesse commit). 
 
 Exemplo usando _rebase_:
 
-Nas imagens abaixo temos os logs do branch _main_, com 2 commits após o _origin_, a branch _dev_, também com 2 _commits_ após o _origin_. 
+Nas imagens abaixo temos os logs do _branch_ _main_, com 2 commits após o _origin_, a _branch_ _dev_, também com 2 _commits_ após o _origin_. 
 
 ![rebase-main](images/rebase-main.png)![rebase-dev](images/rebase-dev.png)
 
-Para aplicar o rebase, vamos ao branch _dev_, e rodamos ```git rebase main```, para __trazer__ os commits de _main_ para o branch _dev_, e o resultado é esse:  
+Para aplicar o rebase, vamos ao _branch_ _dev_, e rodamos ```git rebase main```, para __trazer__ os commits de _main_ para o _branch_ _dev_, e o resultado é esse:  
 
 ![rebase-dev-main](images/rebase-dev-main.png)
 
-Após executado o _rebase_, voltar ao branch _main_ e executar o _merge_:
+Após executado o _rebase_, voltar ao _branch_ _main_ e executar o _merge_:
 ```
 git switch main
 git merge dev
@@ -852,7 +852,7 @@ git push origin main
 ```
 ** O 'commit' mais recente recebe a marcação 'HEAD' **
 
-Por padrão, o Git cria o branch principal como _main_, isso é apenas uma nomenclatura, e pode ser alterado com: 
+Por padrão, o Git cria o _branch_ principal como _main_, isso é apenas uma nomenclatura, e pode ser alterado com: 
 ```
 git config init.defaultBranch <branch>
 ```
@@ -931,7 +931,7 @@ git pull <origin> <main>
   ```
   git restore --source <branch> <file>
   ```
-  Isso copiará o arquivo \<file\> de outro branch para o local atual.
+  Isso copiará o arquivo \<file\> de outro _branch_ para o local atual.
 
 - Ver histórico:
   ```
@@ -947,7 +947,7 @@ git pull <origin> <main>
   ```
   * Retorna ao commit selecionado, coloca o projeto num 'detached HEAD'
   ```
-  git switch main   # retorna ao main, ou branch selecionado
+  git switch main   # retorna ao main, ou _branch_ selecionado
   ```
   * '_checkout_' deve ser usado para _commits_ e arquivos.
   * '_switch_' deve ser usado para _branches_. 
@@ -977,13 +977,13 @@ git pull <origin> <main>
   git switch <branch>
   ```
 
-- Criar um branch e já usá-lo: 
+- Criar um _branch_ e já usá-lo: 
   ```
   git switch -c <branch>
   ```
-  * O branch é sempre criado no estado do commit atual do projeto.
+  * O _branch_ é sempre criado no estado do commit atual do projeto.
 
-- Trocar de branch eliminando as alterações rastreadas: 
+- Trocar de _branch_ eliminando as alterações rastreadas: 
   ```
   git switch -f <branch>
   ```
@@ -1024,7 +1024,7 @@ git pull <origin> <main>
   git merge <branch>
   ```
   * O comando deve ser executado no _branch_ de destino de \<branch\>.
-  * O git abrirá o editor de texto padrão para comentar o merge (obrigatório).
+  * O git abrirá o editor de texto padrão para comentar o _merge_ (obrigatório).
 
 - Verificar quais _branches_ ainda tiveram ou não tiveram _merge_:
   ```
@@ -1058,7 +1058,7 @@ git pull <origin> <main>
   ```
   git diff main..origin/main
   ```
-  * Mostra as mudanças de código que existem no remoto em relação à sua branch local.
+  * Mostra as mudanças de código que existem no remoto em relação à sua _branch_ local.
 
 - Ver um resumo do estado dos _branches_: 
   ```
