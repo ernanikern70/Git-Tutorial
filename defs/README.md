@@ -41,13 +41,13 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 -->
 ## Definições
 
-#### Características do Github: 
+#### Características do GitHub: 
 
-O Github, além de servir como repositório de projetos e controle de versionamento, tem um funcionamento semelhante a uma rede social, é possível seguir projetos (__star__), ou criar cópias de projetos (__fork__) para poder fazer alterações sem mudar o projeto principal.  
+O GitHub, que é um dos repositórios remotos disponíveis para o Git, além de ter essa função e controle de versionamento, tem um funcionamento semelhante a uma rede social, é possível seguir projetos (__star__), ou criar cópias de projetos (__fork__) para poder fazer alterações sem mudar o projeto principal.  
 
-Após fazer o __fork__ de um projeto, ele ainda pode ser atualizado conforme o projeto original, através de _git pull_ ou via Github. 
+Após fazer o __fork__ de um projeto, ele ainda pode ser atualizado conforme o projeto original, através de _git pull_ ou via GitHub. 
 
-O Github permite a abertura de __Issues__ (problemas), onde os colaboradores podem informar questões a serem corrigidas. 
+O GitHub permite a abertura de __Issues__ (problemas), onde os colaboradores podem informar questões a serem corrigidas. 
 
 Nas _Issues_ criadas o dono do repositório pode adicionar _labels_ e _milestones_, semelhantemente ao _GitLab_.
 
@@ -61,55 +61,55 @@ Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a esc
 
 - _Untracked_: não rastreado (logo após ser criado ou modificado)
 
-- _Staged_: após ser adicionado ao Git (git add file)
+- _Staged_: após ser adicionado ao Git (_git add file_)
 
-- _Unmodified_: após o commit, se não foi mais alterado (git commit -m 'xx')
+- _Unmodified_: após o commit, se não foi mais alterado (_git commit -m 'xx'_)
 
-- _Modified_: arquivo editado após o commit (se as edições forem desfeitas (git restore file), volta ao 'unmodified'; se forem mantidas e usar 'git add file', volta a 'staged')
+- _Modified_: arquivo editado após o commit (se as edições forem desfeitas (_git restore file_), volta ao 'unmodified'; se forem mantidas e usar '_git add file_', volta a 'staged')
 
-O arquivo também pode retornar à 'untracked caso rode 'git rm --cached file'.
+O arquivo também pode voltar ao estado _untracked_ caso seja executado ```_git rm --cached file_```.
 
-Um arquivo pertence à apenas um estado por vez, mas diferentes arquivos podem estar em estados distintos simultaneamente. 
+Um arquivo pertence a apenas um estado por vez, mas diferentes arquivos podem estar em estados distintos simultaneamente. 
 
 #### Branches: 
 
-São ramificações de projetos que permitem a aplicação de alterações ao mesmo tempo em que uma ramificação principal é mantida. 
+São ramificações de projetos que permitem o desenvolvimento de outras funcionalidades ao mesmo tempo em que um histórico principal é mantido. 
 
-Por exemplo, em um projeto surge a necessidade de desenvolver uma funcionalidade de cadastro de usuários; pode-se então criar a _branch_ _cad-users_ a partir da branch _main_. Caso seja necessária outra funcionalidade independente dessa última, cria-se outro _branch_ _func-extra_ também a partir do _main_. 
+Por exemplo, em um projeto surge a necessidade de desenvolver uma funcionalidade de cadastro de usuários; pode-se então criar a _branch_ _cad-users_ a partir da _branch main_. Caso seja necessária outra funcionalidade independente dessa última, cria-se outro _branch_ _func-extra_ também a partir do _main_. 
 
 Neste exemplo, cada _branch_ é independente das outras, e as alterações não afetam as demais. 
 
-No momento em que uma tarefa de um _branch_ é aprovado, ele é mesclado no _branch main_ - __merge__ -, e o _branch main_ absorve as alterações.
+No momento em que se deseja mesclar o trabalho de um _branch_ ao histórico principal (_main_), é usado o comando __git merge branch__ -, e o _branch main_ absorve as alterações.
 
 #### DETACHED HEAD: 
 
-Em situações em que usamos _git checkout <commit_hash>_, para ver o estado do projeto naquele ponto, o Git nos move da branch atual para aquele commit específico. Nessa situação, não estaremos dentro de um branch, mas em um _limbo_ dentro do projeto - o _DETACHED HEAD_. 
+Em situações em que usamos _git checkout <commit_hash>_, para ver o estado do projeto naquele ponto (naquele _commit_ específico), o Git nos move do _branch_ atual para aquele _commit_ específico. Nessa situação, não estaremos dentro de um _branch_, mas em um 'limbo' dentro do projeto - o _DETACHED HEAD_. 
 
-Ele tem esse nome, pois, como o _commit_ mais recente recebe a marcação _HEAD_, neste caso o _HEAD_ fica separado ou 'destacado' de um branch. 
+Ele tem esse nome, pois, como o _commit_ mais recente recebe a marcação _HEAD_, neste caso o _HEAD_ fica separado ou 'destacado' de um _branch_. 
 
-No DETACHED HEAD, existem duas possibilidades: 
+No _DETACHED HEAD_, existem duas possibilidades: 
 
 - Não são feitas alterações, ou, se feitas, são descartadas, apenas usando ```git switch <branch>```, mesmo se já houve _commit_; 
 
-- Caso se queira salvar alterações, é preciso criar outro branch, após já estar no _detached head_:
+- Caso se queira salvar alterações, é preciso criar outro _branch_, após já estar no _detached head_:
 
     - Fazer as alterações;
-    - Criar um novo branch: ```git switch -c <branch-head>```
+    - Criar um novo _branch_: ```git switch -c <branch-head>```
     - ```git add <files> | git commit -m 'xx'```  
-    Agora, as alterações estão salvas no branch _branch-head_.
+    Agora, as alterações estão salvas no _branch branch-head_.
     - ```git push [--set-upstream] <origin> <branch-head>```
 
 #### Merge: 
 
-O __merge__ é um dos principais comandos do _git_, que faz a 'união' entre um _branch_ em outro branch, que pode ser ou não o _main_. 
+O __merge__ é um dos principais comandos do _git_, que faz a 'união' entre um _branch_ em outro _branch_, que pode ser ou não o _main_. 
 
-O _merge_ sempre deve ser executado no _branch_ de destino; o conteúdo de um _branch_ é mesclado no branch atual.  
+O _merge_ sempre deve ser executado no _branch_ de destino; o conteúdo de um _branch_ é mesclado no _branch_ atual.  
 
-A realização do _merge_ não faz o _push_ para o servidor. 
+A realização do _merge_ não faz o _push_ para o servidor, é apenas local. 
 
 ##### Passo a passo para execução de merge: 
 
-Partindo do branch _main_, com _commit_ executado:
+Partindo do _branch_ _main_, com _commit_ executado:
 
 - Fazer alterações (criar diretório, criar arquivo, alterar arquivo):
 - Criar novo _branch_, caso necessário: 
@@ -117,24 +117,24 @@ Partindo do branch _main_, com _commit_ executado:
   git switch -c teste-rede
   ```
 - Verificar as alterações 
-- Caso positivo, fazer commit:
+- Caso positivo, fazer _commit_:
   ```
   git commit -m "ambiente de teste de rede"
   ```
-- Voltar ao branch que receberá o _merge_:
+- Voltar ao _branch_ que receberá o _merge_:
   ```
   git switch -
   git merge teste-rede
   ```
-  * Antes de fazer o merge, o git abrirá o editor de texto para comentar, se não for comentado, _não será feito o merge_.
+  * Antes de concluir o _merge_, o Git abrirá o editor de texto para comentar. Caso a mensagem não seja salva, _não será feito o merge_.
 
 A realização do _merge_ não faz o _push_ para o servidor.
 
 ##### Conflitos no merge: 
 
-Podem ocorrer conflitos entre branches ao fazer um merge, p. ex., se um arquivo possui edições distintas num mesmo trecho. 
+Podem ocorrer conflitos entre _branches_ ao fazer um _merge_, p. ex., se um arquivo possui edições distintas num mesmo trecho. 
 
-Ao tentar fazer o merge, o git mostrará a mensagem de erro e o arquivo mostrará linhas como as abaixo: 
+Ao tentar fazer o _merge_, o git mostrará a mensagem de erro e o arquivo mostrará linhas como as abaixo: 
 ```
 Badges ------------------ 
 <<<<<<< HEAD
@@ -146,16 +146,16 @@ linha 4: rodrigo    # status no 'devel-teste'
 
 As opção de solução são: 
 
-- Desistir do merge: 
+- Desistir do _merge_: 
 ```
 git merge --abort  # ou
 git reset --hard
 ```
 
-- Caso o conflito seja em poucas linhas de um arquivo, pode-se editá-lo diretamente o manter apenas o conteúdo desejado, eliminando as linhas com '<<<<<<<', '>>>>>' e '======='. 
+- Caso o conflito seja em poucas linhas de um arquivo, pode-se editá-lo diretamente ou manter apenas o conteúdo desejado, eliminando as linhas com '<<<<<<<', '>>>>>' e '======='. 
   * Após, é preciso rodar novamente ```git add .``` e ```git commit -m ''```
 
-  - Caso haja mais conflitos num arquivo, pode-se usar as ferramentas disponíveis para gerenciar conflitos em merge: 
+  - Caso haja mais conflitos num arquivo, pode-se usar as ferramentas disponíveis para gerenciar conflitos em _merge_: 
     - Meld: 
     ```
     git config --global merge.tool meld
@@ -172,51 +172,83 @@ git reset --hard
 
 #### Configurações do Git:
 
+O comando ```git config -l``` mostra todas as configurações que o Git está usando, mas elas vêm de vários lugares diferentes, não apenas do ```.git/config``` do repositório. Basicamente, existem três níveis de configuração:
+
+- Local (por repositório) – é o que está dentro de ```.git/config```. Afeta apenas aquele repositório.
+
+    - Exemplo: [branch "main"] merge = refs/heads/main
+
+- Global (por usuário) – fica em ```~/.gitconfig``` ou ```~/.config/git/config```. Afeta todos os repositórios do seu usuário, na máquina em uso.
+
+    - Exemplo: ```user.name```, ```user.email```, ```credential.helper```.
+
+- System (por sistema/máquina) – fica em ```/etc/gitconfig``` ou em outro diretório de configuração do sistema (dependendo da distro). Afeta todos os usuários e todos os repositórios da máquina - _este arquivo só existirá se o Git for instalado a nível de sistema_.
+
+##### Resumo:
+
+- ```<projeto>/.git/config```: configurações do repositório atual
+- ```~/.gitconfig``` ou ```~/.config/git/config```: configurações globais do usuário
+- ```/etc/gitconfig```: configurações de sistema, se existirem
+
+Os comandos ```git config -l``` e ```git config --show-origin -l``` mostram as configurações, sendo que o último especifica a origem delas.
+
 Exemplo de arquivo de configuração: 
 
 ```
-   $ >  git config -l
- init.defaultbranch=main
- credential.helper=store
- user.name=Ernani Kern
- user.email=ernani.kern@gmail.com
- credencial.helper=store
- mergetool.prompt=false
- mergetool.p4merge.cmd=/home/ernani/p4v-2025.2.2796382/bin/p4merge $BASE $LOCAL $REMOTE $MERGED
- mergetool.p4merge.path=/home/ernani/p4v-2025.2.2796382/bin/
- merge.tool=p4merge
- core.editor=vim
- core.repositoryformatversion=0
- core.filemode=true
- core.bare=false
- core.logallrefupdates=true
- remote.origin.url=https://github.com/ernanikern70/Git-Tutorial.git
- remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
- branch.head-teste.remote=origin
- branch.head-teste.merge=refs/heads/head-teste
- ```
-* O app 'p4merge' não é instalado, então é preciso informar o 'path' e 'cmd'; se for um app como _vimdiff_ ou _mold_, basta informar 'merge.tool'
+$ ▶ git config -l
+init.defaultbranch=main
+credential.helper=store
+user.name=Test User
+user.email=test.user@gmail.com
+mergetool.prompt=false
+mergetool.p4merge.cmd=/home/user/p4v-2025.2.2796382/bin/p4merge $BASE $LOCAL $REMOTE $MERGED
+mergetool.p4merge.path=/home/user/p4v-2025.2.2796382/bin/
+merge.tool=p4merge
+core.editor=vim
+alias.lo=log --oneline
+alias.sw=switch
+alias.ps=push
+alias.pu=pull
+alias.l=log
+alias.cam=commit -am
+alias.log=log --oneline --graph
+alias.lg=log --oneline --graph
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/userxxx/Git-Tutorial.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+alias.s=status
+gui.wmstate=normal
+gui.geometry=920x515+1543+223 188 234
+
+```
+* O app 'p4merge' não é instalado, então é preciso informar o 'path' e 'cmd'; se for um app como _vimdiff_ ou _meld_, basta informar 'merge.tool'
 
 Todos os itens acima são configuráveis com:
 ```
-git config <item>.<parâmetro> <valor>
+git config [--global] <item>.<parâmetro> <valor>
 ```
 E pode-se apagar uma configuração com: 
 ```
 git config --unset <item>.<parâmetro>
 ```
+* Ou deletando a configuração no arquivo correspondente. 
 
 #### Pull Request (PR):
 
-O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_, para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
+O _pull request_ é uma solicitação de alteração num projeto, p. ex., de alterações feitas num _fork_ para o projeto original. Pode-se enviar vários _commits_ num _pull request_.  
 
-Caso aceita, o responsável pelo projeto original executa um _merge pull request_ via Github. 
+Caso aceita, o responsável pelo projeto original executa um _merge pull request_ via GitHub. 
 
-#### Segurança no Github: 
+#### Segurança no GitHub: 
 
-A plataforma permite autenticação via usuário e senha, ou via SSH, esta última sendo mais recomendada. Para usá-la, é preciso adicionar uma chave pública no Github:  
+A plataforma não permite mais a autenticação via usuário e senha, é necessário usar _PAT - Personal Access Tokens_, ou _SSH keys_ (mais recomendado).  Para usá-las, é preciso adicionar uma chave pública no GitHub:  
 
-- No Github - code - SSH - 'add a new public key', _ou_
+- No GitHub, ir em Code -> SSH -> 'Add a new public key', _ou_
     - Ícone do usuário - settings - SSH and GPG keys
 
 - No PC, criar as chaves pública e privada: 
@@ -225,26 +257,25 @@ A plataforma permite autenticação via usuário e senha, ou via SSH, esta últi
     ```
     O comando irá pedir nome e localização do arquivo, pode-se deixar o default, e passphrase, pode-se deixar em branco. 
 
-- Copiar todo o conteúdo da chave .pub e colar no Github, incluindo um título qualquer
+- Copiar todo o conteúdo da chave .pub e colar no GitHub, incluindo um título qualquer
 
 - Adicionar a chave privada ao SSH no PC:
   ```
   ssh-add ~/.ssh/<chave>
   ```
 
-Após fazer essa alteração, a _url_ do repositório deve ser alterada para:  
-
-_git@github.com:\<user\>/\<repo.git\>_
+Após fazer essa alteração, a _url_ do repositório deve ser alterada para:   
+```git@github.com:<user>/<repo.git>```
 
 #### Tags: 
 
 Funcionam como ponteiros, assim como o _HEAD_ e _main_. _Tags_ podem apontar para _commits_ específicos, que representem algum marco no projeto. 
 
-Também são bastante usadas para marcar números de versões, o que também incluem o uso acima. 
+Também são bastante usadas para marcar números de versões, que também incluem o uso acima. 
 
 Como também são ponteiros, __as tags podem ser usadas no lugar dos hashes de commits em vários comandos__. 
 
-Criação de tags: 
+Criação de _tags_: 
 ```
 git tag v0.1
 ```
@@ -258,26 +289,26 @@ git tag -a -m "Tag criada v0.2" v2
 
 #### Git stash: 
 
-O _stash_ é uma funcionalidade do git que permite salvar em memória alterações que não estão prontas para _commit_, para que seja possível trabalhar em outro branch, por exemplo. 
+O _stash_ é uma funcionalidade do git que permite salvar em memória alterações que não estão prontas para _commit_, para que seja possível trabalhar em outro _branch_, por exemplo. 
 
-Estando no branch de trabalho, com as alterações feitas (estas precisam ser rastreadas), para incluir no stash: 
+Estando no _branch_ de trabalho, com as alterações feitas (estas precisam ser rastreadas), para incluir no _stash_: 
 ```
 git stash
 ```
 
-Pode-se criar vários stashes no projeto. 
+Pode-se criar vários _stashes_ no projeto. 
 
 Para checar a lista:
 ```
 git stash list
 ```
 
-Para aplicar as mudanças do stash: 
+Para aplicar as mudanças do _stash_: 
 ```
 git stash apply [stash@{n}]
 ```
 * Isso deixa o git no estado anterior, é preciso continuar com o 'git add|commit'.
-* Se o stash não for informado, será aplicado o primeiro da lista.  
+* Se o _stash_ não for informado, será aplicado o primeiro da lista.  
 * O apply __não remove o stash da lista__.
 
 Para aplicar e remover da lista:
@@ -303,7 +334,7 @@ git stash pop [stash@{n}]
   echo "linha 2 (nova)" >> arquivo.txt
   ```
 
-  Agora o arquivo está editado, e não foi feito '_add_', mas ele já é _modified_ (portanto, rastreado) pelo git. 
+  Agora o arquivo foi editado, ainda não recebeu ```git add```, mas já está como _modified_ (rastreado) pelo Git. 
 
   ```
   git stash push -m "Adicionei linha 2"
@@ -322,14 +353,14 @@ git stash pop [stash@{n}]
   git stash show -p stash@{0}
   ```
 
-  Testar __sem apagar__ o stash: 
+  Testar __sem apagar__ o _stash_: 
   ```
   git stash apply stash@{0}
   ```
 
   Agora o arquivo voltou a ter a "linha 2".  
 
-  Para __aplicar e apagar__ o stash: 
+  Para __aplicar e apagar__ o _stash_: 
   ```
   git stash pop stash@{0}
   ```
@@ -343,15 +374,15 @@ git stash pop [stash@{n}]
 
 ![Alterações em projetos](../images/reset-revert-checkout.png)
 
-- __git revert <hash>__ → Cria um novo commit que desfaz o commit indicado. Histórico fica limpo, sem apagar nada.
+- __git revert <hash>__ → Cria um novo _commit_ que desfaz o _commit_ indicado. Histórico fica limpo, sem apagar nada.
 
-- __git reset --hard <hash>__ → Move o ponteiro do branch para trás, apagando commits posteriores.
+- __git reset --hard <hash>__ → Move o ponteiro do _branch_ para trás, apagando _commits_ posteriores.
 
-- __git reset --soft <hash>__ → Volta no tempo, mas mantém alterações no staging area.
+- __git reset --soft <hash>__ → Volta no tempo, mas mantém alterações no _staging area_.
 
-- __git switch <branch>__ → Trás o estado de outro branch, útil para restaurar ou navegar.
+- __git switch <branch>__ → Traz o estado de outro _branch_, útil para restaurar ou navegar.
 
-- __git checkout <commit/arquivo>__ → Retorna ao estado de um _commit_ ou _arquivo_.
+- __git checkout <commit/arquivo>__ → Retorna ao estado de um _commit_ ou arquivo.
 
 ###### Por que ocorrem conflitos no _revert_: 
 
@@ -361,44 +392,44 @@ git stash pop [stash@{n}]
 
 Este é o comando para trazer um repositório remoto para a máquina local.  
 
-Por padrão, ele faz um '_git fetch + git merge_', ou seja, se o repositório remoto tiver alterações ausentes no repositório local, e o repositório local tiver outras alterações ausentes no remoto, desde que não sejam nas mesmas linhas do mesmo arquivo, as alterações locais _não serão perdidas_, como ocorreria com o _git push_, por exemplo. 
+Por padrão, ele faz um '_git fetch + git merge_', ou seja, se o repositório remoto tiver alterações ausentes no repositório local, e o repositório local tiver outras alterações ausentes no remoto, desde que não sejam conflitantes (nas mesmas linhas do mesmo arquivo), as alterações locais _não serão perdidas_, como ocorreria com o _git push_, por exemplo. 
 
-Caso as diferenças sejam nas mesmas linhas de um mesmo arquivo, então haverá conflito e deverá ser tratado manualmente.  
+Caso as diferenças sejam conflitantes, então deverá ser tratado manualmente.  
 
 #### Rebase
 
-Em projetos onde há fluxos de colaboração com vários branches, é comum ocorrer situações onde um colaborador cria um branch de testes, a partir de um _commit_ do _main_, por exemplo, e após isso o _main_ segue recebendo commits. 
+Em projetos onde há fluxos de colaboração com vários _branches_, é comum ocorrer situações onde um colaborador cria um _branch_ de testes, a partir de um _commit_ do _main_, por exemplo, e após isso o _main_ segue recebendo _commits_. 
 
-No momento em que esse colaborador, após ter feito alguns commits no branch de testes, fizer um merge no main, este último estará num ponto mais adiantado em relação ao da origem do branch teste, e esse merge criará o que chamamos '_merge de commit_', deixando o histórico '_não linear_', conforme figura abaixo: 
+No momento em que esse colaborador, após ter feito alguns _commits_ no _branch_ de testes, fizer um _merge_ no _main_, este último estará num ponto mais adiantado em relação ao da origem do _branch_ teste, e esse _merge_ criará o que chamamos '_merge de commit_', deixando o histórico '_não linear_', conforme figura abaixo: 
 
 ![Branch não linear](../images/branch-nao-linear.png)
 
-Visualizando branches não lineares pelos logs: 
+Visualizando _branches_ não lineares pelos logs: 
 
-Na primeira imagem, o branch _main_ teve 2 _commits_ a partir de _origin_, onde foi criado o branch _teste_; no meio, o branch _teste_ também teve 2 commits após o commit _zerado_ do _main_. Após executar '_git merge teste_' a partir do _main_, foi gerado um _commit_ extra, o _Merge branch 'teste'_, conforme última imagem.
+Na primeira imagem, o _branch_ _main_ teve 2 _commits_ a partir de _origin_, onde foi criado o _branch teste_; no meio, o _branch teste_ também teve 2 _commits_ após o _commit zerado_ do _main_. Após executar '_git merge teste_' a partir do _main_, foi gerado um _commit_ extra, o _Merge branch 'teste'_, conforme última imagem.
 
 ![Branch main](../images/branch-main.png)![Branch teste](../images/branch-teste.png) 
 ![branch-merge](../images/branch-merge.png)
 
-Os históricos não lineares facilitam os conflitos de merge, e tornam os logs complexos, dificultando o rastreio de mudanças. 
+Os históricos não lineares facilitam os conflitos de _merge_, e tornam os logs complexos, dificultando o rastreio de mudanças. 
 
-O _rebase_ permite reaplicar commits de um branch sobre outra base (normalmente a principal), criando um histórico linear, sem merges intermediários:
+O _rebase_ permite reaplicar commits de um _branch_ sobre outra base (normalmente a principal), criando um histórico linear, sem merges intermediários:
 
 ![Branch linear](../images/rebase-2.png)
 
-Dessa forma, é como se o branch 'teste' tivesse sido criado após o último commit do main (com sua __base__ nesse commit). 
+Dessa forma, é como se o _branch_ 'teste' tivesse sido criado após o último commit do main (com sua __base__ nesse commit). 
 
 Exemplo usando _rebase_:
 
-Nas imagens abaixo temos os logs do branch _main_, com 2 commits após o _origin_, a branch _dev_, também com 2 _commits_ após o _origin_. 
+Nas imagens abaixo temos os logs do _branch_ _main_, com 2 commits após o _origin_, a _branch_ _dev_, também com 2 _commits_ após o _origin_. 
 
 ![rebase-main](../images/rebase-main.png)![rebase-dev](../images/rebase-dev.png)
 
-Para aplicar o rebase, vamos ao branch _dev_, e rodamos ```git rebase main```, para __trazer__ os commits de _main_ para o branch _dev_, e o resultado é esse:  
+Para aplicar o rebase, vamos ao _branch_ _dev_, e rodamos ```git rebase main```, para __trazer__ os commits de _main_ para o _branch_ _dev_, e o resultado é esse:  
 
 ![rebase-dev-main](../images/rebase-dev-main.png)
 
-Após executado o _rebase_, voltar ao branch _main_ e executar o _merge_:
+Após executado o _rebase_, voltar ao _branch_ _main_ e executar o _merge_:
 ```
 git switch main
 git merge dev
@@ -406,7 +437,7 @@ git merge dev
 
 ##### Conflitos no _rebase_
 
-Em caso de conflito (alterações distintas nos mesmos trechos de arquivos):
+Em caso de conflito:
 
 ```
 git rebase --abort  # cancela o rebase
@@ -540,7 +571,7 @@ E o log do Git será esse:
 
 Quando um colaborador de projeto tiver um ou mais _commits_ à frente do projeto remoto, e o remoto também tiver _commits_ que não estiverem no projeto local, o comando ```git pull``` irá criar o _merge commit_, como nos casos anteriores. 
 
-Para evitar isso, o usuário pode usar ```git pull --rebase```, que trás os _commits_ remotos e mantém o histórico linear do Git.
+Para evitar isso, o usuário pode usar ```git pull --rebase```, que traz os _commits_ remotos e mantém o histórico linear do Git.
 
 #### Fast-Forward
 
@@ -572,7 +603,7 @@ feature:           D --- E
 
 Isso é um _fast-forward merge_: nenhum _commit de merge_ é criado.
 
-O _fast-forward_ mantém o histórico linear, sem _commits_ extras de _merge_, sendo útil para _branches_ pequenas, como feature ou hotfix, que já estão sincronizadas com _main_.
+O _fast-forward_ mantém o histórico linear, sem _commits_ extras de _merge_, sendo útil para _branches_ pequenos, como feature ou hotfix, que já estão sincronizadas com _main_.
 
 Para forçar um _merge commit_, mesmo que fosse _fast-forward_, usar:
 ```
@@ -585,7 +616,7 @@ git merge --ff-only feature
 
 Se não for possível, o Git vai recusar e avisar.
 
-##### Combinação com git pull
+##### Combinação do _FF_ com git pull
 
 O _git pull_ é na prática _git fetch + git merge_.
 
@@ -596,16 +627,6 @@ Se houver _commits_ locais, o Git fará um _merge_ normal ou você pode usar _--
 git pull --rebase
 ```
 
-Inicializar o diretório como um repositório git (cria o subdiretório .git):  
-```bash
-git init
-```
- $ ▶ git log --oneline -10
- c3c745a (HEAD -> main) versão 1.3
- ff35442 versão 1.2
- 32b5b8d versão 1.1
- cfe555b versão 1
- 088d033 (origin/main) lorem-ipsum.txt inicial
 | Situação | Resultado |
 |:---------|:----------|
 | Branch linear, sem divergência | Fast-forward, ponteiro da branch é movido |
@@ -631,8 +652,6 @@ Se quiser trazer apenas o _commit_ 'introdução' para o _main_, executamos:
 git cherry-pick c96c1cf
 ```
 
-Adicionar o endereço remoto do projeto no servidor (Github ou outro):
-Esses _commits_ relacionados podem ser 'reorganizados' ou 'agrupados', usando o comando ```git rebase --interactive [HEAD~n]```, que abrirá o editor de textos do Git com as seguintes opções: 
 O log do _main_ passaria de: 
 ```
 $ ▶ git log --oneline -2
@@ -641,118 +660,31 @@ $ ▶ git log --oneline -2
 ```
 Para: 
 ```
-git remote add origin <url>
-pick cfe555b versão 1                                                           
-pick 32b5b8d versão 1.1
-pick ff35442 versão 1.2
-pick c3c745a versão 1.3
-           
-# Rebase 088d033..c3c745a onto 088d033 (4 commands)
-#
-# Commands:
-# p, pick <commit> = use commit
-# r, reword <commit> = use commit, but edit the commit message
-# e, edit <commit> = use commit, but stop for amending
-# s, squash <commit> = use commit, but meld into previous commit
-# f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
-#                    commit's log message, unless -C is used, in which case
-#                    keep only this commit's message; -c is same as -C but
-#                    opens the editor
-# x, exec <command> = run command (the rest of the line) using shell
-# b, break = stop here (continue rebase later with 'git rebase --continue')
-# d, drop <commit> = remove commit
-# l, label <label> = label current HEAD with a name
-# t, reset <label> = reset HEAD to a label
-# m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
-#         create a merge commit using the original merge commit's
-#         message (or the oneline, if no original merge commit was
-#         specified); use -c <commit> to reword the commit message
-# u, update-ref <ref> = track a placeholder for the <ref> to be updated
-#                       to this position in the new commits. The <ref> is
-#                       updated at the end of the rebase
-#
-# These lines can be re-ordered; they are executed from top to bottom.
-#
-# If you remove a line here THAT COMMIT WILL BE LOST.
-#
-# However, if you remove everything, the rebase will be aborted.
-
 $ ▶ git log --oneline -3
 476a911 (HEAD -> main) introdução
 491e493 versão 1.3
 088d033 (origin/main) lorem-ipsum.txt inicial
 ```
-O termo _origin_ serve como alias para a url, e pode ser alterado.  
 
 #### Bisect (busca binária)
 
 O comando _bisect_ nos ajuda a encontrar em qual _commit_ ocorreu alguma mudança no projeto. Ele realiza uma busca binária, considerando elementos ordenados: 
 
-    - caso existam 100 elementos, o algoritmo vai no meio deles e descobre se o item buscado é menor ou maior;
-    - se for menor, ele descarta a segunda metade e divide a primeira metade em dois, e descobre novamente se o item buscado é menor ou maior;
+    - caso existam 100 elementos, o algoritmo vai no meio deles e verifica se o item buscado é menor ou maior;
+    - se for menor, ele descarta a segunda metade e divide a primeira metade em dois, e verifica novamente se o item buscado é menor ou maior;
     - se é maior, descarta a primeira metade e divide novamente a metade maior em dois, e assim por diante, até encontrar o valor. 
 
-Alterar a url do projeto: 
-As opções informadas no arquivo são auto explicativas, mas no nosso caso, a principal opção seria o _squash_, que faz um _meld_ (merge) dos _commits_:
 Para utilizar o _bisect_, visualizar o log de _commits_, e rodar: 
 ```
-git remote set-url _origin_ <url>
-pick cfe555b versão 1
-squash 32b5b8d versão 1.1
-squash ff35442 versão 1.2
-squash c3c745a versão 1.3
-       
-# Rebase 088d033..c3c745a onto 088d033 (4 commands)
-#
-# Commands: (...)
 git bisect start
 ```
 O retorno será: ```status: waiting for both good and bad commits```
 Neste ponto, devemos informar um _commit_ onde o projeto estava 'ok', e outro _commit_ onde foi notado erro: 
 
-Criar e adicionar o primeiro arquivo do projeto (geralmente README.md);  
-Ao salvar o arquivo, o editor solicitará a edição das mensagens de _commit_:
 ```
-git add README.md (caso seja um ou poucos arquivos)
-git add . (para muitos arquivos)
-git commit -m 'versão 1'
-git push origin main
-# This is a combination of 4 commits.                                                                                 
-# This is the 1st commit message:
-   
-versão 1
-         
-# This is the commit message #2:
-              
-versão 1.1 
-                    
-# This is the commit message #3:
-                        
-versão 1.2 
-                              
-# This is the commit message #4:
-                                   
-versão 1.3 
-                                        
-# Please enter the commit message for your changes. Lines starting
-# with '#' will be ignored, and an empty message aborts the commit.
-#
-# Date:      Tue Sep 9 09:02:30 2025 -0300
-#
-# interactive rebase in progress; onto 088d033
-# Last commands done (4 commands done):
-#    squash ff35442 versão 1.2
-#    squash c3c745a versão 1.3
-# No commands remaining.
-# You are currently rebasing branch 'main' on '088d033'.
-#
-# Changes to be committed:
-#   modified:   lorem-ipsum.txt
-#
 git bisect good <commit>
 git bisect bad <commit>
 ```
-** O 'commit' mais recente recebe a marcação 'HEAD' **
 
 Com essa informação, o _bisect_ irá executar seu algoritmo, informando e já executando _git switch_ no _commit_ sugerido, que deve ser testado manualmente. 
 
@@ -760,16 +692,8 @@ Se o _commit_ informado estiver 'ok' (anterior ao erro buscado), responder ```gi
 
 ##### Simulação do _bisect_: 
 
-Por padrão, o Git cria o branch principal como _main_, isso é apenas uma nomenclatura, e pode ser alterado com: 
-Após salvar o arquivo, o _rebase_ finalizará com sucesso: 
 Temos os logs abaixo, e sabemos que algum _commit_ com erro foi executado entre 'Merge branch titulos' e o 'HEAD': 
 ```
-git config init.defaultBranch <branch>
-▶ $ ▶ git rebase --interactive
-[detached HEAD 491e493] versão 1.3
- Date: Tue Sep 9 09:02:30 2025 -0300
-  1 file changed, 4 insertions(+), 2 deletions(-)
-  Successfully rebased and updated refs/heads/main.
 $ ▶ git log --oneline
 26f709b (HEAD -> main) o céu muda
 048c868 brisa traz cheiro
@@ -787,14 +711,8 @@ fdd72d4 Merge branch 'titulos'
 088d033 (origin/main) lorem-ipsum.txt inicial
 ```
 
-Caso o projeto sofra alterações no servidor (esteja 'à frente' do projeto local), é preciso atualizá-lo (puxá-lo) para o projeto local: 
-E o log do Git será esse:  
 Iniciamos então com:
 ```
-git pull <origin> <main>
-▶ $ ▶ git log --oneline -10
-491e493 (HEAD -> main) versão 1.3
-088d033 (origin/main) lorem-ipsum.txt inicial
 $ ▶ git bisect start 
 status: waiting for both good and bad commits
 
@@ -820,7 +738,7 @@ Bisecting: 0 revisions left to test after this (roughly 0 steps)
 $ ▶ git bisect good 
 5ca7179dde5448ae5ddfeb9aadd4bb723a9115b9 is the first bad commit
 commit 5ca7179dde5448ae5ddfeb9aadd4bb723a9115b9
-Author: Ernani Kern <ernani.kern@gmail.com>
+Author: Test User <test.user@gmail.com>
 Date:   Tue Sep 9 12:02:06 2025 -0300
 
     bagunça generalizada
@@ -830,19 +748,11 @@ Date:   Tue Sep 9 12:02:06 2025 -0300
 ```
 No momento em que o _commit_ problemático for encontrado, o \<hash\> será mostrado em amarelo, conforme último prompt acima:
 
-##### git pull --rebase
-
-Quando um colaborador de projeto tiver um ou mais _commits_ à frente do projeto remoto, e o remoto também tiver _commits_ que não estiverem no projeto local, o comando ```git pull``` irá criar o _merge commit_, como nos casos anteriores. 
-
-Para evitar isso, o usuário pode usar ```git pull --rebase```, que trás os _commits_ remotos e mantém o histórico linear do Git.
-
 Para resolver, rodar ```git bisect reset``` para finalizar o _bisect_, e rodar um ```git rebase --interactive``` e marcar com _drop_ o _commit_ indesejado. 
 
 <sub>[⬆](#sumário)</sub>
 ---
 <!--
 " }}}
-" }}}  
-"  }}}  
 -->
 
