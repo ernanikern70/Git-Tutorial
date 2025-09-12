@@ -1225,11 +1225,7 @@ git pull <origin> <main>
   ```
   Os comandos ```git s```, ```git l``` e ```git line``` executarão os comandos configurados. 
 
-<<<<<<< HEAD
-- Visualiza um arquivo de outro _branch_ sem fazer _switch_:
-=======
 - Visualizar um arquivo de outro _branch_ sem fazer _switch_:
->>>>>>> 14266ae (readmes raiz updt - main)
   ```
   git show main:README.md
   ```
