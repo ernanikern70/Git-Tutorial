@@ -38,5 +38,8 @@ meld /tmp/readme "$branch"/README.md
 # git restore README.md
 
 # Faz commit no README do branch
-echo "git commit -am "$branch"/README.md..."
+echo "git add $branch/README.md..."
+echo "git commit -m "$branch"/README.md..."
+git add "$branch"/README.md
+git commit -m "updt README do $branch"
 
