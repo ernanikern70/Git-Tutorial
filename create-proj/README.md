@@ -15,7 +15,7 @@
 <!--
 " Sumário ----------------------- {{{
 -->
-## Sumário
+### Sumário
 
 - [Introdução](#introdução)
 - [Criação de Projeto](#criação-de-projeto)
@@ -43,24 +43,24 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
 
 Configurar de forma global (em todos os projetos da máquina local) o autor e email dos projetos:  
 ```
-git config --global user.name "Fulano de Tal"
-git config --global user.email "fulano.tal@email.com"
+git config --global user.name "Test User"
+git config --global user.email "test.user@email.com"
 ```
 
-Criar o primeiro projeto, localmente:  
-```bash
+Criar o projeto, localmente:  
+```
 mkdir projeto1
 cd projeto1
 ```
 
 Inicializar o diretório como um repositório git (cria o subdiretório .git):  
-```bash
+```
 git init
 ```
 
 A criação do repositório remoto pode ser feita de duas formas:  
 
-- No [Github.com](https://github.com): 
+- No [GitHub.com](https://github.com): 
     - 'Novo repositório'
     - Copiar a URL para configurar no repo local
 
@@ -74,7 +74,7 @@ A criação do repositório remoto pode ser feita de duas formas:
     - _gh repo create_
         - Seguir instruções
 
-Adicionar o endereço remoto do projeto no servidor (Github ou outro):
+Adicionar o endereço remoto do projeto no servidor (GitHub ou outro):
 ```
 git remote add origin <url>
 ```
@@ -82,19 +82,19 @@ git remote add origin <url>
 
 Alterar a url do projeto: 
 ```
-git remote set-url _origin_ <url>
+git remote set-url <remote> <url>
 ```
 
 Criar e adicionar o primeiro arquivo do projeto (geralmente README.md);  
 ```
 git add README.md (caso seja um ou poucos arquivos)
-git add . (para muitos arquivos)
+git add . (para muitos arquivos - __apenas diretório atual__)
 git commit -m 'versão 1'
 git push origin main
 ```
 ** O 'commit' mais recente recebe a marcação 'HEAD' **
 
-Por padrão, o Git cria o branch principal como _main_, isso é apenas uma nomenclatura, e pode ser alterado com: 
+Por padrão, o Git cria o _branch_ principal como _main_, isso é apenas uma nomenclatura, e pode ser alterado com: 
 ```
 git config init.defaultBranch <branch>
 ```
