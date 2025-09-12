@@ -71,9 +71,9 @@ Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a esc
 
 - _Modified_: arquivo editado após o commit (se as edições forem desfeitas (_git restore file_), volta ao 'unmodified'; se forem mantidas e usar '_git add file_', volta a 'staged')
 
-O arquivo também pode retornar à 'untracked' caso rode '_git rm --cached file_'.
+O arquivo também pode voltar ao estado _untracked_ caso seja executado ```_git rm --cached file_```.
 
-Um arquivo pertence à apenas um estado por vez, mas diferentes arquivos podem estar em estados distintos simultaneamente. 
+Um arquivo pertence a apenas um estado por vez, mas diferentes arquivos podem estar em estados distintos simultaneamente. 
 
 #### Branches: 
 
@@ -130,7 +130,7 @@ Partindo do _branch_ _main_, com _commit_ executado:
   git switch -
   git merge teste-rede
   ```
-  * Antes de fazer o _merge_, o git abrirá o editor de texto para comentar, se não for comentado, _não será feito o merge_.
+  * Antes de concluir o _merge_, o Git abrirá o editor de texto para comentar. Caso a mensagem não seja salva, _não será feito o merge_.
 
 A realização do _merge_ não faz o _push_ para o servidor.
 
@@ -230,7 +230,7 @@ gui.wmstate=normal
 gui.geometry=920x515+1543+223 188 234
 
 ```
-* O app 'p4merge' não é instalado, então é preciso informar o 'path' e 'cmd'; se for um app como _vimdiff_ ou _mold_, basta informar 'merge.tool'
+* O app 'p4merge' não é instalado, então é preciso informar o 'path' e 'cmd'; se for um app como _vimdiff_ ou _meld_, basta informar 'merge.tool'
 
 Todos os itens acima são configuráveis com:
 ```
@@ -252,7 +252,7 @@ Caso aceita, o responsável pelo projeto original executa um _merge pull request
 
 A plataforma não permite mais a autenticação via usuário e senha, é necessário usar _PAT - Personal Access Tokens_, ou _SSH keys_ (mais recomendado).  Para usá-las, é preciso adicionar uma chave pública no GitHub:  
 
-- No GitHub - code - SSH - 'add a new public key', _ou_
+- No GitHub, ir em Code -> SSH -> 'Add a new public key', _ou_
     - Ícone do usuário - settings - SSH and GPG keys
 
 - No PC, criar as chaves pública e privada: 
@@ -338,7 +338,7 @@ git stash pop [stash@{n}]
   echo "linha 2 (nova)" >> arquivo.txt
   ```
 
-  Agora o arquivo está editado, e não foi feito '_add_', mas ele já é _modified_ (portanto, rastreado) pelo git. 
+  Agora o arquivo foi editado, ainda não recebeu ```git add```, mas já está como _modified_ (rastreado) pelo Git. 
 
   ```
   git stash push -m "Adicionei linha 2"
@@ -934,7 +934,7 @@ git pull <origin> <main>
   git diff --cached|--staged
   ```
 
-- Altera o comentário de um commit: 
+- Alterar o comentário de um commit: 
   ```
   git commit --amend -m "comentário novo"
   ```
@@ -1207,7 +1207,7 @@ git pull <origin> <main>
   git rebase --interactive
   ```
 
-- Inicar um _git bisect_:
+- Iniciar um _git bisect_:
   ```
   git bisect start
   ```
@@ -1225,7 +1225,11 @@ git pull <origin> <main>
   ```
   Os comandos ```git s```, ```git l``` e ```git line``` executarão os comandos configurados. 
 
+<<<<<<< HEAD
 - Visualiza um arquivo de outro _branch_ sem fazer _switch_:
+=======
+- Visualizar um arquivo de outro _branch_ sem fazer _switch_:
+>>>>>>> 14266ae (readmes raiz updt - main)
   ```
   git show main:README.md
   ```
