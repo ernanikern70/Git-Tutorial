@@ -7,13 +7,12 @@ if [ -z "$1" ]; then
 fi
 
 # verifica se o branch existe
-for br in $(git branch)
-    if [ "$1" == "$br" ]; then
-        echo "Branch existe"
-    else
-        echo "Branch não existe"
-        exit 1
-    fi
+if git show-ref --verify --quiet refs/heads/"$1"; then
+    echo "Branch existe"
+else
+    echo "Branch não existe"
+    exit 1
+fi
 
 # Armazena o parâmetro em uma variável (opcional)
 branch=$1
@@ -23,7 +22,7 @@ echo "O branch fornecido foi: $branch"
 
 # Faz switch para o branch
 echo "git switch $branch..."
-git sw "$branch"
+git switch "$branch"
 
 # Busca o README de main: 
 #echo "git restore --source main README.md..."
@@ -39,5 +38,5 @@ meld /tmp/readme "$branch"/README.md
 # git restore README.md
 
 # Faz commit no README do branch
-echo "git commit cam "$branch"/README.md..."
+echo "git commit -am "$branch"/README.md..."
 
