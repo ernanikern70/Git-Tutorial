@@ -15,7 +15,7 @@
 <!--
 " Sumário ----------------------- {{{
 -->
-## Sumário
+### Sumário
 
 - [Introdução](#introdução)
 - [Ferramentas Gráficas](#ferramentas-gráficas)
