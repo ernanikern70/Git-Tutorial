@@ -48,3 +48,6 @@ git status
 echo "Retornando ao branch MAIN...."
 git switch main
 git status
+
+# Fazer o merge e push
+echo "Se git status estiver ok, fazer o MERGE e PUSH <<<"
