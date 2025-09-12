@@ -42,4 +42,9 @@ echo "git add $branch/README.md..."
 echo "git commit -m "$branch"/README.md..."
 git add "$branch"/README.md
 git commit -m "updt README do $branch"
+git status
 
+# Retornando ao branch main:
+echo "Retornando ao branch MAIN...."
+git switch main
+git status
