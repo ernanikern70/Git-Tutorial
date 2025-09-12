@@ -70,7 +70,7 @@ Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a esc
 O arquivo também pode voltar ao estado _untracked_ caso seja executado ```_git rm --cached file_```.
 
 Um arquivo pertence a apenas um estado por vez, mas diferentes arquivos podem estar em estados distintos simultaneamente. 
-
+ 
 #### Branches: 
 
 São ramificações de projetos que permitem o desenvolvimento de outras funcionalidades ao mesmo tempo em que um histórico principal é mantido. 
