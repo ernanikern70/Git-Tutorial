@@ -89,6 +89,11 @@ Este guia descreve os passos recomendados para criar um projeto versionado com G
   ```
   * Adiciona o arquivo _staged_ ao commit, sem alterar o comentário
   * O '_--amend_' altera o _hash_ do commit, excluindo-o do histórico
+ 
+- Mover arquivos/diretórios:
+  ```
+  git mv <files>
+  ```
 
 - Restaurar arquivos modificados (_tracked_ ou _staged_): 
   ```
