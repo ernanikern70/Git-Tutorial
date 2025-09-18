@@ -61,6 +61,16 @@ Este arquivo, que não é obrigatório, pode estar na raiz do repositório, com 
 
 Ele usa sistema de marcação _.md_, e um recurso interessante para ajudar a escrever o arquivo é a plataforma [Dillinger](https://dillinger.io).
 
+#### Arquivo .gitignore:
+```
+# Ignora arquivos .iso e .swp:
+*.iso
+*.swp
+# Ignora diretório /temp, mas não o arquivo README.md nele:
+temp/
+!temp/README.md
+```
+
 #### Estados de um arquivo no Git:   
 
 - _Untracked_: não rastreado (logo após ser criado ou modificado)
